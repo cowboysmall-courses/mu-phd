@@ -22,7 +22,7 @@ def main() -> None:
     print("\tA Simulation of Adleman's Experiiment:")
     print("\n")
 
-    print(f"  Original Vertices: {' -> '.join(str(i) for i in range(VERTS))}")
+    print(f"  Original Vertices: {', '.join(str(i) for i in range(VERTS))}")
     print(f"     Original Edges: {', '.join(f"{i} -> {j}" for (i, j) in EDGES)}")
     print("\n")
 
