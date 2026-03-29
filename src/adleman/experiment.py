@@ -5,7 +5,7 @@ import random
 
 VERTS  = 7
 LENGTH = 10
-FACTOR = 100000
+FACTOR = 1000000
 
 EDGES  = [
     (0, 1), (0, 3), (0, 6),
@@ -38,23 +38,29 @@ def main() -> None:
     a_strands = v_strands * FACTOR
     random.shuffle(a_strands)
     paths = create_paths(a_strands, e_strands, v_strands[-1], LENGTH)
+    print(f"             Step 1: {len(paths):5d} Paths Found")
 
-    # Step 2: Retain paths that begin and end with the start and end vertices
-    #         (we have already checked for the exit vertices)
-    paths = [path for path in paths if [path[0] == v_strands[0]]]
+    # Step 2: Retain paths that begin and end with the start and end vertices -
+    #         we don't need to check for the exit vertex
+    paths = [path for path in paths if path[0] == v_strands[0]]
+    print(f"             Step 2: {len(paths):5d} Paths Found")
 
     # Step 3: Retain paths that contain the correct number of vertices
     paths = [path for path in paths if len(path) == VERTS]
+    print(f"             Step 3: {len(paths):5d} Paths Found")
 
     # Step 4: Retain paths that include all vertices
     s_strands = set(v_strands)
     paths = [path for path in paths if set(path) == s_strands]
+    print(f"             Step 4: {len(paths):5d} Paths Found")
 
     # Step 5: If paths exist then 'Yes' or else 'No'
     found = len(paths) > 0
-    print(f"        Paths Found: {'Yes' if found else 'No'}")
+    print(f"             Step 5: {'Yes' if found else 'No'}")
+    print("\n")
+
+
     if found:
-        print(f"  Paths Found Count: {len(paths)}")
         print(f" Encoded Path Found: {' -> '.join(paths[0])}")
         print(f"         Path Found: {' -> '.join([str(v_strands.index(p)) for p in paths[0]])}")
-    print("\n")
+        print("\n")
