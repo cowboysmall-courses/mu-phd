@@ -60,14 +60,14 @@ you should see output similar to the below:
 
 ```
 
-## The Simulation of Adleman's Experiment
+## A Brief Note on the Simulation of Adleman's Experiment
 
 This simulation demonstrates solving the Traveling Salesman problem through DNA computing as follows:
 
 1. we take a simple graph
 2. we encode the vertices as DNA molecules
 3. we encode the edges as DNA molecules
-4. we allow them to bind randomly
+4. we allow the vertices to bind randomly according to the edges
 5. we retain for consideration only candidate molecules that fulfill the criteria
 
 If there are any remaining molecules then we have a solution, otherwise we do not have a solution.
