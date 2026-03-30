@@ -28,15 +28,13 @@ BASES    = ['A', 'G', 'C', 'T']
 PAIRINGS = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
 
 
-def generate_strand(bases: List[str], length: int) -> str:
+def generate_strand(length: int) -> str:
     """
 
         generates a random strand of specific length from the bases
 
         Parameters
         ----------
-        bases: List[str]
-            the list of bases from which to draw the elements of the strand
         length: int
             the lenght of the generated strand
 
@@ -46,7 +44,7 @@ def generate_strand(bases: List[str], length: int) -> str:
             the generated strand
 
     """
-    return ''.join(random.choices(bases, k=length))
+    return ''.join(random.choices(BASES, k=length))
 
 
 def create_vertex_strands(length: int, count: int) -> List[str]:
@@ -67,7 +65,7 @@ def create_vertex_strands(length: int, count: int) -> List[str]:
             the generated vertex strands
 
     """
-    return repeat_function(generate_strand, count, BASES, length)
+    return repeat_function(generate_strand, count, length)
 
 
 def complement_strand(strand: str) -> str:
@@ -131,33 +129,7 @@ def create_edge_strands(strands: List[str], edges: List[Tuple], length: int) -> 
     return [strands[v1][-(length//2):] + strands[v2][:(length//2)] for (v1, v2) in edges]
 
 
-def extend_edge_strands(vertex_strands: List[str], edge_strands: List[str], length: int) -> List[str]:
-    """
-
-        extend relevant edge strands to include all of the start / end vertex strand
-
-        Parameters
-        ----------
-        vertex_strands: List[str]
-            the list of vertex strands
-        edge_strands: List[str]
-            the list of edge strands
-        length: int
-            the lenght of a vertex strand
-
-        Returns
-        -------
-        List[str]
-            the list of extended edge strands
-
-    """
-    edge_strands = [strand.replace(vertex_strands[0][-(length//2):], vertex_strands[0]) for strand in edge_strands]
-    edge_strands = [strand.replace(vertex_strands[-1][:(length//2)], vertex_strands[-1]) for strand in edge_strands]
-    return edge_strands
-
-
-
-def create_paths(vertex_strands: List[str], edge_strands: List[str], exit_strand: str, length: int) -> List[List[str]]:
+def create_paths(vertex_strands: List[str], edge_strands: List[str], in_strand: str, out_strand: str, length: int) -> List[List[str]]:
     """
 
         create paths from a list of vertex strands according to the provided edge strands
@@ -168,8 +140,10 @@ def create_paths(vertex_strands: List[str], edge_strands: List[str], exit_strand
             the list of vertex strands
         edge_strands: List[str]
             the list of edge strands
-        exit_strand: str
-            the exit strand
+        in_strand: str
+            the in strand
+        out_strand: str
+            the out strand
         length: int
             the lenght of a vertex strand
 
@@ -183,18 +157,15 @@ def create_paths(vertex_strands: List[str], edge_strands: List[str], exit_strand
     paths = []
     edges = set(edge_strands)
 
-    path  = []
+    path  = [in_strand]
     for strand in vertex_strands:
-        if len(path) == 0:
+        edge = complement_strand(path[-1][-(length//2):] + strand[:(length//2)])
+        if edge in edges:
             path.append(strand)
-        else:
-            edge = complement_strand(path[-1][-(length//2):] + strand[:(length//2)])
-            if edge in edges:
-                path.append(strand)
 
-        if path[-1] == exit_strand:
+        if path[-1] == out_strand:
             paths.append(path)
-            path = []
+            path = [in_strand]
 
     return paths
 

@@ -4,8 +4,8 @@ import random
 
 
 VERTS  = 7
-LENGTH = 10
-FACTOR = 1000000
+LENGTH = 20
+FACTOR = 100000
 
 EDGES  = [
     (0, 1), (0, 3), (0, 6),
@@ -35,14 +35,14 @@ def main() -> None:
     print("\n")
 
     # Step 1: Create paths based on edges
-    a_strands = v_strands * FACTOR
+    a_strands = v_strands[1:] * FACTOR
     random.shuffle(a_strands)
-    paths = create_paths(a_strands, e_strands, v_strands[-1], LENGTH)
+    paths = create_paths(a_strands, e_strands, v_strands[0], v_strands[-1], LENGTH)
     print(f"             Step 1: {len(paths):5d} Paths Found")
 
-    # Step 2: Retain paths that begin and end with the start and end vertices -
-    #         we don't need to check for the exit vertex
-    paths = [path for path in paths if path[0] == v_strands[0]]
+    # Step 2: Retain paths that begin and end with the start and end vertices
+    #         NOTE: we don't need to check for the in and out - we use both in 'create_paths'
+    paths = [path for path in paths if path[0] == v_strands[0] and path[-1] == v_strands[-1]]
     print(f"             Step 2: {len(paths):5d} Paths Found")
 
     # Step 3: Retain paths that contain the correct number of vertices
