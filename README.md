@@ -10,7 +10,6 @@ Clone the repository as follows:
 
 > git clone git@github.com:cowboysmall-courses/mu-phd.git
 
-
 ```
 
 and then move into the root of the repository:
@@ -19,7 +18,6 @@ and then move into the root of the repository:
 
 > cd mu-phd/
 
-
 ```
 
 ensure that [uv](https://docs.astral.sh/uv/getting-started/installation/) is installed, and then run the following:
@@ -27,7 +25,6 @@ ensure that [uv](https://docs.astral.sh/uv/getting-started/installation/) is ins
 ```
 
 > uv run adleman
-
 
 ```
 
@@ -56,7 +53,6 @@ you should see output similar to the below:
 
  Encoded Path Found: TTAAAACTTTGCTAGGCTGA -> TTCGCCCATATACCAGAACC -> TAGCACCACGGTTACTGAAG -> GGATCGGGCCACTATCCCCA -> CAAACAAAAGGGCCATCATG -> AAGAGAGGTTTTTCAGGGGC -> GTCTTGTGCGGCATCCAGCA
          Path Found: 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6
-
 
 ```
 
