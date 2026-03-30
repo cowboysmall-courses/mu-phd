@@ -35,6 +35,7 @@ def main() -> None:
     print("\n")
 
     # Step 1: Create paths based on edges
+    #         NOTE: exclude the first strand - which will be passed to 'create_paths'
     a_strands = v_strands[1:] * FACTOR
     random.shuffle(a_strands)
     paths = create_paths(a_strands, e_strands, v_strands[0], v_strands[-1], LENGTH)
