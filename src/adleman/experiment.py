@@ -6,7 +6,6 @@ import random
 VERTS  = 7
 LENGTH = 20
 FACTOR = 100000
-
 EDGES  = [
     (0, 1), (0, 3), (0, 6),
     (1, 2), (1, 3),
@@ -21,7 +20,6 @@ def main() -> None:
     print("\n")
     print("\tA Simulation of Adleman's Experiiment:")
     print("\n")
-
     print(f"  Original Vertices: {', '.join(str(i) for i in range(VERTS))}")
     print(f"     Original Edges: {', '.join(f"{i} -> {j}" for (i, j) in EDGES)}")
     print("\n")
@@ -59,7 +57,6 @@ def main() -> None:
     found = len(paths) > 0
     print(f"             Step 5: {'Yes' if found else 'No'}")
     print("\n")
-
 
     if found:
         print(f" Encoded Path Found: {' -> '.join(paths[0])}")

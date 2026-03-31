@@ -67,3 +67,17 @@ This simulation demonstrates solving the Traveling Salesman problem through DNA 
 5. we retain for consideration only candidate molecules that fulfill the criteria
 
 If there are any remaining molecules then we have a solution, otherwise we do not have a solution.
+
+## References
+
+### Papers
+
+[Molecular Computation of Solutions to Combinatorial Problems](https://www.cs.unc.edu/~montek/teaching/Comp790-Fall11/Home/Home_files/Adleman-Science94.pdf)
+[Molecular Computing: From Conformational Pattern Recognition to Complex Processing Networks](https://eprints.soton.ac.uk/261898/1/ConradM96ConfPttrRecCplxProcNet.pdf)
+[Biomolecular Computing and Programming](https://scispace.com/pdf/biomolecular-computing-and-programming-2if8v4lqko.pdf)
+[Molecular computing: paths to chemical Turing machines](https://pdfs.semanticscholar.org/568f/da26437fd3c632de834a24fd202f1a77bd48.pdf)
+
+### Videos
+
+- [The Math Behind Building An AI Using DNA](https://www.youtube.com/watch?v=0luZ4JqHg6w)
+- [DNA Computing 101: How can DNA do computations?](https://www.youtube.com/watch?v=YBhWrHeIqDs)
