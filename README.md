@@ -72,10 +72,10 @@ If there are any remaining molecules then we have a solution, otherwise we do no
 
 ### Papers
 
-[Molecular Computation of Solutions to Combinatorial Problems](https://www.cs.unc.edu/~montek/teaching/Comp790-Fall11/Home/Home_files/Adleman-Science94.pdf)
-[Molecular Computing: From Conformational Pattern Recognition to Complex Processing Networks](https://eprints.soton.ac.uk/261898/1/ConradM96ConfPttrRecCplxProcNet.pdf)
-[Biomolecular Computing and Programming](https://scispace.com/pdf/biomolecular-computing-and-programming-2if8v4lqko.pdf)
-[Molecular computing: paths to chemical Turing machines](https://pdfs.semanticscholar.org/568f/da26437fd3c632de834a24fd202f1a77bd48.pdf)
+- [Molecular Computation of Solutions to Combinatorial Problems](https://www.cs.unc.edu/~montek/teaching/Comp790-Fall11/Home/Home_files/Adleman-Science94.pdf)
+- [Molecular Computing: From Conformational Pattern Recognition to Complex Processing Networks](https://eprints.soton.ac.uk/261898/1/ConradM96ConfPttrRecCplxProcNet.pdf)
+- [Biomolecular Computing and Programming](https://scispace.com/pdf/biomolecular-computing-and-programming-2if8v4lqko.pdf)
+- [Molecular computing: paths to chemical Turing machines](https://pdfs.semanticscholar.org/568f/da26437fd3c632de834a24fd202f1a77bd48.pdf)
 
 ### Videos
 
