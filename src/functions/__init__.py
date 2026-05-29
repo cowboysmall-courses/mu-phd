@@ -3,7 +3,7 @@ from typing import List
 from collections.abc import Callable
 
 
-def repeat_function(function: Callable[[], str], times: int = None, *args: List[str]) -> List[str]:
+def repeat_function(function: Callable[[], str], times: int | None = None, *args: List[str]) -> List[str]:
     """
 
         repeatedly calls a function that returns a string a specified number of times and returns the result in a list

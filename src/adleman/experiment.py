@@ -55,7 +55,7 @@ def main() -> None:
 
     # Step 5: If paths exist then 'Yes' or else 'No'
     found = len(paths) > 0
-    print(f"             Step 5: {'Yes' if found else 'No'}")
+    print(f"             Step 5: {'No' if not found else '':>5} Paths Found")
     print("\n")
 
     if found:
