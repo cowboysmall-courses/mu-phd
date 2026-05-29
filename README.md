@@ -73,6 +73,7 @@ If there are any remaining molecules then we have a solution, otherwise we do no
 ### Links
 
 - [DNA computing](http://www.ee.ic.ac.uk/xi.gao08/yr2proj/SBEE/DNA_computing.html)
+- [De Bruijn graph](https://en.wikipedia.org/wiki/De_Bruijn_graph)
 
 ### Papers
 
