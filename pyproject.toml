@@ -15,7 +15,8 @@ dependencies = [
 [project.scripts]
 # mu-phd = "mu_phd:main"
 adleman = "adleman.experiment:main"
-atam = "atam.experiment:main"
+xor = "atam.experiment_xor:main"
+counter = "atam.experiment_counter:main"
 
 
 [build-system]
@@ -25,6 +26,3 @@ build-backend = "uv_build"
 
 [tool.uv.build-backend]
 namespace = true
-
-# [tool.uv.build-backend]
-# module-name = ["adleman", "atam"]
