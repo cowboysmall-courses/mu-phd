@@ -1,12 +1,10 @@
 
-from atam import north, seed, west, Tile
+from atam import Tile, create_tile_grid
 
-import numpy as np
 import matplotlib.pyplot as plt
 
 
-
-def xor_tile(up, right) -> Tile:
+def xor_tile(up: int, right: int) -> Tile:
     if up + right == 1:
         return Tile(1, up, 1, right, "1")
     else:
@@ -16,19 +14,7 @@ def xor_tile(up, right) -> Tile:
 def main() -> None:
     dim = 64
 
-    tiles = np.empty((64, 64), dtype=object)
-    for row in range(dim):
-        for col in range(dim):
-            if (row + col) == 0:
-                tiles[0, 0] = seed()
-            elif row == 0:
-                tiles[0, col] = west()
-            elif col == 0:
-                tiles[row, 0] = north()
-            elif row > 0 and col > 0:
-                tiles[row, col] = xor_tile(tiles[row - 1][col].up, tiles[row][col - 1].left)
-
-    values = [[int(tile.colour) for tile in row[::-1]] for row in tiles[::-1]]
+    values = [[int(tile.colour) for tile in row[::-1]] for row in create_tile_grid(dim, xor_tile)[::-1]]
 
     plt.title("aTAM - XOR Experiment")
     plt.imshow(values, interpolation="none")
