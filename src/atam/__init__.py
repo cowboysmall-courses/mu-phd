@@ -29,13 +29,13 @@ def create_tile_grid(dim: int, func: Callable[[int, int], Tile]) -> np.ndarray:
 
     for row in range(dim):
         for col in range(dim):
-            if (row + col) == 0:
+            if row + col == 0:
                 tiles[0, 0] = seed()
             elif row == 0:
                 tiles[0, col] = west()
             elif col == 0:
                 tiles[row, 0] = north()
-            elif row > 0 and col > 0:
+            else:
                 tiles[row, col] = func(tiles[row - 1][col].up, tiles[row][col - 1].left)
 
     return tiles

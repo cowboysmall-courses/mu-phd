@@ -18,7 +18,7 @@ def main() -> None:
 
     values = [[int(tile.colour) for tile in row[::-1]] for row in create_tile_grid(dim, counter_tile)[::-1]]
 
-    plt.title("aTAM - Binary Counter Experiment")
+    plt.title("aTAM - Binary Counter")
     plt.imshow(values, interpolation="none")
     plt.gca().set_axis_off()
     plt.savefig("./output/atam/experiment_counter.png")

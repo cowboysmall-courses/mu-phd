@@ -16,7 +16,7 @@ def main() -> None:
 
     values = [[int(tile.colour) for tile in row[::-1]] for row in create_tile_grid(dim, xor_tile)[::-1]]
 
-    plt.title("aTAM - XOR Experiment")
+    plt.title("aTAM - XOR")
     plt.imshow(values, interpolation="none")
     plt.gca().set_axis_off()
     plt.savefig("./output/atam/experiment_xor.png")
