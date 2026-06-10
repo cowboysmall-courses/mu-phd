@@ -17,6 +17,7 @@ dependencies = [
 adleman = "adleman.experiment:main"
 xor = "atam.experiment_xor:main"
 counter = "atam.experiment_counter:main"
+sdc = "sdc.experiment:main"
 
 
 [build-system]
