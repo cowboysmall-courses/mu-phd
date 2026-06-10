@@ -1,8 +1,9 @@
 
-from typing import Callable
+from typing import Callable, List
 from dataclasses import dataclass
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 @dataclass
@@ -11,31 +12,25 @@ class Tile:
     down: int
     left: int
     right: int
-    colour: str
+    value: int
 
 
-def seed() -> Tile:
-    return Tile(2, -1, 2, -1, "3")
-
-def north() -> Tile:
-    return Tile(2, 2, 1, -1, "2")
-
-def west() -> Tile:
-    return Tile(1, -1, 2, 2, "2")
-
-
-def create_tile_grid(dim: int, func: Callable[[int, int], Tile]) -> np.ndarray:
+def create_tile_grid(dim: int, func: Callable[[Tile, Tile], Tile]) -> np.ndarray:
     tiles = np.empty((dim, dim), dtype=object)
 
-    for row in range(dim):
-        for col in range(dim):
-            if row + col == 0:
-                tiles[0, 0] = seed()
-            elif row == 0:
-                tiles[0, col] = west()
-            elif col == 0:
-                tiles[row, 0] = north()
-            else:
-                tiles[row, col] = func(tiles[row - 1][col].up, tiles[row][col - 1].left)
+    tiles[0,  0] = Tile(2, -1, 2, -1, 4)
+    tiles[1:, 0] = Tile(2,  2, 1, -1, 3)
+    tiles[0, 1:] = Tile(1, -1, 2,  2, 2)
+
+    for row in range(1, dim):
+        for col in range(1, dim):
+            tiles[row, col] = func(tiles[row - 1][col], tiles[row][col - 1])
 
     return tiles
+
+
+def create_plot(values: List[List[int]], title: str, path: str) -> None:
+    plt.title(title)
+    plt.imshow(values, interpolation="none")
+    plt.gca().set_axis_off()
+    plt.savefig(path)
