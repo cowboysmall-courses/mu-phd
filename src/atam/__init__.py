@@ -12,7 +12,7 @@ class Tile:
     down: int
     left: int
     right: int
-    value: int
+    colour: int
 
 
 def create_tile_grid(dim: int, func: Callable[[Tile, Tile], Tile]) -> np.ndarray:

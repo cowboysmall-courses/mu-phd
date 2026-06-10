@@ -12,8 +12,7 @@ def counter_tile(below: Tile, before: Tile) -> Tile:
 
 
 def main() -> None:
-    dim    = 64
-    tiles  = create_tile_grid(dim, counter_tile)
-    values = [[tile.value for tile in row[::-1]] for row in tiles[::-1]]
+    tiles  = create_tile_grid(64, counter_tile)
+    values = [[tile.colour for tile in row[::-1]] for row in tiles[::-1]]
 
     create_plot(values, "aTAM - Counter", "./output/atam/experiment_counter.png")
