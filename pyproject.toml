@@ -15,9 +15,10 @@ dependencies = [
 [project.scripts]
 # mu-phd = "mu_phd:main"
 adleman = "adleman.experiment:main"
-xor = "atam.experiment_xor:main"
-counter = "atam.experiment_counter:main"
-sdc = "sdc.experiment:main"
+atam-xor = "atam.experiment_atam_xor:main"
+atam-counter = "atam.experiment_atam_counter:main"
+sdc-parity = "sdc.experiment_sdc_parity:main"
+sdc-add = "sdc.experiment_sdc_add:main"
 
 
 [build-system]
