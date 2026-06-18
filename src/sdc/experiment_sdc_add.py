@@ -8,11 +8,9 @@ def get_add_tiles(bits1: str, bits2: str) -> List[Tile]:
 
     z = sum([int(b) for b in chunks[0]])
     tiles = [Tile(0, z // 2, chunks[0], chunks[1], z % 2)]
-
     for i in range(1, len(chunks) - 1):
         z = sum([int(b) for b in chunks[i]])
         tiles.append(Tile(tiles[-1].right_instruction, (tiles[-1].right_instruction + z) // 2, chunks[i], chunks[i + 1], (tiles[-1].right_instruction + z) % 2))
-
     z = sum([int(b) for b in chunks[-1]])
     tiles.append(Tile(tiles[-1].right_instruction, tiles[-1].right_instruction, chunks[-1], "--", (tiles[-1].right_instruction + z) % 2))
 
