@@ -1,5 +1,5 @@
 
-from atam import Tile, create_tile_grid, create_plot
+from experiments.atam import Tile, create_tile_grid, create_plot
 
 
 def counter_tile(below: Tile, before: Tile) -> Tile:

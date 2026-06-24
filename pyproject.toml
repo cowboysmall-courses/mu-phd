@@ -14,11 +14,11 @@ dependencies = [
 
 [project.scripts]
 # mu-phd = "mu_phd:main"
-adleman = "adleman.experiment:main"
-atam-xor = "atam.experiment_atam_xor:main"
-atam-counter = "atam.experiment_atam_counter:main"
-sdc-add = "sdc.experiment_sdc_add:main"
-sdc-parity = "sdc.experiment_sdc_parity:main"
+adleman = "experiments.adleman.experiment:main"
+atam-xor = "experiments.atam.atam_xor:main"
+atam-counter = "experiments.atam.atam_counter:main"
+sdc-add = "experiments.sdc.sdc_add:main"
+sdc-parity = "experiments.sdc.sdc_parity:main"
 
 
 [build-system]

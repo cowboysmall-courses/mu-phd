@@ -1,7 +1,7 @@
 
-from typing import List
+from experiments.sdc import Tile
 
-from sdc import Tile
+from typing import List
 
 PMAP = {"00": 0, "01": 1, "10": 1, "11": 0}
 
