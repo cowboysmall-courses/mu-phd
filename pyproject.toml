@@ -13,10 +13,10 @@ dependencies = [
 
 
 [project.scripts]
-res-atam-xor = "research.atam.atam_xor:main"
-res-atam-counter = "research.atam.atam_counter:main"
-res-sdc-add = "research.sdc.sdc_add:main"
-res-sdc-parity = "research.sdc.sdc_parity:main"
+atam-xor = "research.atam.atam_xor:main"
+atam-counter = "research.atam.atam_counter:main"
+sdc-add = "research.sdc.sdc_add:main"
+sdc-parity = "research.sdc.sdc_parity:main"
 
 exp-adleman = "experiments.adleman.experiment:main"
 exp-sdc = "experiments.sdc.experiment:main"
