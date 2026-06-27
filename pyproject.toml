@@ -13,12 +13,13 @@ dependencies = [
 
 
 [project.scripts]
-# mu-phd = "mu_phd:main"
-adleman = "experiments.adleman.experiment:main"
-atam-xor = "experiments.atam.atam_xor:main"
-atam-counter = "experiments.atam.atam_counter:main"
-sdc-add = "experiments.sdc.sdc_add:main"
-sdc-parity = "experiments.sdc.sdc_parity:main"
+res-atam-xor = "research.atam.atam_xor:main"
+res-atam-counter = "research.atam.atam_counter:main"
+res-sdc-add = "research.sdc.sdc_add:main"
+res-sdc-parity = "research.sdc.sdc_parity:main"
+
+exp-adleman = "experiments.adleman.experiment:main"
+exp-sdc = "experiments.sdc.experiment:main"
 
 
 [build-system]

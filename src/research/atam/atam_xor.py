@@ -1,5 +1,5 @@
 
-from experiments.atam import Tile, create_tile_grid, create_plot
+from research.atam import Tile, create_tile_grid, create_plot
 
 
 def xor_tile(below: Tile, before: Tile) -> Tile:
