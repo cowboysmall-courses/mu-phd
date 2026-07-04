@@ -13,6 +13,3 @@ class Tile:
     left_input: str
     right_input: str
     value: int = 0
-
-
-
