@@ -1,6 +1,6 @@
-# Experiments
+# Adleman Experiment
 
-## A Brief Note on the Simulation of Adleman's Experiment
+## Description
 
 This simulation demonstrates solving the Traveling Salesman problem through DNA computing as follows:
 
@@ -9,8 +9,7 @@ This simulation demonstrates solving the Traveling Salesman problem through DNA 
 3. we encode the edges as DNA molecules
 4. we allow the vertices to bind randomly according to the edges
 5. we retain for consideration only candidate molecules that fulfill the criteria
-
-If there are any remaining molecules then we have a solution, otherwise we do not have a solution.
+6. if there are any remaining molecules then we have a solution, otherwise we do not have a solution.
 
 ## Running the Experiment
 
