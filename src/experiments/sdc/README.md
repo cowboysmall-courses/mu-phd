@@ -31,8 +31,8 @@ you should see output similar to the below:
 
     Success
 
-         Count: 84
-    Proportion: 84.00%
+         Count: 6361
+    Proportion: 63.61%
 
 
 ```

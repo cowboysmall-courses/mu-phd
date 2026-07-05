@@ -5,7 +5,7 @@ import random
 
 
 T_COUNT = 1000000
-S_COUNT = 100
+S_COUNT = 10000
 
 SOLUTION = [
     Tile(0, 1, "10", "10", 0, 1),
@@ -33,7 +33,7 @@ def main() -> None:
 
     # Step 3: run the simulation for each scaffold for each position
     random.shuffle(tiles)
-    for i in range(1000):
+    for i in range(100):
         for scaffold in scaffolds:
             tile = tiles.pop()
 
