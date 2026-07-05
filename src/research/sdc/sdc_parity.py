@@ -1,5 +1,5 @@
 
-from research.sdc import Tile
+from research.sdc import Tile, print_tiles
 
 from typing import List
 
@@ -18,32 +18,29 @@ def get_parity_tiles(bits: str) -> List[Tile]:
     return tiles
 
 
+def print_result(bits: str, tiles: List[Tile]) -> None:
+    print(f"\tParity({bits}) = {tiles[-1].value}")
+    print()
+    print_tiles(tiles)
+
+
 def main() -> None:
-    print("SDC: Parity\n")
+    print("\n")
+    print("\tSDC: Parity\n")
+    print("\n")
 
     bits  = "10100100"
     tiles = get_parity_tiles(bits)
-    print(f"Parity({bits}) = {tiles[-1].value}")
-    print("\n".join(str(tile) for tile in tiles))
-    print()
-
+    print_result(bits, tiles)
 
     bits  = "00100100"
     tiles = get_parity_tiles(bits)
-    print(f"Parity({bits}) = {tiles[-1].value}")
-    print("\n".join(str(tile) for tile in tiles))
-    print()
-
+    print_result(bits, tiles)
 
     bits  = "11111111"
     tiles = get_parity_tiles(bits)
-    print(f"Parity({bits}) = {tiles[-1].value}")
-    print("\n".join(str(tile) for tile in tiles))
-    print()
-
+    print_result(bits, tiles)
 
     bits  = "00000000"
     tiles = get_parity_tiles(bits)
-    print(f"Parity({bits}) = {tiles[-1].value}")
-    print("\n".join(str(tile) for tile in tiles))
-    print()
+    print_result(bits, tiles)

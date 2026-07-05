@@ -26,11 +26,11 @@ class Tile:
 class Scaffold:
 
     def __init__(self, anchor):
-        self.tiles: List[Tile | None] = [anchor, None, None, None]
+        self._tiles: List[Tile | None] = [anchor, None, None, None]
 
     def __eq__(self, other):
         if isinstance(other, Scaffold):
-            return self.tiles == other.tiles
+            return self._tiles == other._tiles
 
         return NotImplemented
 
@@ -51,7 +51,20 @@ class Scaffold:
                 the tile at the position within the scaffold, or None if no tile at that position
 
         """
-        return self.tiles[index]
+        return self._tiles[index]
+
+    def get_tiles(self) -> List[Tile | None]:
+        """
+
+            gets the tiles within the scaffold
+
+            Returns
+            -------
+            List[Tile | None]
+                the list of tiles within the scaffold
+
+        """
+        return self._tiles
 
     def place_tile(self, tile: Tile) -> None:
         """
@@ -64,7 +77,7 @@ class Scaffold:
                 the tile to replace the existing tile with
 
         """
-        self.tiles[tile.position] = tile
+        self._tiles[tile.position] = tile
 
     def replace_tile(self, tile: Tile) -> Tile | None:
         """
@@ -82,8 +95,8 @@ class Scaffold:
                 the tile replaced, or None if no tile was replaced
 
         """
-        current = self.tiles[tile.position]
-        self.tiles[tile.position] = tile
+        current = self._tiles[tile.position]
+        self._tiles[tile.position] = tile
         return current
 
 
@@ -103,7 +116,7 @@ class Scaffold:
                 whether the position within the scaffold is free
 
         """
-        return self.tiles[index] is None
+        return self._tiles[index] is None
 
     def is_taken(self, index: int) -> bool:
         """
@@ -121,7 +134,7 @@ class Scaffold:
                 whether the position within the scaffold is taken
 
         """
-        return self.tiles[index] is not None
+        return self._tiles[index] is not None
 
     def is_eligible(self, tile: Tile) -> bool:
         """
@@ -186,7 +199,7 @@ class Scaffold:
                 whether there is a tile to the left of the position within the scaffold
 
         """
-        return 0 < index and self.tiles[index - 1]
+        return 0 < index and self._tiles[index - 1]
 
 
     def __has_right(self, index) -> bool:
@@ -205,7 +218,7 @@ class Scaffold:
                 whether there is a tile to the right of the position within the scaffold
 
         """
-        return index < 3 and self.tiles[index + 1]
+        return index < 3 and self._tiles[index + 1]
 
 
     def __check_left(self, tile) -> bool:
@@ -225,8 +238,8 @@ class Scaffold:
                 whether the tile is a better fit within the scaffold
 
         """
-        return (self.tiles[tile.position - 1].right_instruction != self.tiles[tile.position].left_instruction) \
-            and (self.tiles[tile.position - 1].right_instruction == tile.left_instruction)
+        return (self._tiles[tile.position - 1].right_instruction != self._tiles[tile.position].left_instruction) \
+            and (self._tiles[tile.position - 1].right_instruction == tile.left_instruction)
 
 
     def __check_right(self, tile) -> bool:
@@ -246,5 +259,5 @@ class Scaffold:
                 whether the tile is a better fit within the scaffold
 
         """
-        return (self.tiles[tile.position].right_instruction != self.tiles[tile.position + 1].left_instruction) \
-            and (tile.right_instruction != self.tiles[tile.position + 1].left_instruction)
+        return (self._tiles[tile.position].right_instruction != self._tiles[tile.position + 1].left_instruction) \
+            and (tile.right_instruction != self._tiles[tile.position + 1].left_instruction)

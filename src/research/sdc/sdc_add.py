@@ -1,5 +1,5 @@
 
-from research.sdc import Tile
+from research.sdc import Tile, print_tiles
 
 from typing import List
 
@@ -17,36 +17,33 @@ def get_add_tiles(bits1: str, bits2: str) -> List[Tile]:
     return tiles
 
 
+def print_result(bits1: str, bits2: str, tiles: List[Tile]) -> None:
+    print(f"\t{bits1} + {bits2} = {''.join(reversed([str(tile.value) for tile in tiles]))}")
+    print()
+    print_tiles(tiles)
+
+
 def main() -> None:
-    print("SDC: Add\n")
+    print("\n")
+    print("\tSDC: Add\n")
+    print("\n")
 
     bits1 = "1010"
     bits2 = "0011"
     tiles = get_add_tiles(bits1, bits2)
-    print(f"{bits1} + {bits2} = {''.join(reversed([str(tile.value) for tile in tiles]))}")
-    print("\n".join(str(tile) for tile in tiles))
-    print()
-
+    print_result(bits1, bits2, tiles)
 
     bits1 = "0111"
     bits2 = "0001"
     tiles = get_add_tiles(bits1, bits2)
-    print(f"{bits1} + {bits2} = {''.join(reversed([str(tile.value) for tile in tiles]))}")
-    print("\n".join(str(tile) for tile in tiles))
-    print()
-
+    print_result(bits1, bits2, tiles)
 
     bits1 = "1100"
     bits2 = "0011"
     tiles = get_add_tiles(bits1, bits2)
-    print(f"{bits1} + {bits2} = {''.join(reversed([str(tile.value) for tile in tiles]))}")
-    print("\n".join(str(tile) for tile in tiles))
-    print()
-
+    print_result(bits1, bits2, tiles)
 
     bits1 = "1111"
     bits2 = "0001"
     tiles = get_add_tiles(bits1, bits2)
-    print(f"{bits1} + {bits2} = {''.join(reversed([str(tile.value) for tile in tiles]))}")
-    print("\n".join(str(tile) for tile in tiles))
-    print()
+    print_result(bits1, bits2, tiles)

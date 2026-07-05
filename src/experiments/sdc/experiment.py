@@ -55,7 +55,7 @@ def main() -> None:
 
     count = 0
     for scaffold in scaffolds:
-        count += scaffold.tiles != SOLUTION
+        count += scaffold.get_tiles() != SOLUTION
 
     print("\tSuccess")
     print()

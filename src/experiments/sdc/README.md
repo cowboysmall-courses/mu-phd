@@ -6,7 +6,7 @@ This simulation demonstrates solving a problem through SDC:
 
 1. for each scaffold, randomly pick a tile from the solution
     - if the tile position is vacant, place it and proceed
-    - if the tile position is taken, the existing tile bind is imperfect - the tile is a better fit - then replace (probability)
+    - replace (probability) the existing tile if the bind is imperfect
     - otherwise continue from the beginning with the next scaffold
 2. continue until experiment concludes
 3. collect completed scaffolds, and count successes
