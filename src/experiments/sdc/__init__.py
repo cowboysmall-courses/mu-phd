@@ -179,6 +179,7 @@ class Scaffold:
         if self.__has_right(tile.position) and self.__check_right(tile):
             threshold -= 0.0125
 
+        # return random.uniform(0, 1) > threshold
         return random.random() > threshold
 
 
