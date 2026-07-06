@@ -19,7 +19,8 @@ sdc-add = "research.sdc.sdc_add:main"
 sdc-parity = "research.sdc.sdc_parity:main"
 
 exp-adleman = "experiments.adleman.experiment:main"
-exp-sdc = "experiments.sdc.experiment:main"
+
+exp-sdc-parity = "experiments.sdc.experiment_parity:main"
 
 
 [build-system]
