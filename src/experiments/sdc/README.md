@@ -26,22 +26,17 @@ you should see output similar to the below:
 
 ```
 
-    A Simulation of Scaffolded DNA Computer: Parity
-
-
-    Results after 10 iterations
-
      Iteration: 1
-         Count: 6264
-    Proportion: 62.64%
+         Count: 4226
+    Proportion: 42.26%
 
      Iteration: 2
-         Count: 6428
-    Proportion: 64.28%
+         Count: 3730
+    Proportion: 37.30%
 
      Iteration: 3
-         Count: 6137
-    Proportion: 61.37%
+         Count: 4317
+    Proportion: 43.17%
 
     ...
 

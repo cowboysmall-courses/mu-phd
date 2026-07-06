@@ -56,7 +56,7 @@ class SDCParitySimulation(Simulation):
 
         count = 0
         for scaffold in scaffolds:
-            count += scaffold.get_tiles() != data["SOLUTION"]
+            count += scaffold.get_tiles() == data["SOLUTION"]
 
         data["COUNTS"].append(count)
 
