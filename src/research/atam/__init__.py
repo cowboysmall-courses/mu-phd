@@ -1,9 +1,9 @@
 
-from typing import Callable, List
-from dataclasses import dataclass
-
 import numpy as np
 import matplotlib.pyplot as plt
+
+from typing import Callable, List
+from dataclasses import dataclass
 
 
 @dataclass

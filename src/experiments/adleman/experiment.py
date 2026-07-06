@@ -1,7 +1,7 @@
 
-from experiments.adleman import create_vertex_strands, complement_strands, create_edge_strands, create_paths
-
 import random
+
+from experiments.adleman import create_vertex_strands, complement_strands, create_edge_strands, create_paths
 
 
 VERTS  = 7

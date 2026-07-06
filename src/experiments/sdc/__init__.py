@@ -1,9 +1,8 @@
 
-from dataclasses import dataclass
-
-from typing import List
-
 import random
+
+from dataclasses import dataclass
+from typing import List
 
 
 @dataclass

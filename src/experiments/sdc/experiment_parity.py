@@ -1,9 +1,9 @@
 
-from experiments.sdc import Scaffold, Tile
-
-from simulations import Simulation
-
+import sys
 import random
+
+from experiments.sdc import Scaffold, Tile
+from simulations import Simulation
 
 
 T_COUNT = 1000000
@@ -63,20 +63,20 @@ class SDCParitySimulation(Simulation):
 
 
 def main() -> None:
-    iterations = 10
+    iters = int(sys.argv[1]) if len(sys.argv) > 1 else 5
 
-    sdc  = SDCParitySimulation({"T_COUNT": T_COUNT, "S_COUNT": S_COUNT, "SOLUTION": SOLUTION, "COUNTS": []})
-    data = sdc.run(iterations)
+    sdc   = SDCParitySimulation({"T_COUNT": T_COUNT, "S_COUNT": S_COUNT, "SOLUTION": SOLUTION, "COUNTS": []})
+    data  = sdc.run(iters)
 
     print("\n")
     print("\tA Simulation of Scaffolded DNA Computer: Parity")
     print("\n")
 
 
-    print(f"\tResults after {iterations} iterations")
+    print(f"\tResults after {iters} iterations")
     print()
 
-    for i in range(iterations):
+    for i in range(iters):
         count = data["COUNTS"][i]
         print(f"\t Iteration: {i + 1}")
         print(f"\t     Count: {count}")

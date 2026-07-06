@@ -18,7 +18,7 @@ Ensure that [uv](https://docs.astral.sh/uv/getting-started/installation/) is ins
 
 ```zsh
 
-> uv run exp-sdc-parity
+> uv run exp-sdc-parity 10
 
 ```
 
@@ -43,33 +43,7 @@ you should see output similar to the below:
          Count: 6137
     Proportion: 61.37%
 
-     Iteration: 4
-         Count: 6381
-    Proportion: 63.81%
-
-     Iteration: 5
-         Count: 6139
-    Proportion: 61.39%
-
-     Iteration: 6
-         Count: 5519
-    Proportion: 55.19%
-
-     Iteration: 7
-         Count: 6133
-    Proportion: 61.33%
-
-     Iteration: 8
-         Count: 5964
-    Proportion: 59.64%
-
-     Iteration: 9
-         Count: 5822
-    Proportion: 58.22%
-
-     Iteration: 10
-         Count: 6511
-    Proportion: 65.11%
+    ...
 
 
 

@@ -1,7 +1,7 @@
 
 from research.sdc import Tile, print_tiles
-
 from typing import List
+
 
 def get_add_tiles(bits1: str, bits2: str) -> List[Tile]:
     chunks = [f"{b1}{b2}" for b1, b2 in zip(reversed(bits1), reversed(bits2))]

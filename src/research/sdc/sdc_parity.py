@@ -1,9 +1,10 @@
 
 from research.sdc import Tile, print_tiles
-
 from typing import List
 
+
 PMAP = {"00": 0, "01": 1, "10": 1, "11": 0}
+
 
 def get_parity_tiles(bits: str) -> List[Tile]:
     chunks = [bits[i:i + 2] for i in range(0, len(bits), 2)]
