@@ -18,8 +18,10 @@ atam-counter = "research.atam.atam_counter:main"
 sdc-add = "research.sdc.sdc_add:main"
 sdc-parity = "research.sdc.sdc_parity:main"
 
-exp-adleman = "experiments.adleman.experiment:main"
+dp-coin-change-01 = "algorithms.dp.dp_coin_change_01:main"
+dp-coin-change-02 = "algorithms.dp.dp_coin_change_02:main"
 
+exp-adleman = "experiments.adleman.experiment:main"
 exp-sdc-parity = "experiments.sdc.experiment_parity:main"
 
 

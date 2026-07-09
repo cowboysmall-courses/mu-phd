@@ -3,7 +3,7 @@ import sys
 import random
 
 from experiments.sdc import Scaffold, Tile
-from simulations import Simulation
+from experiments import Simulation
 
 
 T_COUNT = 1000000
@@ -38,7 +38,7 @@ class SDCParitySimulation(Simulation):
 
         # Step 3: run the simulation for each scaffold for each position
         random.shuffle(tiles)
-        for _ in range(100):
+        for _ in range(1000):
             for scaffold in scaffolds:
                 tile = tiles.pop()
 

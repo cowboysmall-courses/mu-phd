@@ -1,7 +1,7 @@
 import random
 
 from typing import List, Tuple
-from functions import repeat_function
+from utils.functions import repeat_function
 
 
 """
