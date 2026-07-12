@@ -7,8 +7,7 @@ import numpy as np
 def count_ways(coins: List[int], total: int):
     count = len(coins)
 
-    dp = np.empty((count + 1, total + 1), dtype=object)
-    dp[:, :] = 0
+    dp = np.zeros((count + 1, total + 1), dtype=object)
     dp[0, 0] = 1
 
     for i in range(1, count + 1):
@@ -25,7 +24,7 @@ def count_ways(coins: List[int], total: int):
 
 def print_result(coins: List[int], total: int):
     joined = ", ".join(str(c) for c in coins)
-    print(f"\t{joined:>10}\t{total:<5}\t{count_ways(coins, total)}")
+    print(f"\t{joined:>10}\t{total:>5}\t{count_ways(coins, total):>4}")
 
 
 def main() -> None:
