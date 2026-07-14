@@ -3,6 +3,7 @@ from typing import List
 
 import numpy as np
 
+
 def minimum_coins(coins: List[int], amount: int):
     count = len(coins)
 
