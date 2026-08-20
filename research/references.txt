@@ -1,0 +1,462 @@
+Papers in the molecular computing metrics plots
+==============================================
+
+This list is the experimental corpus in analysis/paper_metrics.csv — the
+points in the PDFs in this folder. Entries are grouped as in the plot 03
+legend, then by year. The short name in brackets is the plot label
+(paper_id).
+
+Where a paper is forthcoming, the journal of record is given first and
+the preprint is listed as well.
+
+
+Thermodynamically favoured
+--------------------------
+
+Nikitin [Nikitin2023]
+  Maxim P. Nikitin. Non-complementary strand commutation as a fundamental
+  alternative for information processing by DNA and gene regulation.
+  Nature Chemistry 15, 70–82 (2023).
+  https://doi.org/10.1038/s41557-022-01111-y
+
+Schröder [Schroder2025]
+  Tim Schröder, Julian Bauer, Patrick Schüler, Jonas Zähringer, Fiona Cole,
+  Giovanni Ferrari, Laura Barnard, Karen Gronbach, Gereon Andreas
+  Brüggenthies and Philip Tinnefeld. Brownian DNA computing.
+  bioRxiv (2025).
+  https://doi.org/10.1101/2025.08.21.671330
+
+Sterin Eshra Evans Adio Woods [Sterin2026]
+  Tristan Stérin, Abeer Eshra, Janet Adio, Constantine Glen Evans and
+  Damien Woods. A thermodynamically favoured molecular computer: robust,
+  fast, renewable, scalable. Nature (2026, forthcoming).
+  Preprint: bioRxiv (2025). https://doi.org/10.1101/2025.07.16.664196
+
+Wang [Wang2026]
+  Boya Wang, Cameron Chalk, David Doty and David Soloveichik. Molecular
+  computation at equilibrium via programmable entropy. Science Advances
+  12, eadx3969 (2026).
+  https://doi.org/10.1126/sciadv.adx3969
+
+
+Algorithmic self-assembly
+-------------------------
+
+Winfree [Winfree1998]
+  Erik Winfree, Furong Liu, Lisa A. Wenzler and Nadrian C. Seeman. Design
+  and self-assembly of two-dimensional DNA crystals. Nature 394, 539–544
+  (1998).
+  https://doi.org/10.1038/28998
+
+Mao [Mao2000]
+  Chengde Mao, Thomas H. LaBean, John H. Reif and Nadrian C. Seeman.
+  Logical computation using algorithmic self-assembly of DNA
+  triple-crossover molecules. Nature 407, 493–496 (2000).
+  https://doi.org/10.1038/35035038
+
+Yan [Yan2003comp]
+  Hao Yan, Thomas H. LaBean, Liping Feng and John H. Reif. Directed
+  nucleation assembly of DNA tile complexes for barcode-patterned
+  lattices. Proceedings of the National Academy of Sciences 100,
+  8103–8108 (2003).
+  https://doi.org/10.1073/pnas.1032954100
+
+Rothemund [Rothemund2004]
+  Paul W. K. Rothemund, Nick Papadakis and Erik Winfree. Algorithmic
+  self-assembly of DNA Sierpinski triangles. PLoS Biology 2, e424 (2004).
+  https://doi.org/10.1371/journal.pbio.0020424
+
+Barish [Barish2005]
+  Robert D. Barish, Paul W. K. Rothemund and Erik Winfree. Two
+  computational primitives for algorithmic self-assembly: copying and
+  counting. Nano Letters 5, 2586–2592 (2005).
+  https://doi.org/10.1021/nl052038l
+
+Schulman [Schulman2007]
+  Rebecca Schulman and Erik Winfree. Synthesis of crystals with a
+  programmable kinetic barrier to nucleation. Proceedings of the National
+  Academy of Sciences 104, 15236–15241 (2007).
+  https://doi.org/10.1073/pnas.0701467104
+
+Fujibayashi [Fujibayashi2008]
+  Kenichi Fujibayashi, Rizal Hariadi, Sung Ha Park, Erik Winfree and
+  Satoshi Murata. Toward reliable algorithmic self-assembly of DNA tiles:
+  a fixed-width cellular automaton pattern. Nano Letters 8, 1791–1797
+  (2008).
+  https://doi.org/10.1021/nl0722830
+
+Barish [Barish2009]
+  Robert D. Barish, Rebecca Schulman, Paul W. K. Rothemund and Erik
+  Winfree. An information-bearing seed for nucleating algorithmic
+  self-assembly. Proceedings of the National Academy of Sciences 106,
+  6054–6059 (2009).
+  https://doi.org/10.1073/pnas.0808736106
+
+Schulman [Schulman2012]
+  Rebecca Schulman, Bernard Yurke and Erik Winfree. Robust
+  self-replication of combinatorial information via crystal growth and
+  scission. Proceedings of the National Academy of Sciences 109,
+  6405–6410 (2012).
+  https://doi.org/10.1073/pnas.1117818109
+
+Schulman [Schulman2015]
+  Rebecca Schulman, Christina Wright and Erik Winfree. Increasing
+  redundancy exponentially reduces error rates during algorithmic
+  self-assembly. ACS Nano 9, 5760–5771 (2015).
+  https://doi.org/10.1021/nn507493s
+
+He [He2017replicator]
+  Xiaojin He, Ruojie Sha, Rebecca Zhuo, Yongli Mi, Paul M. Chaikin and
+  Nadrian C. Seeman. Exponential growth and selection in self-replicating
+  materials from DNA origami rafts. Nature Materials 16, 993–997 (2017).
+  https://doi.org/10.1038/nmat4986
+
+Woods Doty et al [Woods2019]
+  Damien Woods, David Doty, Cameron Myhrvold, Joy Hui, Felix Zhou, Peng
+  Yin and Erik Winfree. Diverse and robust molecular algorithms using
+  reprogrammable DNA self-assembly. Nature 567, 366–372 (2019).
+  https://doi.org/10.1038/s41586-019-1014-9
+
+Tandon [Tandon2020]
+  Anshula Tandon, Yongwoo Song, Sekhar Babu Mitta, Sanghyun Yoo, Suyoun
+  Park, Sungjin Lee, Muhammad Tayyab Raza, Tai Hwan Ha and Sung Ha Park.
+  Demonstration of arithmetic calculations by DNA tile-based algorithmic
+  self-assembly. ACS Nano 14, 5260–5267 (2020).
+  https://doi.org/10.1021/acsnano.0c01387
+
+Evans [Evans2024]
+  Constantine G. Evans, Jackson O’Brien, Erik Winfree and Arvind Murugan.
+  Pattern recognition in the nucleation kinetics of non-equilibrium
+  self-assembly. Nature 625, 500–507 (2024).
+  https://doi.org/10.1038/s41586-023-06890-z
+
+
+Strand displacement
+-------------------
+
+Yurke [Yurke2000]
+  Bernard Yurke, Andrew J. Turberfield, Allen P. Mills Jr, Friedrich C.
+  Simmel and Jennifer L. Neumann. A DNA-fuelled molecular machine made of
+  DNA. Nature 406, 605–608 (2000).
+  https://doi.org/10.1038/35020524
+
+Seelig [Seelig2006]
+  Georg Seelig, David Soloveichik, David Yu Zhang and Erik Winfree.
+  Enzyme-free nucleic acid logic circuits. Science 314, 1585–1588 (2006).
+  https://doi.org/10.1126/science.1132493
+
+Zhang [Zhang2007]
+  David Yu Zhang, Andrew J. Turberfield, Bernard Yurke and Erik Winfree.
+  Engineering entropy-driven reactions and networks catalyzed by DNA.
+  Science 318, 1121–1125 (2007).
+  https://doi.org/10.1126/science.1148532
+
+Zhang [Zhang2009]
+  David Yu Zhang and Erik Winfree. Control of DNA strand displacement
+  kinetics using toehold exchange. Journal of the American Chemical
+  Society 131, 17303–17314 (2009).
+  https://doi.org/10.1021/ja906987s
+
+Genot [Genot2011remote]
+  Anthony J. Genot, David Yu Zhang, Jonathan Bath and Andrew J.
+  Turberfield. Remote toehold: a mechanism for flexible control of DNA
+  hybridization kinetics. Journal of the American Chemical Society 133,
+  2177–2182 (2011).
+  https://doi.org/10.1021/ja1073239
+
+Genot [Genot2011]
+  Anthony J. Genot, Jonathan Bath and Andrew J. Turberfield. Reversible
+  logic circuits made of DNA. Journal of the American Chemical Society
+  133, 20080–20083 (2011).
+  https://doi.org/10.1021/ja208497p
+
+Qian [Qian2011a]
+  Lulu Qian and Erik Winfree. Scaling up digital circuit computation with
+  DNA strand displacement cascades. Science 332, 1196–1201 (2011).
+  https://doi.org/10.1126/science.1200520
+
+Qian [Qian2011b]
+  Lulu Qian, Erik Winfree and Jehoshua Bruck. Neural network computation
+  with DNA strand displacement cascades. Nature 475, 368–372 (2011).
+  https://doi.org/10.1038/nature10262
+
+Chen [Chen2012]
+  Xi Chen. Expanding the rule set of DNA circuitry with associative
+  toehold activation. Journal of the American Chemical Society 134,
+  263–271 (2012).
+  https://doi.org/10.1021/ja206690a
+
+Machinek [Machinek2014]
+  Robert R. F. Machinek, Thomas E. Ouldridge, Natalie E. C. Haley,
+  Jonathan Bath and Andrew J. Turberfield. Programmable energy landscapes
+  for kinetic control of DNA strand displacement. Nature Communications
+  5, 5324 (2014).
+  https://doi.org/10.1038/ncomms6324
+
+Chen [Chen2015]
+  Localized DNA computation / neural-network circuits on a DNA origami
+  surface (2015). Plot id Chen2015; PDF not in the local corpus, so the
+  published title was not confirmed from the catalog. Catalog note:
+  “localized computation on origami”.
+
+Chatterjee [Chatterjee2017]
+  Gourab Chatterjee, Neil Dalchau, Richard A. Muscat, Andrew Phillips and
+  Georg Seelig. A spatially localized architecture for fast and modular
+  DNA computing. Nature Nanotechnology 12, 920–927 (2017).
+  https://doi.org/10.1038/nnano.2017.127
+
+Fern [Fern2017]
+  Joshua Fern and Rebecca Schulman. Design and characterization of DNA
+  strand-displacement circuits in serum-supplemented cell medium. ACS
+  Synthetic Biology 6, 1774–1783 (2017).
+  https://doi.org/10.1021/acssynbio.7b00105
+
+Srinivas [Srinivas2017]
+  Niranjan Srinivas, James Parkin, Georg Seelig, Erik Winfree and David
+  Soloveichik. Enzyme-free nucleic acid dynamical systems. Science 358,
+  eaal2052 (2017).
+  https://doi.org/10.1126/science.aal2052
+
+Thubagere [Thubagere2017b]
+  Anupama J. Thubagere, Chris Thachuk, Joseph Berleant, Robert F. Johnson,
+  Diana A. Ardelean, Kevin M. Cherry and Lulu Qian. Compiler-aided
+  systematic construction of large-scale DNA strand displacement circuits
+  using unpurified components. Nature Communications 8, 14373 (2017).
+  https://doi.org/10.1038/ncomms14373
+
+Bui [Bui2018]
+  Hieu Bui, Shalin Shah, Reem Mokhtar, Tianqi Song, Sudhanshu Garg and
+  John Reif. Localized DNA hybridization chain reactions on DNA origami.
+  ACS Nano 12, 1146–1155 (2018).
+  https://doi.org/10.1021/acsnano.7b06699
+
+Cherry [Cherry2018]
+  Kevin M. Cherry and Lulu Qian. Scaling up molecular pattern recognition
+  with DNA-based winner-take-all neural networks. Nature 559, 370–376
+  (2018).
+  https://doi.org/10.1038/s41586-018-0289-6
+
+Garg [Garg2018]
+  Sudhanshu Garg, Shalin Shah, Hieu Bui, Tianqi Song, Reem Mokhtar and
+  John Reif. Renewable time-responsive DNA circuits. Small 14, 1801470
+  (2018).
+  https://doi.org/10.1002/smll.201801470
+
+Song [Song2018]
+  Tianqi Song, Nikhil Gopalkrishnan, Abeer Eshra, Sudhanshu Garg, Reem
+  Mokhtar, Hieu Bui, Harish Chandran and John Reif. Improving the
+  performance of DNA strand displacement circuits by shadow cancellation.
+  ACS Nano 12, 11689–11697 (2018).
+  https://doi.org/10.1021/acsnano.8b07394
+
+Wang [Wang2018leak]
+  Boya Wang, Chris Thachuk, Andrew D. Ellington, Erik Winfree and David
+  Soloveichik. Effective design principles for leakless strand
+  displacement systems. Proceedings of the National Academy of Sciences
+  115, E12182–E12191 (2018).
+  https://doi.org/10.1073/pnas.1806859115
+
+Wilhelm [Wilhelm2018]
+  Daniel Wilhelm, Jehoshua Bruck and Lulu Qian. Probabilistic switching
+  circuits in DNA. Proceedings of the National Academy of Sciences 115,
+  903–908 (2018).
+  https://doi.org/10.1073/pnas.1715926115
+
+Eshra [Eshra2019]
+  Abeer Eshra, Shalin Shah, Tianqi Song and John Reif. Renewable DNA
+  hairpin-based logic circuits. IEEE Transactions on Nanotechnology 18,
+  252–259 (2019).
+  https://doi.org/10.1109/TNANO.2019.2896189
+
+Song [Song2019membrane]
+  Tianqi Song, Shalin Shah, Hieu Bui, Sudhanshu Garg, Abeer Eshra, Daniel
+  Fu, Ming Yang, Reem Mokhtar and John Reif. Programming DNA-based
+  biomolecular reaction networks on cancer cell membranes. Journal of the
+  American Chemical Society 141, 16539–16543 (2019).
+  https://doi.org/10.1021/jacs.9b05598
+
+Lapteva [Lapteva2022]
+  Anna P. Lapteva, Namita Sarraf and Lulu Qian. DNA strand-displacement
+  temporal logic circuits. Journal of the American Chemical Society 144,
+  12443–12449 (2022).
+  https://doi.org/10.1021/jacs.2c04325
+
+Wang [Wang2023simd]
+  Boya Wang, Siyuan Stella Wang, Cameron Chalk, Andrew D. Ellington and
+  David Soloveichik. Parallel molecular computation on digital data stored
+  in DNA. Proceedings of the National Academy of Sciences 120,
+  e2217330120 (2023).
+  https://doi.org/10.1073/pnas.2217330120
+
+Zhu [Zhu2023]
+  Yun Zhu, Xiewei Xiong, Mengyao Cao, Li Li, Chunhai Fan and Hao Pei.
+  Accelerating DNA computing via freeze-thaw cycling. Science Advances 9,
+  eaax7983 (2023).
+  https://doi.org/10.1126/sciadv.aax7983
+
+Song [Song2025]
+  Tianqi Song and Lulu Qian. Heat-rechargeable computation in DNA logic
+  circuits and neural networks. Nature 646, 315–322 (2025).
+  https://doi.org/10.1038/s41586-025-09570-2
+
+
+Enzyme / DNAzyme
+----------------
+
+Ouyang [Ouyang1997]
+  Qi Ouyang, Peter D. Kaplan, Shumao Liu and Albert Libchaber. DNA
+  solution of the maximal clique problem. Science 278, 446–449 (1997).
+  https://doi.org/10.1126/science.278.5337.446
+
+Benenson [Benenson2001]
+  Yaakov Benenson, Tamar Paz-Elizur, Rivka Adar, Ehud Keinan, Zvi Livneh
+  and Ehud Shapiro. Programmable and autonomous computing machine made of
+  biomolecules. Nature 414, 430–434 (2001).
+  https://doi.org/10.1038/35106533
+
+Stojanovic [Stojanovic2002]
+  Milan N. Stojanovic, Tiffany Elizabeth Mitchell and Darko Stefanovic.
+  Deoxyribozyme-based logic gates. Journal of the American Chemical
+  Society 124, 3555–3561 (2002).
+  https://doi.org/10.1021/ja016756v
+
+Stojanovic [Stojanovic2003]
+  Milan N. Stojanovic and Darko Stefanovic. A deoxyribozyme-based
+  molecular automaton. Nature Biotechnology 21, 1069–1074 (2003).
+  https://doi.org/10.1038/nbt862
+
+Benenson [Benenson2004]
+  Yaakov Benenson, Binyamin Gil, Uri Ben-Dor, Rivka Adar and Ehud Shapiro.
+  An autonomous molecular computer for logical control of gene expression.
+  Nature 429, 423–429 (2004).
+  https://doi.org/10.1038/nature02551
+
+Macdonald [Macdonald2006]
+  Joanne Macdonald, Yang Li, Marko Sutovic, Harvey Lederman, Kiran Pendri,
+  Wanhong Lu, Benjamin L. Andrews, Darko Stefanovic and Milan N.
+  Stojanovic. Medium scale integration of molecular logic gates in an
+  automaton. Nano Letters 6, 2598–2603 (2006).
+  https://doi.org/10.1021/nl0620684
+
+Montagne [Montagne2011]
+  Kevin Montagne, Raphael Plasson, Yasuyuki Sakai, Teruo Fujii and
+  Yannick Rondelez. Programming an in vitro DNA oscillator using a
+  molecular networking strategy. Molecular Systems Biology 7, 466 (2011).
+  https://doi.org/10.1038/msb.2010.120
+
+Padirac [Padirac2012]
+  Adrien Padirac, Teruo Fujii and Yannick Rondelez. Bottom-up construction
+  of in vitro switchable memories. Proceedings of the National Academy of
+  Sciences 109, E3212–E3220 (2012).
+  https://doi.org/10.1073/pnas.1212069109
+
+Fujii [Fujii2013]
+  Teruo Fujii and Yannick Rondelez. Predator–prey molecular ecosystems.
+  ACS Nano 7, 27–34 (2013).
+  https://doi.org/10.1021/nn3043572
+
+Genot [Genot2013]
+  Anthony J. Genot, Teruo Fujii and Yannick Rondelez. Scaling down DNA
+  circuits with competitive neural networks. Journal of the Royal Society
+  Interface 10, 20130212 (2013).
+  https://doi.org/10.1098/rsif.2013.0212
+
+Montagne [Montagne2016]
+  Kevin Montagne, Guillaume Gines, Teruo Fujii and Yannick Rondelez.
+  Boosting functionality of synthetic DNA circuits with tailored
+  deactivation. Nature Communications 7, 13474 (2016).
+  https://doi.org/10.1038/ncomms13474
+
+Gines [Gines2017]
+  Guillaume Gines, A. S. Zadorin, J.-C. Galas, T. Fujii, A. Estevez-Torres
+  and Y. Rondelez. Microscopic agents programmed by DNA circuits. Nature
+  Nanotechnology 12, 351–359 (2017).
+  https://doi.org/10.1038/nnano.2016.299
+
+Song [Song2019]
+  Tianqi Song, Abeer Eshra, Shalin Shah, Hieu Bui, Daniel Fu, Ming Yang,
+  Reem Mokhtar and John Reif. Fast and compact DNA logic circuits based
+  on single-stranded gates using strand-displacing polymerase. Nature
+  Nanotechnology 14, 1075–1081 (2019).
+  https://doi.org/10.1038/s41565-019-0544-5
+
+Su [Su2019]
+  Haomiao Su, Jinglei Xu, Qi Wang, Fuan Wang and Xiang Zhou.
+  High-efficiency and integrable DNA arithmetic and logic system based on
+  strand displacement synthesis. Nature Communications 10, 5390 (2019).
+  https://doi.org/10.1038/s41467-019-13310-2
+
+
+Robots
+------
+
+Shin [Shin2004walker]
+  Jong-Shik Shin and Niles A. Pierce. A synthetic DNA walker for molecular
+  transport. Journal of the American Chemical Society 126, 10834–10835
+  (2004).
+  https://doi.org/10.1021/ja047543j
+
+Yin [Yin2004walker]
+  Peng Yin, Hao Yan, Xiaoju G. Daniell, Andrew J. Turberfield and John H.
+  Reif. A unidirectional DNA walker that moves autonomously along a DNA
+  track. Angewandte Chemie International Edition 43, 4906–4911 (2004).
+  https://doi.org/10.1002/anie.200460522
+
+Omabegho [Omabegho2009comp]
+  Tosan Omabegho, Ruojie Sha and Nadrian C. Seeman. A bipedal DNA Brownian
+  motor with coordinated legs. Science 324, 67–71 (2009).
+  https://doi.org/10.1126/science.1170336
+
+Lund [Lund2010spiders]
+  Kyle Lund, Anthony J. Manzo, Nadine Dabby, Nicole Michelotti, Alexander
+  Johnson-Buck, Jeanette Nangreave, Steven Taylor, Renjun Pei, Milan N.
+  Stojanovic, Nils G. Walter, Erik Winfree and Hao Yan. Molecular robots
+  guided by prescriptive landscapes. Nature 465, 206–210 (2010).
+  https://doi.org/10.1038/nature09012
+
+Thubagere et al [Thubagere2017]
+  Anupama J. Thubagere, Wei Li, Robert F. Johnson, Zoya Chen, Shayan
+  Doroudi, Yae Lim Lee, Gregory Izatt, Sarah Wittman, Niranjan Srinivas,
+  Damien Woods, Erik Winfree and Lulu Qian. A cargo-sorting DNA robot.
+  Science 357, eaan6558 (2017).
+  https://doi.org/10.1126/science.aan6558
+
+Chao [Chao2019maze]
+  Jie Chao, Jianbang Wang, Fei Wang, Xiangyuan Ouyang, Enzo Kopperger,
+  Huajie Liu, Qian Li, Jiye Shi, Lihua Wang, Jun Hu, Lianhui Wang, Wei
+  Huang, Friedrich C. Simmel and Chunhai Fan. Solving mazes with
+  single-molecule DNA navigators. Nature Materials 18, 273–279 (2019).
+  https://doi.org/10.1038/s41563-018-0205-3
+
+
+Foundations
+-----------
+
+Adleman [Adleman1994]
+  Leonard M. Adleman. Molecular computation of solutions to combinatorial
+  problems. Science 266, 1021–1024 (1994).
+  https://doi.org/10.1126/science.7973651
+
+Sakamoto [Sakamoto2000]
+  Kensaku Sakamoto, Hidetaka Gouzu, Ken Komiya, Daisuke Kiga, Shigeyuki
+  Yokoyama, Takashi Yokomori and Masami Hagiya. Molecular computation by
+  DNA hairpin formation. Science 288, 1223–1226 (2000).
+  https://doi.org/10.1126/science.288.5469.1223
+
+Braich [Braich2002]
+  Ravinderjit S. Braich, Nickolas Chelyapov, Cliff Johnson, Paul W. K.
+  Rothemund and Leonard Adleman. Solution of a 20-variable 3-SAT problem
+  on a DNA computer. Science 296, 499–502 (2002).
+  https://doi.org/10.1126/science.1069528
+
+
+Notes
+-----
+Plot 03 (03_year_vs_strands_no_origami.pdf) omits DNA origami
+seed/substrate staples from the strand counts; see the grey caveat on
+that figure. Other PDFs in this folder use the same papers with
+different y-axis metrics (unique domain nucleotides, with/without
+origami, origami-track systems).
+
+Chen2015 is the one entry whose published title was not confirmed from
+the local PDF catalog.
