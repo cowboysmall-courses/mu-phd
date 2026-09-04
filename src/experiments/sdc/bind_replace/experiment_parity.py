@@ -6,8 +6,8 @@ from experiments.sdc import Scaffold, Tile
 from experiments import Simulation
 
 
-T_COUNT = 1000000
-S_COUNT = 10000
+T_COUNT = 100000
+S_COUNT = 5000
 
 SOLUTION = [
     Tile(0, 1, "10", "10", 0, 1),
@@ -38,7 +38,7 @@ class SDCParitySimulation(Simulation):
 
         # Step 3: run the simulation for each scaffold for each position
         random.shuffle(tiles)
-        for _ in range(1000):
+        for _ in range(5000):
             for scaffold in scaffolds:
                 tile = tiles.pop()
 
@@ -46,8 +46,8 @@ class SDCParitySimulation(Simulation):
                 if scaffold.is_free(tile.position):
                     scaffold.place_tile(tile)
 
-                # else if position taken, eligible, and replaceable - replace tile
-                elif scaffold.is_eligible(tile) and scaffold.is_replaceable(tile):
+                # else if position taken, and less mismatches - replace tile
+                elif scaffold.count_mismatches(tile) <= scaffold.count_mismatches(scaffold.get_tile(tile.position)):
                     tiles.append(scaffold.replace_tile(tile))
 
                 # else return tile to the solution
@@ -69,7 +69,7 @@ def main() -> None:
     data  = sdc.run(iters)
 
     print("\n")
-    print("\tA Simulation of Scaffolded DNA Computer: Parity")
+    print("\tA Simulation of Scaffolded DNA Computer - Bind / Replace: Parity")
     print("\n")
 
 

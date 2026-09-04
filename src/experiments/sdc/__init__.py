@@ -135,52 +135,33 @@ class Scaffold:
         """
         return self._tiles[index] is not None
 
-    def is_eligible(self, tile: Tile) -> bool:
+
+
+    def count_mismatches(self, tile) -> int:
         """
 
-            checks eligibility of the tile to be placed in the scaffold at it's position
+            checks for a mismatch between the current tile and the tiles positioned on the scaffold
 
             Parameters
             ----------
             tile: Tile
-                the tile in question
+                the tile to find mismatches with on the scaffold
 
             Returns
             -------
-            bool
-                whether the tile is eligible to be placed within the scaffold
+            int
+                the number of mismatches found
 
         """
-        return (self.__has_left(tile.position) and self.__check_left(tile)) \
-            or (self.__has_right(tile.position) and self.__check_right(tile))
+        mismatches = 0
 
-    def is_replaceable(self, tile: Tile) -> bool:
-        """
+        if self.__has_left(tile.position):
+            mismatches += self._tiles[tile.position - 1].right_instruction != tile.left_instruction
 
-            checks if the existing tile can be replaced
+        if self.__has_right(tile.position):
+            mismatches += tile.right_instruction != self._tiles[tile.position + 1].left_instruction
 
-            Parameters
-            ----------
-            tile: Tile
-                the tile in question
-
-            Returns
-            -------
-            bool
-                whether the tile can replace the existing tile within the scaffold
-
-        """
-        threshold = 0.125
-
-        if self.__has_left(tile.position) and self.__check_left(tile):
-            threshold -= 0.0125
-
-        if self.__has_right(tile.position) and self.__check_right(tile):
-            threshold -= 0.0125
-
-        # return random.uniform(0, 1) > threshold
-        return random.random() > threshold
-
+        return mismatches
 
 
     def __has_left(self, index) -> bool:
@@ -199,8 +180,7 @@ class Scaffold:
                 whether there is a tile to the left of the position within the scaffold
 
         """
-        return 0 < index and self._tiles[index - 1]
-
+        return 0 < index and self._tiles[index - 1] is not None
 
     def __has_right(self, index) -> bool:
         """
@@ -218,46 +198,4 @@ class Scaffold:
                 whether there is a tile to the right of the position within the scaffold
 
         """
-        return index < 3 and self._tiles[index + 1]
-
-
-    def __check_left(self, tile) -> bool:
-        """
-
-            checks if the existing tile does not match with the tile to it's left,
-            and the new tile matches with the tile to it's left
-
-            Parameters
-            ----------
-            tile: Tile
-                the tile in question
-
-            Returns
-            -------
-            bool
-                whether the tile is a better fit within the scaffold
-
-        """
-        return (self._tiles[tile.position - 1].right_instruction != self._tiles[tile.position].left_instruction) \
-            and (self._tiles[tile.position - 1].right_instruction == tile.left_instruction)
-
-
-    def __check_right(self, tile) -> bool:
-        """
-
-            checks if the existing tile does not match with the tile to it's right,
-            and the new tile matches with the tile to it's right
-
-            Parameters
-            ----------
-            tile: Tile
-                the tile in question
-
-            Returns
-            -------
-            bool
-                whether the tile is a better fit within the scaffold
-
-        """
-        return (self._tiles[tile.position].right_instruction != self._tiles[tile.position + 1].left_instruction) \
-            and (tile.right_instruction != self._tiles[tile.position + 1].left_instruction)
+        return index < 3 and self._tiles[index + 1] is not None
