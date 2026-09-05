@@ -2,85 +2,97 @@
 import sys
 import random
 
+from typing import List
+
 from experiments.sdc import Scaffold, Tile
 from experiments import Simulation
 
 
-T_COUNT = 100000
-S_COUNT = 5000
+SCAFFOLDS = [Scaffold(4) for _ in range(5000)]
+
+ANCHOR = Tile(0, 1, "1", "1", 0, 1)
+
+TILES = [
+    Tile(1, 1, "1", "1", 1, 1),
+    Tile(0, 0, "0", "0", 1, 0),
+    Tile(1, 1, "1", "1", 2, 1),
+    Tile(0, 0, "0", "0", 2, 0),
+    Tile(1, 1, "1", "1", 3, 1),
+    Tile(0, 0, "0", "0", 3, 0)
+]
 
 SOLUTION = [
-    Tile(0, 1, "--", "--", 0, 1),
-    Tile(1, 1, "--", "--", 1, 1),
-    Tile(1, 1, "--", "--", 2, 1),
-    Tile(1, 1, "--", "--", 3, 1)
+    Tile(0, 1, "1", "1", 0, 1),
+    Tile(1, 1, "1", "1", 1, 1),
+    Tile(1, 1, "1", "1", 2, 1),
+    Tile(1, 1, "1", "1", 3, 1)
 ]
 
 
 class SDCBitcopySimulation(Simulation):
 
-    def step(self, iteration: int, data: dict) -> None:
+    def __init__(self, scaffolds: List[Scaffold], anchor: Tile, tiles: List[Tile], solution: List[Tile], duration: int, data: dict):
+        super().__init__(data)
+        self._scaffolds = scaffolds
+        self._anchor = anchor
+        self._tiles = tiles
+        self._solution = solution
+        self._duration = duration
 
-        # Step 1: create a fixed number of tiles of each type, for each scaffold position
-        tiles = []
-        for _ in range(data["T_COUNT"]):
-            tiles.append(Tile(1, 1, "--", "--", 1, 1))
-            tiles.append(Tile(0, 0, "--", "--", 1, 0))
-            tiles.append(Tile(1, 1, "--", "--", 2, 1))
-            tiles.append(Tile(0, 0, "--", "--", 2, 0))
-            tiles.append(Tile(1, 1, "--", "--", 3, 1))
-            tiles.append(Tile(0, 0, "--", "--", 3, 0))
 
-        # Step 2: create a fixed number of scaffolds for the operation, with anchor tiles
-        scaffolds = []
-        for _ in range(data["S_COUNT"]):
-            scaffolds.append(Scaffold(Tile(0, 1, "--", "--", 0, 1)))
+    def pre(self, iteration: int, data: dict) -> None:
+        for scaffold in self._scaffolds:
+            scaffold.initialize(self._anchor)
 
-        # Step 3: run the simulation for each scaffold for each position
-        random.shuffle(tiles)
-        for _ in range(5000):
-            for scaffold in scaffolds:
-                tile = tiles.pop()
 
-                # if position vacant - place tile
-                if scaffold.is_free(tile.position):
-                    scaffold.place_tile(tile)
+    def simulate(self, iteration: int, data: dict) -> None:
 
-                # else if position taken, and less mismatches - replace tile
-                elif scaffold.count_mismatches(tile) <= scaffold.count_mismatches(scaffold.get_tile(tile.position)):
-                    tiles.append(scaffold.replace_tile(tile))
+        # Step 1: run the simulation
+        solved = set()
 
-                # else return tile to the solution
-                else:
-                    tiles.append(tile)
+        for timestep in range(self._duration):
+            for index, scaffold in enumerate(self._scaffolds):
+                if index not in solved:
+                    tile = random.choice(self._tiles)
 
-        count = 0
-        for scaffold in scaffolds:
-            count += scaffold.get_tiles() == data["SOLUTION"]
+                    # if the position on the scaffold is vacant - place tile in position
+                    if scaffold.is_free(tile.position):
+                        scaffold.place_tile(tile)
 
-        data["COUNTS"].append(count)
+                    # else if the position is taken, and the current tile has less or equal
+                    # mismatches than the existing tile - replace the existing tile
+                    elif scaffold.count_mismatches(tile) <= scaffold.count_mismatches(scaffold.get_tile(tile.position)):
+                        # perhaps introduce a stochastic quality to the replacement here...
+                        # if random.random() > 0.5:
+                        #     scaffold.replace_tile(tile)
+                        scaffold.replace_tile(tile)
 
+                    # if scaffold has solved the computation, add scaffold to solved set
+                    if scaffold.get_tiles() == self._solution:
+                        solved.add(index)
+
+        # Step 2: persist the results for the current iteration
+        data["STATS"].append(len(solved))
 
 
 def main() -> None:
     iters = int(sys.argv[1]) if len(sys.argv) > 1 else 5
 
-    sdc   = SDCBitcopySimulation({"T_COUNT": T_COUNT, "S_COUNT": S_COUNT, "SOLUTION": SOLUTION, "COUNTS": []})
+    sdc   = SDCBitcopySimulation(SCAFFOLDS, ANCHOR, TILES, SOLUTION, 50, {"STATS": []})
     data  = sdc.run(iters)
 
     print("\n")
     print("\tA Simulation of Scaffolded DNA Computer - Bind / Replace: Bitcopy")
     print("\n")
 
-
     print(f"\tResults after {iters} iterations")
     print()
 
     for i in range(iters):
-        count = data["COUNTS"][i]
+        count = data["STATS"][i]
         print(f"\t Iteration: {i + 1}")
         print(f"\t     Count: {count}")
-        print(f"\tProportion: {(count / S_COUNT) * 100:.2f}%")
+        print(f"\tProportion: {(count / len(SCAFFOLDS)) * 100:.2f}%")
         print()
 
     print("\n")

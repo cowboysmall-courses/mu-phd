@@ -3,19 +3,27 @@
 class Simulation:
 
     def __init__(self, data: dict):
-        self.data = data
+        self._data = data
 
-    def step(self, iteration: int, data: dict) -> None:
+    def pre(self, iteration: int, data: dict) -> None:
+        pass
+
+    def simulate(self, iteration: int, data: dict) -> None:
+        pass
+
+    def post(self, iteration: int, data: dict) -> None:
         pass
 
     def run(self, iterations: int):
         try:
             for iteration in range(iterations):
-                self.step(iteration, self.data)
+                self.pre(iteration, self._data)
+                self.simulate(iteration, self._data)
+                self.post(iteration, self._data)
         except SimulationException:
             pass
 
-        return self.data
+        return self._data
 
 
 class SimulationException(Exception):

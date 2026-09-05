@@ -18,20 +18,33 @@ class Tile:
         if isinstance(other, Tile):
             return (self.left_instruction, self.right_instruction, self.left_input, self.right_input, self.position, self.value) == \
                 (other.left_instruction, other.right_instruction, other.left_input, other.right_input, other.position, other.value)
-
         return NotImplemented
 
 
 class Scaffold:
 
-    def __init__(self, anchor):
-        self._tiles: List[Tile | None] = [anchor, None, None, None]
+    def __init__(self, length: int):
+        self._length = length
+
 
     def __eq__(self, other):
         if isinstance(other, Scaffold):
             return self._tiles == other._tiles
-
         return NotImplemented
+
+
+    def initialize(self, anchor: Tile) -> None:
+        """
+
+            initializes the scaffold
+
+            Parameters
+            ----------
+            anchor: Tile
+                the anchor tile that drives the computation
+
+        """
+        self._tiles = [anchor] + [None] * (self._length - 1)
 
 
     def get_tile(self, index: int) -> Tile | None:
