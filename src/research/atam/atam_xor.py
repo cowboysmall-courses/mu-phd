@@ -13,4 +13,4 @@ def main() -> None:
     tiles  = create_tile_grid(64, xor_tile)
     values = [[tile.colour for tile in row[::-1]] for row in tiles[::-1]]
 
-    create_plot(values, "aTAM - XOR", "./output/atam/experiment_xor.png")
+    create_plot(values, "aTAM - XOR", "./output/research/atam/experiment_xor.png")

@@ -15,4 +15,4 @@ def main() -> None:
     tiles  = create_tile_grid(64, counter_tile)
     values = [[tile.colour for tile in row[::-1]] for row in tiles[::-1]]
 
-    create_plot(values, "aTAM - Counter", "./output/atam/experiment_counter.png")
+    create_plot(values, "aTAM - Counter", "./output/research/atam/experiment_counter.png")
