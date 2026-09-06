@@ -1,10 +1,10 @@
 
 from itertools import repeat, starmap
-from typing import List
+from typing import List, Any
 from collections.abc import Callable
 
 
-def repeat_function(function: Callable[[], str], times: int | None = None, *args: List[str]) -> List[str]:
+def repeat_function(function: Callable[..., str], times: int | None = None, *args: Any) -> List[Any]:
     """
 
         repeatedly calls a function that returns a string a specified number of times and returns the result in a list

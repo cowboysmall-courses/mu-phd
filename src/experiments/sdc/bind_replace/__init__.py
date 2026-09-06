@@ -61,22 +61,22 @@ class SDCBindReplaceSimulation(Simulation):
                     data["SOLVED"].add(index)
 
 
-def print_results(iters: int, count: int, totals: List[int]) -> None:
+def print_results(iters: int, count: int, data: Dict) -> None:
     print(f"\tResults after {iters} iterations")
     print()
     for i in range(iters):
-        print_result(i, count, totals[i])
+        print(f"\t Iteration: {i + 1}")
+        print_result(count, data["TOTALS"][i])
     print("\n")
 
 
-def print_result(iteration: int, count: int, total: int) -> None:
-    print(f"\t Iteration: {iteration + 1}")
+def print_result(count: int, total: int) -> None:
     print(f"\t     Total: {total}")
     print(f"\tProportion: {(total / count) * 100:.2f}%")
     print()
 
 
-def plot_results(iters: int, total: int, timesteps: int, stats: List[List[int]], field: str, group: str, name: str) -> None:
+def plot_results(iters: int, total: int, timesteps: int, data: Dict, field: str, group: str, name: str) -> None:
     plt.subplots(figsize = (12, 5))
     plt.title("Time Evolution of Computation")
     plt.grid(True)
@@ -84,12 +84,10 @@ def plot_results(iters: int, total: int, timesteps: int, stats: List[List[int]],
     plt.ylabel("% Remaining")
 
     for i in range(iters):
-        y = [((total - count) / total) * 100 for count in stats[i]]
+        y = [((total - count) / total) * 100 for count in data["STATS"][i]]
         x = [timestep for timestep in range(timesteps)]
         plt.plot(x, y, label = f"experiment {i + 1}")
 
     plt.legend()
     plt.savefig(f"./output/experiments/{field}/{group}/{name}/experiment.png")
     plt.close()
-
-

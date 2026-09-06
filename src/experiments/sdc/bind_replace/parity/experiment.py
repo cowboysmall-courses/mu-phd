@@ -6,7 +6,7 @@ from experiments.sdc.bind_replace.parity import ANCHOR, TILES, SOLUTION
 
 
 SCAFFOLDS = 5000
-TIMESTEPS = 100
+TIMESTEPS = 200
 
 def main() -> None:
     print("\n")
@@ -16,5 +16,5 @@ def main() -> None:
     iters = int(sys.argv[1]) if len(sys.argv) > 1 else 5
     data  = SDCBindReplaceSimulation(SCAFFOLDS, ANCHOR, TILES, SOLUTION).run(iters, TIMESTEPS)
 
-    print_results(iters, SCAFFOLDS, data["TOTALS"])
-    plot_results(iters, SCAFFOLDS, TIMESTEPS, data["STATS"], "sdc", "bind_replace", "parity")
+    print_results(iters, SCAFFOLDS, data)
+    plot_results(iters, SCAFFOLDS, TIMESTEPS, data, "sdc", "bind_replace", "parity")
