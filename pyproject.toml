@@ -25,8 +25,8 @@ dp-knapsack-02 = "algorithms.dp.dp_knapsack_02:main"
 
 exp-adleman = "experiments.adleman.experiment:main"
 
-exp-sdc-br-parity = "experiments.sdc.bind_replace.experiment_parity:main"
-exp-sdc-br-bitcopy = "experiments.sdc.bind_replace.experiment_bitcopy:main"
+exp-sdc-br-parity = "experiments.sdc.bind_replace.parity.experiment:main"
+exp-sdc-br-bitcopy = "experiments.sdc.bind_replace.bitcopy.experiment:main"
 
 exp-sdc-bu-bitcopy = "experiments.sdc.bind_unbind.experiment_bitcopy:main"
 
