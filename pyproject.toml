@@ -6,9 +6,11 @@ readme = "README.md"
 authors = [
     { name = "Jerry Kiely", email = "jerry@cowboysmall.com" }
 ]
-requires-python = ">=3.14"
+requires-python = ">=3.13, <3.14"
 dependencies = [
     "matplotlib>=3.10.9",
+    "nuad>=0.4.6",
+    "nupack",
 ]
 
 
@@ -17,17 +19,13 @@ atam-xor = "research.atam.atam_xor:main"
 atam-counter = "research.atam.atam_counter:main"
 sdc-add = "research.sdc.sdc_add:main"
 sdc-parity = "research.sdc.sdc_parity:main"
-
 dp-coin-change-01 = "algorithms.dp.dp_coin_change_01:main"
 dp-coin-change-02 = "algorithms.dp.dp_coin_change_02:main"
 dp-knapsack-01 = "algorithms.dp.dp_knapsack_01:main"
 dp-knapsack-02 = "algorithms.dp.dp_knapsack_02:main"
-
 exp-adleman = "experiments.adleman.experiment:main"
-
 exp-sdc-br-parity = "experiments.sdc.bind_replace.parity.experiment:main"
 exp-sdc-br-bitcopy = "experiments.sdc.bind_replace.bitcopy.experiment:main"
-
 exp-sdc-bu-bitcopy = "experiments.sdc.bind_unbind.experiment_bitcopy:main"
 
 
@@ -38,3 +36,6 @@ build-backend = "uv_build"
 
 [tool.uv.build-backend]
 namespace = true
+
+[tool.uv.sources]
+nupack = { path = "tools/nupack/nupack-4.0.2.0-cp313-cp313-linux_x86_64.whl" }
