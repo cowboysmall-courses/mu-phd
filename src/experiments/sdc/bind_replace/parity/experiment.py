@@ -6,15 +6,15 @@ from experiments.sdc.bind_replace.parity import ANCHOR, TILES, SOLUTION
 
 
 SCAFFOLDS = 5000
-TIMESTEPS = 200
+TIMESTEPS = 250
 
 def main() -> None:
     print("\n")
-    print("\tA Simulation of Scaffolded DNA Computer - Bind / Replace: Parity")
+    print("\tA Simulation of Scaffolded DNA Computer (Bind / Replace) - Parity")
     print("\n")
 
     iters = int(sys.argv[1]) if len(sys.argv) > 1 else 5
     data  = SDCBindReplaceSimulation(SCAFFOLDS, ANCHOR, TILES, SOLUTION).run(iters, TIMESTEPS)
 
     print_results(iters, SCAFFOLDS, data)
-    plot_results(iters, SCAFFOLDS, TIMESTEPS, data, "sdc", "bind_replace", "parity")
+    plot_results(iters, SCAFFOLDS, TIMESTEPS, data, "SDC (Bind / Replace): Time Evolution of Parity Computation", "sdc", "bind_replace", "parity")

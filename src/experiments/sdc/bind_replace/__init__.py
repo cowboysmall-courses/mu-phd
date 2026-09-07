@@ -76,18 +76,16 @@ def print_result(count: int, total: int) -> None:
     print()
 
 
-def plot_results(iters: int, total: int, timesteps: int, data: Dict, field: str, group: str, name: str) -> None:
+def plot_results(iters: int, total: int, timesteps: int, data: Dict, title: str, field: str, group: str, name: str) -> None:
     plt.subplots(figsize = (12, 5))
-    plt.title("Time Evolution of Computation")
+    plt.title(title)
     plt.grid(True)
     plt.xlabel("Timestep")
     plt.ylabel("% Remaining")
-
     for i in range(iters):
         y = [((total - count) / total) * 100 for count in data["STATS"][i]]
         x = [timestep for timestep in range(timesteps)]
         plt.plot(x, y, label = f"experiment {i + 1}")
-
     plt.legend()
     plt.savefig(f"./output/experiments/{field}/{group}/{name}/experiment.png")
     plt.close()
