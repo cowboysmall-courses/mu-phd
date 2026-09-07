@@ -15,18 +15,23 @@ dependencies = [
 
 
 [project.scripts]
-atam-xor = "research.atam.atam_xor:main"
-atam-counter = "research.atam.atam_counter:main"
-sdc-add = "research.sdc.sdc_add:main"
-sdc-parity = "research.sdc.sdc_parity:main"
 dp-coin-change-01 = "algorithms.dp.dp_coin_change_01:main"
 dp-coin-change-02 = "algorithms.dp.dp_coin_change_02:main"
 dp-knapsack-01 = "algorithms.dp.dp_knapsack_01:main"
 dp-knapsack-02 = "algorithms.dp.dp_knapsack_02:main"
+
+res-atam-xor = "research.atam.atam_xor:main"
+res-atam-counter = "research.atam.atam_counter:main"
+res-sdc-add = "research.sdc.sdc_add:main"
+res-sdc-parity = "research.sdc.sdc_parity:main"
+
 exp-adleman = "experiments.adleman.experiment:main"
 exp-sdc-br-parity = "experiments.sdc.bind_replace.parity.experiment:main"
 exp-sdc-br-bitcopy = "experiments.sdc.bind_replace.bitcopy.experiment:main"
 exp-sdc-bu-bitcopy = "experiments.sdc.bind_unbind.experiment_bitcopy:main"
+
+nupack-tut-analyze = "research.nupack.tutorial.analyze:main"
+nupack-tut-design = "research.nupack.tutorial.design:main"
 
 
 [build-system]

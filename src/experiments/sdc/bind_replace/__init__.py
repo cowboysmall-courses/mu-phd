@@ -77,6 +77,7 @@ def print_result(count: int, total: int) -> None:
 
 
 def plot_results(iters: int, total: int, timesteps: int, data: Dict, title: str, field: str, group: str, name: str) -> None:
+    plt.style.use("ggplot")
     plt.subplots(figsize = (12, 5))
     plt.title(title)
     plt.grid(True)
