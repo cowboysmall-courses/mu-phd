@@ -32,7 +32,7 @@ exp-adleman = "experiments.adleman.experiment:main"
 exp-sdc-br-bitcopy = "experiments.sdc.bind_replace.bitcopy.experiment:main"
 exp-sdc-br-counter = "experiments.sdc.bind_replace.counter.experiment:main"
 exp-sdc-br-parity = "experiments.sdc.bind_replace.parity.experiment:main"
-exp-sdc-bu-bitcopy = "experiments.sdc.bind_unbind.experiment_bitcopy:main"
+exp-sdc-bu-bitcopy = "experiments.sdc.bind_unbind.experiment:main"
 
 nupack-tut-analyze = "research.nupack.tutorial.analyze:main"
 nupack-tut-design = "research.nupack.tutorial.design:main"
