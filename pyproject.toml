@@ -22,12 +22,16 @@ dp-knapsack-02 = "algorithms.dp.dp_knapsack_02:main"
 
 res-atam-xor = "research.atam.atam_xor:main"
 res-atam-counter = "research.atam.atam_counter:main"
+res-automata-r110 = "research.automata.cellular.rule_110:main"
+res-automata-r30 = "research.automata.cellular.rule_30:main"
+res-automata-r54 = "research.automata.cellular.rule_54:main"
 res-sdc-add = "research.sdc.sdc_add:main"
 res-sdc-parity = "research.sdc.sdc_parity:main"
 
 exp-adleman = "experiments.adleman.experiment:main"
-exp-sdc-br-parity = "experiments.sdc.bind_replace.parity.experiment:main"
 exp-sdc-br-bitcopy = "experiments.sdc.bind_replace.bitcopy.experiment:main"
+exp-sdc-br-counter = "experiments.sdc.bind_replace.counter.experiment:main"
+exp-sdc-br-parity = "experiments.sdc.bind_replace.parity.experiment:main"
 exp-sdc-bu-bitcopy = "experiments.sdc.bind_unbind.experiment_bitcopy:main"
 
 nupack-tut-analyze = "research.nupack.tutorial.analyze:main"

@@ -17,4 +17,4 @@ def main() -> None:
     data  = SDCBindReplaceSimulation(SCAFFOLDS, ANCHOR, TILES, SOLUTION).run(iters, TIMESTEPS)
 
     print_results(iters, SCAFFOLDS, data)
-    plot_results(iters, SCAFFOLDS, TIMESTEPS, data, "SDC (Bind / Replace): Time Evolution of BitCopy Computation", "sdc", "bind_replace", "bitcopy")
+    plot_results(iters, SCAFFOLDS, TIMESTEPS, data, "SDC (Bind / Replace) - Time Evolution of BitCopy Computation", "sdc", "bind_replace", "bitcopy")

@@ -76,7 +76,7 @@ def print_result(count: int, total: int) -> None:
     print()
 
 
-def plot_results(iters: int, total: int, timesteps: int, data: Dict, title: str, field: str, group: str, name: str) -> None:
+def plot_results(iters: int, total: int, timesteps: int, data: Dict, title: str, field: str, group: str, name: str, file_name:str = "experiment") -> None:
     plt.style.use("ggplot")
     plt.subplots(figsize = (12, 5))
     plt.title(title)
@@ -88,5 +88,5 @@ def plot_results(iters: int, total: int, timesteps: int, data: Dict, title: str,
         x = [timestep for timestep in range(timesteps)]
         plt.plot(x, y, label = f"experiment {i + 1}")
     plt.legend()
-    plt.savefig(f"./output/experiments/{field}/{group}/{name}/experiment.png")
+    plt.savefig(f"./output/experiments/{field}/{group}/{name}/{file_name}.png")
     plt.close()
