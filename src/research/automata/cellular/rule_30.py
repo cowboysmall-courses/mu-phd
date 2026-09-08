@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-GRID_SIZE = 250
+GRID_SIZE = 50
 
 
 def rule_110(vals) -> int:
@@ -34,6 +34,6 @@ def main() -> None:
             cells[row, col] = rule_110(cells[row - 1, col - 1:col + 2])
 
     plt.title("Cellular Automata - Rule 30")
-    plt.imshow(cells[:GRID_SIZE // 2, :], interpolation = "none", cmap = "gray_r")
+    plt.imshow(cells[:GRID_SIZE // 2, :], interpolation = "none", cmap = "Blues")
     plt.gca().set_axis_off()
     plt.savefig("./output/research/automata/cellular/rule_30.png")
