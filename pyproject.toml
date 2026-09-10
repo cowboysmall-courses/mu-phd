@@ -31,6 +31,7 @@ res-sdc-parity = "research.sdc.sdc_parity:main"
 exp-adleman = "experiments.adleman.experiment:main"
 exp-sdc-br-bitcopy = "experiments.sdc.bind_replace.bitcopy.experiment:main"
 exp-sdc-br-counter = "experiments.sdc.bind_replace.counter.experiment:main"
+exp-sdc-br-hamilton = "experiments.sdc.bind_replace.hamilton.experiment:main"
 exp-sdc-br-parity = "experiments.sdc.bind_replace.parity.experiment:main"
 exp-sdc-bu-bitcopy = "experiments.sdc.bind_unbind.experiment:main"
 

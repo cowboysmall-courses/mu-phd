@@ -84,7 +84,8 @@ def plot_results(iters: int, total: int, timesteps: int, data: Dict, title: str,
     plt.xlabel("Timestep")
     plt.ylabel("% Remaining")
     for i in range(iters):
-        y = [((total - count) / total) * 100 for count in data["STATS"][i]]
+        # y = [((total - count) / total) * 100 for count in data["STATS"][i]]
+        y = [(count / total) * 100 for count in data["STATS"][i]]
         x = [timestep for timestep in range(timesteps)]
         plt.plot(x, y, label = f"experiment {i + 1}")
     plt.legend()
