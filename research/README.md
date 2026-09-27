@@ -29,3 +29,12 @@
 
 - [The Math Behind Building An AI Using DNA](https://www.youtube.com/watch?v=0luZ4JqHg6w)
 - [DNA Computing 101: How can DNA do computations?](https://www.youtube.com/watch?v=YBhWrHeIqDs)
+
+
+## Questions
+
+- kinetic simulation of dna hybridisation
+- kinetic simulation of dna strand displacement
+- kinetic simulation of dna tile assembly
+- kinetic simulation of scaffolded dna computing
+- law of mass action
