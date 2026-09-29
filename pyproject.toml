@@ -8,6 +8,7 @@ authors = [
 ]
 requires-python = ">=3.13, <3.14"
 dependencies = [
+    "levenshtein>=0.27.5",
     "matplotlib>=3.10.9",
     "nuad>=0.4.6",
     "nupack",
@@ -27,6 +28,7 @@ res-automata-r30 = "research.automata.cellular.rule_30:main"
 res-automata-r54 = "research.automata.cellular.rule_54:main"
 res-sdc-add = "research.sdc.sdc_add:main"
 res-sdc-parity = "research.sdc.sdc_parity:main"
+res-dna = "research.dna.dna:main"
 
 exp-adleman = "experiments.adleman.experiment:main"
 exp-sdc-br-bitcopy = "experiments.sdc.bind_replace.bitcopy.experiment:main"
