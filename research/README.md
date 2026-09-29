@@ -33,8 +33,8 @@
 
 ## Questions
 
+- law of mass action
 - kinetic simulation of dna hybridisation
 - kinetic simulation of dna strand displacement
 - kinetic simulation of dna tile assembly
 - kinetic simulation of scaffolded dna computing
-- law of mass action
