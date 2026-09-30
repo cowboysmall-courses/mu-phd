@@ -1,7 +1,7 @@
 import sys
 import random
 
-from typing import List
+from typing import List, Dict
 
 from experiments.sdc import Scaffold, Tile
 from experiments import Simulation
@@ -16,6 +16,23 @@ class SDCBindUnbindSimulation(Simulation):
         self._anchor = anchor
         self._tiles = tiles
         self._solution = solution
+
+    def step(self, iteration: int, timestep: int, data: Dict) -> None:
+        # 1 - chose scaffold from collection
+        # 2 - chose bound tile randomly from scaffold
+        # 3 - calculate the "Gibbs Free Energy" according to SantaLucia, Hicks
+        # 4 - what next?
+
+        #   - if the value calculated at step 3 is < 0 then do something spontaneously? (in this context unbind?)
+        #   - if the value calculated at step 3 is > 0 then do nothing?
+
+        #   - Reaction rate?
+        #   - Stochastic component?
+        #   - Reaction or probability threshold?
+        #   - What about other interractions?
+        #   - Is GFE relevant in the context of bind / replace?
+
+
 
 
 def main() -> None:

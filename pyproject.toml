@@ -14,6 +14,22 @@ dependencies = [
     "nupack",
 ]
 
+[build-system]
+requires = ["uv_build>=0.10.12,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+namespace = true
+
+[tool.uv.sources]
+nupack = { path = "tools/nupack/nupack-4.0.2.0-cp313-cp313-linux_x86_64.whl" }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+
 
 [project.scripts]
 dp-coin-change-01 = "algorithms.dp.dp_coin_change_01:main"
@@ -28,7 +44,7 @@ res-automata-r30 = "research.automata.cellular.rule_30:main"
 res-automata-r54 = "research.automata.cellular.rule_54:main"
 res-sdc-add = "research.sdc.sdc_add:main"
 res-sdc-parity = "research.sdc.sdc_parity:main"
-res-dna = "research.dna.dna:main"
+res-mfe-ss-dna = "research.mfe.ss_dna:main"
 
 exp-adleman = "experiments.adleman.experiment:main"
 exp-sdc-br-bitcopy = "experiments.sdc.bind_replace.bitcopy.experiment:main"
@@ -39,15 +55,3 @@ exp-sdc-bu-bitcopy = "experiments.sdc.bind_unbind.experiment:main"
 
 nupack-tut-analyze = "research.nupack.tutorial.analyze:main"
 nupack-tut-design = "research.nupack.tutorial.design:main"
-
-
-[build-system]
-requires = ["uv_build>=0.10.12,<0.11.0"]
-build-backend = "uv_build"
-
-
-[tool.uv.build-backend]
-namespace = true
-
-[tool.uv.sources]
-nupack = { path = "tools/nupack/nupack-4.0.2.0-cp313-cp313-linux_x86_64.whl" }

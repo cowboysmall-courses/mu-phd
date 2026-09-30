@@ -52,9 +52,6 @@ class SDCBindReplaceSimulation(Simulation):
                 # mismatches than the existing tile - replace the existing tile
                 elif scaffold.count_mismatches(tile) <= scaffold.count_mismatches(scaffold.get_tile(tile.position)):
                     scaffold.replace_tile(tile)
-                    # consider introducing a stochastic quality to replacement - for example:
-                    # if random.random() > 0.5:
-                    #     scaffold.replace_tile(tile)
 
                 # if scaffold has solved the computation, add scaffold to solved set
                 if scaffold.get_tiles() == self._solution:
