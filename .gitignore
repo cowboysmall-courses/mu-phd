@@ -9,5 +9,8 @@ wheels/
 # Virtual environments
 .venv
 
+# pytest
+.pytest_cache
+
 # Archives
 *.zip
