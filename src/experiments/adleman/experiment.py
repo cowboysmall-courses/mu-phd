@@ -1,7 +1,8 @@
 
 import random
 
-from experiments.adleman import create_vertex_strands, complement_strands, create_edge_strands, create_paths
+from experiments.adleman import create_vertex_strands, create_edge_strands, create_paths
+from utils.dna import complements
 
 
 VERTS  = 7
@@ -26,7 +27,7 @@ def main() -> None:
     print("\n")
 
     v_strands = create_vertex_strands(LENGTH, VERTS)
-    c_strands = complement_strands(v_strands)
+    c_strands = complements(v_strands)
     e_strands = create_edge_strands(c_strands, EDGES, LENGTH)
     print(f"   Encoded Vertices: {', '.join(v_strands)}")
     print(f"        Complements: {', '.join(c_strands)}")

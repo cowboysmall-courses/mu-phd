@@ -1,49 +1,9 @@
-import random
 
 from typing import List, Tuple
+
 from utils.functions import repeat_function
+from utils.dna import complement, generate_strand
 
-
-"""
-
-    This module contains utility functions for constructing DNA strings
-
-    DNA Bases:
-        A - Adenine
-        C - Cytosine
-        G - Guanine
-        T - Thymine
-
-    Pairings:
-        A -> T
-        T -> A
-        C -> G
-        G -> C
-
-"""
-
-
-BASES    = ['A', 'G', 'C', 'T']
-PAIRINGS = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
-
-
-def generate_strand(length: int) -> str:
-    """
-
-        generates a random strand of specific length from the bases
-
-        Parameters
-        ----------
-        length: int
-            the lenght of the generated strand
-
-        Returns
-        -------
-        str
-            the generated strand
-
-    """
-    return ''.join(random.choices(BASES, k=length))
 
 
 def create_vertex_strands(length: int, count: int) -> List[str]:
@@ -65,44 +25,6 @@ def create_vertex_strands(length: int, count: int) -> List[str]:
 
     """
     return repeat_function(generate_strand, count, length)
-
-
-def complement_strand(strand: str) -> str:
-    """
-
-        creates the complement of a strand
-
-        Parameters
-        ----------
-        strand: str
-            the strand to find the complement of
-
-        Returns
-        -------
-        str
-            the complement of the strand
-
-    """
-    return ''.join(PAIRINGS[c] for c in strand)
-
-
-def complement_strands(strands: List[str]) -> List[str]:
-    """
-
-        creates the complement of a list of strand
-
-        Parameters
-        ----------
-        strands: List[str]
-            the list of strands to find the complement of
-
-        Returns
-        -------
-        List[str]
-            the list of complements of the list of strands
-
-    """
-    return [complement_strand(strand) for strand in strands]
 
 
 def create_edge_strands(strands: List[str], edges: List[Tuple], length: int) -> List[str]:
@@ -158,7 +80,7 @@ def create_paths(vertex_strands: List[str], edge_strands: List[str], in_strand: 
 
     path  = [in_strand]
     for strand in vertex_strands:
-        edge = complement_strand(path[-1][-(length//2):] + strand[:(length//2)])
+        edge = complement(path[-1][-(length//2):] + strand[:(length//2)])
         if edge in edges:
             path.append(strand)
 

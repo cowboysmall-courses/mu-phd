@@ -1,5 +1,5 @@
 
-from utils.dna import self_complementary
+from utils.dna import is_self_complementary
 
 
 TDB = {
@@ -13,43 +13,72 @@ TDB = {
     "GG/CC":  (-8.0, -19.9), "CC/GG":  (-8.0, -19.9)
 }
 
+MMDB = {
+    "CT/GG": -0.32,
+    "TG/GC": -0.47
+}
+
 ATTA = {"AT", "TA"}
 
 INIT = (0.2, -5.7)
 TATP = (2.2,  6.9)
 SYMC = (0,   -1.4)
 
-'''
 
-    AA/TT                  −7.6    −21.3    −1.00
-    AT/TA                  −7.2    −20.4    −0.88
-    TA/AT                  −7.2    −21.3    −0.58
-    CA/GT                  −8.5    −22.7    −1.45
-    GT/CA                  −8.4    −22.4    −1.44
-    CT/GA                  −7.8    −21.0    −1.28
-    GA/CT                  −8.2    −22.2    −1.30
-    CG/GC                 −10.6    −27.2    −2.17
-    GC/CG                  −9.8    −24.4    −2.24
-    GG/CC                  −8.0    −19.9    −1.84
-
-    Initiation             +0.2     −5.7    +1.96
-
-    Terminal AT penalty    +2.2     +6.9    +0.05
-
-    Symmetry correction     0.0     −1.4    +0.43
-
-'''
 def free_energy(S1: str, S2: str, T: float) -> float:
+    """
+
+        calculates the Gibbs Free Energy of two strands using
+        the folowing database of values associated with nearest neighbours:
+
+            AA/TT                  −7.6    −21.3    −1.00
+            AT/TA                  −7.2    −20.4    −0.88
+            TA/AT                  −7.2    −21.3    −0.58
+            CA/GT                  −8.5    −22.7    −1.45
+            GT/CA                  −8.4    −22.4    −1.44
+            CT/GA                  −7.8    −21.0    −1.28
+            GA/CT                  −8.2    −22.2    −1.30
+            CG/GC                 −10.6    −27.2    −2.17
+            GC/CG                  −9.8    −24.4    −2.24
+            GG/CC                  −8.0    −19.9    −1.84
+
+            Initiation             +0.2     −5.7    +1.96
+            Terminal AT penalty    +2.2     +6.9    +0.05
+            Symmetry correction     0.0     −1.4    +0.43
+
+        taken from SantaLucia, Hicks (2004)
+
+        Parameters
+        ----------
+        S1: str
+            the first strand
+        S2: str
+            the second strand
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        float
+            the Gibbs Free Energy of binding
+
+    """
+
     G = 0
 
     G += INIT[0] - ((T * INIT[1]) / 1000)
 
-    if self_complementary(S1):
+    if is_self_complementary(S1):
         G += SYMC[0] - ((T * SYMC[1]) / 1000)
 
     for i in range(len(S1) - 1):
-        H, S = TDB[f"{S1[i:i + 2]}/{S2[i:i + 2]}"]
-        G += H - ((T * S) / 1000)
+        block = f"{S1[i:i + 2]}/{S2[i:i + 2]}"
+        if block in TDB:
+            H, S = TDB[block]
+            G += H - ((T * S) / 1000)
+        else:
+            # fix this
+            G += MMDB[block]
 
     if f"{S1[0]}{S2[0]}" in ATTA:
         G += TATP[0] - ((T * TATP[1]) / 1000)

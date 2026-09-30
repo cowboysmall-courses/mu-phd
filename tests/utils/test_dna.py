@@ -1,5 +1,5 @@
 
-from utils.dna import complement, self_complementary
+from utils.dna import complement, is_self_complementary
 
 
 def test_complement():
@@ -12,9 +12,9 @@ def test_non_complement():
     assert complement("CGTTGA") != "CGTTGA"
 
 
-def test_self_complementary():
-    assert self_complementary("ATGCAT")
+def test_is_self_complementary():
+    assert is_self_complementary("ATGCAT")
 
 
-def test_non_self_complementary():
-    assert not self_complementary("CGTTGA")
+def test_is_non_self_complementary():
+    assert not is_self_complementary("CGTTGA")
