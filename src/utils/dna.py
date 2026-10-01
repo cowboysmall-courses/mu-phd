@@ -36,7 +36,7 @@ def generate_strand(length: int) -> str:
         Parameters
         ----------
         length: int
-            the lenght of the generated strand
+            the length of the generated strand
 
         Returns
         -------
