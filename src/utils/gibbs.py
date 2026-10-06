@@ -1,5 +1,9 @@
 
 from utils.dna import is_self_complementary
+from utils.sdc.tile import Tile
+from utils.sdc.scaffold import Scaffold
+
+import math
 
 
 TDB = {
@@ -23,6 +27,39 @@ ATTA = {"AT", "TA"}
 INIT = (0.2, -5.7)
 SYMC = (0,   -1.4)
 TATP = (2.2,  6.9)
+
+
+RATE_CONSTANT = 1e6
+REFERENCE_CONCENTRATION = 1
+
+
+def rate_attach(rate_constant: float, tile_concentration: int, T: float) -> float:
+    """
+
+        calculate the attachment rate
+
+        Parameters
+        ----------
+        rate_constant: float
+            the rate constant
+        tile_concentration: int
+            the tile concentration
+
+        Returns
+        -------
+        float
+            the attachment rate
+
+
+    """
+    return rate_constant * tile_concentration
+
+
+
+def rate_detach(scaffold: Scaffold, tile: Tile, T: float, rate_constant: float) -> float:
+    pos_free_energy = free_energy()
+    return rate_constant * REFERENCE_CONCENTRATION * math.exp()
+
 
 
 def free_energy(S1: str, S2: str, T: float) -> float:

@@ -86,7 +86,7 @@ class Scaffold:
             Parameters
             ----------
             tile: Tile
-                the tile to replace the existing tile with
+                the tile to place on the scaffold
 
         """
         self._tiles[tile.position] = tile
