@@ -18,12 +18,7 @@ class Scaffold:
         self._position_index: Dict[str, int] = {p:i for i, p in enumerate(self._positions)}
         self._position_c_index: Dict[str, int] = {c:i for i, c in enumerate(self._positions_c)}
 
-        # self._position_tile: Dict[str, Tile | None] = {p:None for p in self._positions}
-        # self._position_c_tile: Dict[str, Tile | None] = {c:None for c in self._positions_c}
-
         self._bindings: Dict[int, Tile | None] = {i:None for i in range(len(self._positions))}
-
-        # self._positions: Dict[str, int] = {self.strand[i:i + position_size]: i // position_size for i in range(0, len(self.strand), position_size)}
 
 
 
