@@ -46,5 +46,3 @@ def test_bind():
     assert scaffold.is_taken(tile2)
     assert scaffold.is_taken(tile3)
     assert scaffold.is_taken(tile4)
-
-
