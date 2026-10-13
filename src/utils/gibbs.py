@@ -57,8 +57,9 @@ def rate_attach(rate_constant: float, tile_concentration: int, T: float) -> floa
 
 
 def rate_detach(scaffold: Scaffold, tile: Tile, T: float, rate_constant: float) -> float:
-    pos_free_energy = free_energy()
-    return rate_constant * REFERENCE_CONCENTRATION * math.exp()
+    # pos_free_energy = free_energy()
+    # return rate_constant * REFERENCE_CONCENTRATION * math.exp()
+    return 0.0
 
 
 

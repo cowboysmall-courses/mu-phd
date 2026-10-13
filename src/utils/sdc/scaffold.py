@@ -77,6 +77,15 @@ class Scaffold:
 
 
 
+    def mismatches(self, tile: Tile) -> int:
+        position = self._position_c_index[tile.position()]
+        mismatches = 0
+        # if position > 0 and self._bindings[position - 1]:
+        #     mismatches +=
+        return mismatches
+
+
+
     def is_free(self, tile: Tile) -> bool:
         """
 
