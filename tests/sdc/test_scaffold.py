@@ -1,6 +1,6 @@
 
-from utils.sdc.scaffold import Scaffold
-from utils.sdc.tile import Tile
+from sdc.scaffold import Scaffold
+from sdc.tile import Tile
 
 
 def test_get_positions__exits():
@@ -46,3 +46,19 @@ def test_bind():
     assert scaffold.is_taken(tile2)
     assert scaffold.is_taken(tile3)
     assert scaffold.is_taken(tile4)
+
+
+def test_get_bound_tiles():
+    scaffold = Scaffold("ATTTTTGATTTATGGTCATTCTCG TTTTCTGAACTGTTTAAAGCATTT GAGGGGGATTCAATGAATATTTAT GACGATTCCGCAGTATTGGACGCT CTGGCAAATTAGGCTCTGGAAAGA")
+
+    tile2 = Tile("CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG")
+    tile4 = Tile("CCTCTTCTCAGC AAATGCTTTAAACAGTTCAGAAAA GGTCAGGATGAG")
+
+    scaffold.bind(tile2)
+    scaffold.bind(tile4)
+
+    tiles = scaffold.get_bound_tiles()
+
+    assert tiles == [None, tile2, None, tile4, None]
+
+

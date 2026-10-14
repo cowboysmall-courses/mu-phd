@@ -1,7 +1,9 @@
 
+from sdc.scaffold import Scaffold
+from sdc.tile import Tile
+from sdc import *
+
 from utils.dna import is_self_complementary
-from utils.sdc.tile import Tile
-from utils.sdc.scaffold import Scaffold
 
 import math
 
@@ -29,20 +31,15 @@ SYMC = (0,   -1.4)
 TATP = (2.2,  6.9)
 
 
-RATE_CONSTANT = 1e6
-REFERENCE_CONCENTRATION = 1
 
-
-def rate_attach(rate_constant: float, tile_concentration: int, T: float) -> float:
+def rate_attach(tile: Tile) -> float:
     """
 
         calculate the attachment rate
 
         Parameters
         ----------
-        rate_constant: float
-            the rate constant
-        tile_concentration: int
+        concentration: int
             the tile concentration
 
         Returns
@@ -50,16 +47,103 @@ def rate_attach(rate_constant: float, tile_concentration: int, T: float) -> floa
         float
             the attachment rate
 
+    """
+    return k_f * tile.get_concentration()
+
+
+
+def rate_detach(left: Tile, tile: Tile, right: Tile, T: float) -> float:
+    """
+
+        calculate the detachment rate
+
+        Parameters
+        ----------
+        left: Tile
+            the tile to the left of the current tile
+        tile: Tile
+            the current tile
+        right: Tile
+            the tile to the right of the current tile
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        float
+            the detachment rate
 
     """
-    return rate_constant * tile_concentration
+    return k_f * math.exp( (gibbs_rl(left, tile, T) + gibbs_m(tile, T) + gibbs_rl(tile, right, T)) / (k_B * T) )
 
 
 
-def rate_detach(scaffold: Scaffold, tile: Tile, T: float, rate_constant: float) -> float:
-    # pos_free_energy = free_energy()
-    # return rate_constant * REFERENCE_CONCENTRATION * math.exp()
-    return 0.0
+def gibbs_rl(tile_left: Tile, tile_right: Tile, T: float) -> float:
+    """
+
+        calculates the Gibbs Free Energy of binding two compute
+        domains of consecutive tiles
+
+        Parameters
+        ----------
+        tile_left: Tile
+            the first tile
+        tile_right: Tile
+            the second tile
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        float
+            the Gibbs Free Energy of binding
+
+    """
+    if tile_left and tile_right and tile_left.right() == tile_right.left():
+        return free_energy(tile_left.right(), tile_right.left(), T)
+    else:
+        return 0
+
+
+def gibbs_m(tile: Tile, T: float) -> float:
+    """
+
+        calculates the Gibbs Free Energy of binding to a
+        scaffold domains
+
+        Parameters
+        ----------
+        tile: Tile
+            the tile to bind to the scaffold
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        float
+            the Gibbs Free Energy of binding
+
+    """
+    return free_energy(tile.middle(), tile.middle_c(), T)
+
+
+def gibbs_assoc(T:float) -> float:
+    """
+
+        calculates the Gibbs Free Energy of association
+
+        Parameters
+        ----------
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        float
+            the Gibbs Free Energy of association
+
+    """
+    return 0
 
 
 
@@ -122,9 +206,12 @@ def free_energy(S1: str, S2: str, T: float) -> float:
         if block in TDB:
             D_H, D_S = TDB[block]
             D_G += D_H - ((T * D_S) / 1000)
-        else:
-            # G_mismatch - fix this!!!
-            D_G += MMDB[block]
+        #
+        # G_mismatch - fix this!!!
+        #
+        # else:
+        #     D_G += MMDB[block]
+
 
     # G_AT_terminal - start
     if f"{S1[0]}{S2[0]}" in ATTA:
@@ -135,3 +222,4 @@ def free_energy(S1: str, S2: str, T: float) -> float:
         D_G += TATP[0] - ((T * TATP[1]) / 1000)
 
     return D_G
+
