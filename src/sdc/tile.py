@@ -1,10 +1,7 @@
 
 from utils.dna import complement
 
-# from sdc.gibbs import free_energy
-
 from typing import Tuple
-
 
 
 class Tile:
@@ -20,7 +17,7 @@ class Tile:
         self._m = self.strand[layout[0]:layout[0] + layout[1]]
         self._m_c = complement(self._m)
 
-        self._r = self.strand[layout[1] + layout[2]:]
+        self._r = self.strand[layout[0] + layout[1]:]
         self._r_c = complement(self._r)
 
 
@@ -116,6 +113,10 @@ class Tile:
 
         """
         return self._r_c
+
+
+    def __repr__(self):
+        return f"{self._l}-{self._m}-{self._r}"
 
 
 

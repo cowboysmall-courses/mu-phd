@@ -1,5 +1,4 @@
 
-from sdc.scaffold import Scaffold
 from sdc.tile import Tile
 from sdc import *
 
@@ -29,7 +28,6 @@ ATTA = {"AT", "TA"}
 INIT = (0.2, -5.7)
 SYMC = (0,   -1.4)
 TATP = (2.2,  6.9)
-
 
 
 def rate_attach(tile: Tile) -> float:
@@ -99,10 +97,7 @@ def gibbs_rl(tile_left: Tile, tile_right: Tile, T: float) -> float:
             the Gibbs Free Energy of binding
 
     """
-    if tile_left and tile_right and tile_left.right() == tile_right.left():
-        return free_energy(tile_left.right(), tile_right.left(), T)
-    else:
-        return 0
+    return free_energy(tile_left.right(), tile_right.left()[::-1], T)
 
 
 def gibbs_m(tile: Tile, T: float) -> float:
@@ -222,4 +217,3 @@ def free_energy(S1: str, S2: str, T: float) -> float:
         D_G += TATP[0] - ((T * TATP[1]) / 1000)
 
     return D_G
-

@@ -31,3 +31,9 @@ def test_right():
     tile = Tile("CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG")
     assert tile.right() == "GGTCAGGATGAG"
     assert tile.right_c() == "CCAGTCCTACTC"
+
+
+def test_anchor():
+    tile = Tile("TCTTTCCAGAGCCTAATTTGCCAG GCTGAGAAGAGG", (0, 24, 12))
+    assert tile.right() == "GCTGAGAAGAGG"
+    assert tile.right_c() == "CGACTCTTCTCC"
