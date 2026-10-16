@@ -65,4 +65,4 @@ def test_minimum_free_energy_configuration__bitcopy_0():
     assert minimum_free_energy_configuration(BITCOPY_0_TILES, 363) == [TA0, TB0, TC0, TDQ]
 
 def test_minimum_free_energy_configuration__bitcopy_1():
-    assert minimum_free_energy_configuration(BITCOPY_1_TILES, 353) == [TA1, TB1, TC1, TD]
+    assert minimum_free_energy_configuration(BITCOPY_1_TILES, 363) == [TA1, TB1, TC1, TD]
