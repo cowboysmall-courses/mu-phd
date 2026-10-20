@@ -1,5 +1,7 @@
 
-from sdc.mfe import minimum_free_energy_configuration
+import math
+
+from sdc.mfe import minimum_free_energy, minimum_free_energy_configuration, partition_function
 from sdc.tile import Tile
 
 
@@ -61,8 +63,28 @@ BITCOPY_1_TILES = {
 }
 
 
+
+def test_partition_function__bitcopy_0():
+    assert math.isclose(partition_function(BITCOPY_0_TILES, 273.15 + 37), 53.719, abs_tol = 0.001)
+
+
+def test_partition_function__bitcopy_1():
+    assert math.isclose(partition_function(BITCOPY_1_TILES, 273.15 + 37), 53.727, abs_tol = 0.001)
+
+
+
+def test_minimum_free_energy__bitcopy_0():
+    assert math.isclose(minimum_free_energy(BITCOPY_0_TILES, 273.15 + 37), -152.454, abs_tol = 0.001)
+
+
+def test_minimum_free_energy__bitcopy_1():
+    assert math.isclose(minimum_free_energy(BITCOPY_1_TILES, 273.15 + 37), -152.103, abs_tol = 0.001)
+
+
+
 def test_minimum_free_energy_configuration__bitcopy_0():
-    assert minimum_free_energy_configuration(BITCOPY_0_TILES, 363) == [TA0, TB0, TC0, TDQ]
+    assert minimum_free_energy_configuration(BITCOPY_0_TILES, 273.15 + 37) == [TA0, TB0, TC0, TDQ]
+
 
 def test_minimum_free_energy_configuration__bitcopy_1():
-    assert minimum_free_energy_configuration(BITCOPY_1_TILES, 363) == [TA1, TB1, TC1, TD]
+    assert minimum_free_energy_configuration(BITCOPY_1_TILES, 273.15 + 37) == [TA1, TB1, TC1, TD]

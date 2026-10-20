@@ -1,6 +1,5 @@
 
 from sdc.tile import Tile
-from sdc import *
 
 from utils.dna import is_self_complementary
 
@@ -8,25 +7,40 @@ import math
 
 
 TDB = {
-    "AA/TT":  (-7.6, -21.3), "TT/AA":  (-7.6, -21.3),
-    "AT/TA":  (-7.2, -20.4), "TA/AT":  (-7.2, -21.3),
-    "CA/GT":  (-8.5, -22.7), "TG/AC":  (-8.5, -22.7),
-    "GT/CA":  (-8.4, -22.4), "AC/TG":  (-8.4, -22.4),
-    "CT/GA":  (-7.8, -21.0), "AG/TC":  (-7.8, -21.0),
-    "GA/CT":  (-8.2, -22.2), "TC/AG":  (-8.2, -22.2),
-    "CG/GC": (-10.6, -27.2), "GC/CG":  (-9.8, -24.4),
-    "GG/CC":  (-8.0, -19.9), "CC/GG":  (-8.0, -19.9)
+    ("AA", "TT"):  (-7.6, -21.3), ("TT", "AA"):  (-7.6, -21.3),
+    ("AT", "TA"):  (-7.2, -20.4), ("TA", "AT"):  (-7.2, -21.3),
+    ("CA", "GT"):  (-8.5, -22.7), ("TG", "AC"):  (-8.5, -22.7),
+    ("GT", "CA"):  (-8.4, -22.4), ("AC", "TG"):  (-8.4, -22.4),
+    ("CT", "GA"):  (-7.8, -21.0), ("AG", "TC"):  (-7.8, -21.0),
+    ("GA", "CT"):  (-8.2, -22.2), ("TC", "AG"):  (-8.2, -22.2),
+    ("CG", "GC"): (-10.6, -27.2), ("GC", "CG"):  (-9.8, -24.4),
+    ("GG", "CC"):  (-8.0, -19.9), ("CC", "GG"):  (-8.0, -19.9)
 }
 
-# MMDB = {
-#     "CT/GG": -0.32,
-#     "GG/CG": -1.11,
-#     "GC/GA":  0.47,
-#     "TG/GC": -0.47,
-#     "CT/AC": -0.47
-# }
+MMDB = {
 
-ATTA = {"AT", "TA"}
+    ("GA", "CA"):  0.17, ("GA", "CC"):  0.81, ("GA", "CG"): -0.25,
+    ("GC", "CA"):  0.47, ("GC", "CC"):  0.79, ("GC", "CT"):  0.62,
+    ("GG", "CA"): -0.52, ("GG", "CG"): -1.11, ("GG", "CT"):  0.08,
+    ("GT", "CC"):  0.98, ("GT", "CG"): -0.59, ("GT", "CT"):  0.45,
+
+    ("CA", "GA"):  0.43, ("CA", "GC"):  0.75, ("CA", "GG"):  0.03,
+    ("CC", "GA"):  0.79, ("CC", "GC"):  0.70, ("CC", "GT"):  0.62,
+    ("CG", "GA"):  0.11, ("CG", "GG"): -0.11, ("CG", "GT"): -0.47,
+    ("CT", "GC"):  0.40, ("CT", "GG"): -0.32, ("CT", "GT"): -0.12,
+
+    ("AA", "TA"):  0.61, ("AA", "TC"):  0.88, ("AA", "TG"):  0.14,
+    ("AC", "TA"):  0.77, ("AC", "TC"):  1.33, ("AC", "TT"):  0.64,
+    ("AG", "TA"):  0.02, ("AG", "TG"): -0.13, ("AG", "TT"):  0.71,
+    ("AT", "TC"):  0.73, ("AT", "TG"):  0.07, ("AT", "TT"):  0.69,
+
+    ("TA", "AA"):  0.69, ("TA", "AC"):  0.92, ("TA", "AG"):  0.42,
+    ("TC", "AA"):  1.33, ("TC", "AC"):  1.05, ("TC", "AT"):  0.97,
+    ("TG", "AA"):  0.74, ("TG", "AG"):  0.44, ("TG", "AT"):  0.43,
+    ("TT", "AC"):  0.75, ("TT", "AG"):  0.34, ("TT", "AT"):  0.68,
+}
+
+ATTA = {("A", "T"), ("T", "A")}
 
 INIT = (0.2, -5.7)
 SYMC = (0,   -1.4)
@@ -199,24 +213,49 @@ def free_energy(S1: str, S2: str, T: float) -> float:
 
     # G_stack
     for i in range(len(S1) - 1):
-        block = f"{S1[i:i + 2]}/{S2[i:i + 2]}"
+        seq1 = S1[i:i + 2]
+        seq2 = S2[i:i + 2]
 
-        if block in TDB:
-            D_H, D_S = TDB[block]
-            D_G += D_H - ((T * D_S) / 1000)
-        #
-        # G_mismatch - fix this!!!
-        #
-        # else:
-        #     D_G += MMDB[block]
-
+        if is_wc_pair(seq1, seq2):
+            D_G += calculate_wc_pair(seq1, seq2, T)
+        else:
+            D_G += calculate_mismatch(seq1, seq2, T)
 
     # G_AT_terminal - start
-    if f"{S1[0]}{S2[0]}" in ATTA:
+    if (S1[0], S2[0]) in ATTA:
         D_G += TATP[0] - ((T * TATP[1]) / 1000)
 
     # G_AT_terminal - end
-    if f"{S1[-1]}{S2[-1]}" in ATTA:
+    if (S1[-1], S2[-1]) in ATTA:
         D_G += TATP[0] - ((T * TATP[1]) / 1000)
 
     return D_G
+
+
+
+
+
+
+def is_wc_pair(seq1: str, seq2: str) -> bool:
+    return (seq1, seq2) in TDB
+
+
+def calculate_wc_pair(seq1: str, seq2: str, T: float):
+    D_H, D_S = TDB[(seq1, seq2)]
+
+    return D_H - ((T * D_S) / 1000)
+
+
+def calculate_mismatch(seq1: str, seq2: str, T: float):
+    block1 = (seq1, seq2)
+
+    if block1 in MMDB:
+        return MMDB[block1]
+    else:
+        block2 = (seq2[::-1], seq1[::-1])
+
+        if block2 in MMDB:
+            return MMDB[block2]
+        else:
+            return 0
+
