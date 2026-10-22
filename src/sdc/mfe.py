@@ -1,7 +1,7 @@
 
 from sdc.gibbs import gibbs_m, gibbs_rl, gibbs_assoc
 from sdc.tile import Tile
-from sdc import R_j
+from sdc import R_j, u_0
 
 from typing import Dict, List
 
@@ -9,6 +9,23 @@ import math
 
 
 def minimum_free_energy(tiles: Dict[int, List[Tile]], T: float) -> float:
+    """
+
+        calculate the Minimum Free Energy of the tileset
+
+        Parameters
+        ----------
+        tiles: Dict[int, List[Tile]]
+            the tileset of the computation
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        float
+            the Minimum Free Energy of the tileset
+
+    """
     N = len(tiles)
     K = max(len(t) for t in tiles.values())
 
@@ -34,6 +51,23 @@ def minimum_free_energy(tiles: Dict[int, List[Tile]], T: float) -> float:
 
 
 def minimum_free_energy_configuration(tiles: Dict[int, List[Tile]], T: float) -> List[Tile]:
+    """
+
+        finds the configuration with the Minimum Free Energy of the provided tileset
+
+        Parameters
+        ----------
+        tiles: Dict[int, List[Tile]]
+            the tileset of the computation
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        float
+            the configuration with the Minimum Free Energy of the provided tileset
+
+    """
     N = len(tiles)
     K = max(len(t) for t in tiles.values())
     C = []
@@ -64,6 +98,23 @@ def minimum_free_energy_configuration(tiles: Dict[int, List[Tile]], T: float) ->
 
 
 def partition_function(tiles: Dict[int, List[Tile]], T: float) -> float:
+    """
+
+        calculate the Partition Function of the tileset
+
+        Parameters
+        ----------
+        tiles: Dict[int, List[Tile]]
+            the tileset of the computation
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        float
+            the Partition Function of the tileset
+
+    """
     N = len(tiles)
     K = max(len(t) for t in tiles.values())
 
@@ -94,4 +145,21 @@ def partition_function(tiles: Dict[int, List[Tile]], T: float) -> float:
 
 
 def mu(tile: Tile, T: float) -> float:
+    """
+
+        calculate the Chemical Potential of a tile
+
+        Parameters
+        ----------
+        tile: Tile
+            the provided tile
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        float
+            the Chemical Potential of a tile
+
+    """
     return R_j * T * math.log(tile.get_concentration() / u_0)

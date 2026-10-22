@@ -1,5 +1,6 @@
 
 from sdc.tile import Tile
+from sdc import k_f, R_j
 
 from utils.dna import is_self_complementary
 
@@ -89,7 +90,7 @@ def rate_detach(left: Tile, tile: Tile, right: Tile, T: float) -> float:
             the detachment rate
 
     """
-    return k_f * math.exp( (gibbs_rl(left, tile, T) + gibbs_m(tile, T) + gibbs_rl(tile, right, T)) / (k_B * T) )
+    return k_f * math.exp( (gibbs_rl(left, tile, T) + gibbs_m(tile, T) + gibbs_rl(tile, right, T)) / (R_j * T) )
 
 
 
@@ -237,16 +238,70 @@ def free_energy(S1: str, S2: str, T: float) -> float:
 
 
 def is_wc_pair(seq1: str, seq2: str) -> bool:
+    """
+
+        checks to see if the two sequences are Watson-Crick pairs
+
+        Parameters
+        ----------
+        seq1: str
+            the first sequence
+        seq2: str
+            the second sequence
+
+        Returns
+        -------
+        boolean
+            true if the two sequences are Watson-Crick pairs, false otherwise
+
+    """
     return (seq1, seq2) in TDB
 
 
 def calculate_wc_pair(seq1: str, seq2: str, T: float):
-    D_H, D_S = TDB[(seq1, seq2)]
+    """
 
+        calculate the Energy of binding the Watson-Crick pair
+
+        Parameters
+        ----------
+        seq1: str
+            the first sequence
+        seq2: str
+            the second sequence
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        boolean
+            the Energy of binding the Watson-Crick pair
+
+    """
+    D_H, D_S = TDB[(seq1, seq2)]
     return D_H - ((T * D_S) / 1000)
 
 
 def calculate_mismatch(seq1: str, seq2: str, T: float):
+    """
+
+        calculate the Energy of binding the mismatched pair
+
+        Parameters
+        ----------
+        seq1: str
+            the first sequence
+        seq2: str
+            the second sequence
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        boolean
+            the Energy of binding the mismatched pair
+
+    """
     block1 = (seq1, seq2)
 
     if block1 in MMDB:

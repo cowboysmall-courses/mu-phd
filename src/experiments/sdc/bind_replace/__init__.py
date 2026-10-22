@@ -5,8 +5,9 @@ import matplotlib.pyplot as plt
 
 from typing import List, Dict
 
-from experiments import Simulation
 from experiments.sdc import Scaffold, Tile
+
+from utils.simulations import Simulation
 
 
 class SDCBindReplaceSimulation(Simulation):

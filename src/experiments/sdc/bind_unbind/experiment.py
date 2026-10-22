@@ -4,7 +4,8 @@ import random
 from typing import List, Dict
 
 from experiments.sdc import Scaffold, Tile
-from experiments import Simulation
+
+from utils.simulations import Simulation
 
 
 SCAFFOLDS = 5000
