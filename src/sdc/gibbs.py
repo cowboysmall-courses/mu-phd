@@ -7,7 +7,7 @@ from utils.dna import is_self_complementary
 import math
 
 
-TDB = {
+WCDB = {
     ("AA", "TT"):  (-7.6, -21.3), ("TT", "AA"):  (-7.6, -21.3),
     ("AT", "TA"):  (-7.2, -20.4), ("TA", "AT"):  (-7.2, -21.3),
     ("CA", "GT"):  (-8.5, -22.7), ("TG", "AC"):  (-8.5, -22.7),
@@ -220,7 +220,7 @@ def free_energy(S1: str, S2: str, T: float) -> float:
         if is_wc_pair(seq1, seq2):
             D_G += calculate_wc_pair(seq1, seq2, T)
         else:
-            D_G += calculate_mismatch(seq1, seq2, T)
+            D_G += calculate_mm_pair(seq1, seq2, T)
 
     # G_AT_terminal - start
     if (S1[0], S2[0]) in ATTA:
@@ -255,7 +255,7 @@ def is_wc_pair(seq1: str, seq2: str) -> bool:
             true if the two sequences are Watson-Crick pairs, false otherwise
 
     """
-    return (seq1, seq2) in TDB
+    return (seq1, seq2) in WCDB
 
 
 def calculate_wc_pair(seq1: str, seq2: str, T: float):
@@ -278,11 +278,11 @@ def calculate_wc_pair(seq1: str, seq2: str, T: float):
             the Energy of binding the Watson-Crick pair
 
     """
-    D_H, D_S = TDB[(seq1, seq2)]
+    D_H, D_S = WCDB[(seq1, seq2)]
     return D_H - ((T * D_S) / 1000)
 
 
-def calculate_mismatch(seq1: str, seq2: str, T: float):
+def calculate_mm_pair(seq1: str, seq2: str, T: float):
     """
 
         calculate the Energy of binding the mismatched pair

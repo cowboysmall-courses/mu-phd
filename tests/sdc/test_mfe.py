@@ -25,7 +25,7 @@ BITCOPY_0_TILES = {
     ],
 
     1: [
-        TB0,  # 0B0
+        TB0,  # 0B0*
         TB1   # 2B2*
     ],
 
