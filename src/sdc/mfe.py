@@ -97,6 +97,55 @@ def minimum_free_energy_configuration(tiles: Dict[int, List[Tile]], T: float) ->
 
 
 
+def minimum_free_energy_path(tiles: Dict[int, List[Tile]], T: float) -> List[Tile]:
+    """
+
+        finds the path of the Minimum Free Energy of the provided tileset
+
+        Parameters
+        ----------
+        tiles: Dict[int, List[Tile]]
+            the tileset of the computation
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        float
+            the path of the Minimum Free Energy of the provided tileset
+
+    """
+    N = len(tiles)
+    K = max(len(t) for t in tiles.values())
+    P = []
+
+    M_curr: List[float] = [0] * K
+
+    for j in range(len(tiles[0])):
+        M_curr[j] = gibbs_m(tiles[0][j], T)
+
+    for i in range(1, N):
+        M_prev = M_curr
+        M_curr = [0] * K
+        M_path = []
+
+        for j in range(len(tiles[i])):
+            M_temp = []
+            T_path = []
+
+            for k in range(len(tiles[i - 1])):
+                M_temp.append(M_prev[k] + gibbs_rl(tiles[i - 1][k], tiles[i][j], T))
+                T_path.append(((i - 1, k), (i, j)))
+
+            M_curr[j] = min(M_temp) + gibbs_m(tiles[i][j], T) + gibbs_assoc(T)
+            M_path.append(T_path[M_temp.index(min(M_temp))])
+
+        P.append(M_path[M_curr.index(min(M_curr))])
+
+    return P
+
+
+
 def partition_function(tiles: Dict[int, List[Tile]], T: float) -> float:
     """
 

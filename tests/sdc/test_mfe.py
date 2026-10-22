@@ -1,7 +1,7 @@
 
 import math
 
-from sdc.mfe import minimum_free_energy, minimum_free_energy_configuration, partition_function
+from sdc.mfe import minimum_free_energy, minimum_free_energy_configuration, minimum_free_energy_path, partition_function
 from sdc.tile import Tile
 
 
@@ -88,3 +88,13 @@ def test_minimum_free_energy_configuration__bitcopy_0():
 
 def test_minimum_free_energy_configuration__bitcopy_1():
     assert minimum_free_energy_configuration(BITCOPY_1_TILES, 273.15 + 37) == [TA1, TB1, TC1, TD]
+
+
+
+def test_minimum_free_energy_path__bitcopy_0():
+    assert minimum_free_energy_path(BITCOPY_0_TILES, 273.15 + 37) == [((0, 0), (1, 0)), ((1, 0), (2, 0)), ((2, 0), (3, 0))]
+
+
+def test_minimum_free_energy_path__bitcopy_1():
+    assert minimum_free_energy_path(BITCOPY_1_TILES, 273.15 + 37) == [((0, 0), (1, 1)), ((1, 1), (2, 1)), ((2, 1), (3, 1))]
+
