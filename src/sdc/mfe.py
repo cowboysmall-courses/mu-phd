@@ -166,30 +166,30 @@ def partition_function(tiles: Dict[int, List[Tile]], T: float) -> float:
     """
     N = len(tiles)
     K = max(len(t) for t in tiles.values())
+    S = 0
+    Z = 1
 
     Z_curr: List[float] = [0] * K
     Z_prev: List[float] = [0] * K
-
-    Z_conf = 1
-    S_prev = 0
 
     for j in range(len(tiles[0])):
         Z_curr[j] = math.exp( -(gibbs_m(tiles[0][j], T) + gibbs_assoc(T)) / (R_j * T) )
 
     for i in range(1, N):
-        S_prev += sum(Z_prev)
+        S += sum(Z_prev)
+
         Z_prev = Z_curr
         Z_curr = [0] * K
 
         for j in range(len(tiles[i])):
-            Z_curr[j] = S_prev + math.exp( -(gibbs_m(tiles[i][j], T) + gibbs_assoc(T)) / (R_j * T) )
+            Z_curr[j] = S + math.exp( -(gibbs_m(tiles[i][j], T) + gibbs_assoc(T)) / (R_j * T) )
 
             for k in range(len(tiles[i - 1])):
                 Z_curr[j] += math.exp( -gibbs_rl(tiles[i - 1][k], tiles[i][j], T) / (R_j * T) ) * Z_prev[k]
 
-            Z_conf += Z_curr[j]
+            Z += Z_curr[j]
 
-    return Z_conf
+    return Z
 
 
 
