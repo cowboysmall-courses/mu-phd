@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 GRID_SIZE = 50
 
 
-def rule_110(vals) -> int:
+def rule_54(vals) -> int:
     if vals[0] == 1 and vals[1] == 1 and vals[2] == 1:
         return 0
     elif vals[0] == 1 and vals[1] == 1 and vals[2] == 0:
@@ -31,7 +31,7 @@ def main() -> None:
 
     for row in range(1, GRID_SIZE + 1):
         for col in range(1, GRID_SIZE):
-            cells[row, col] = rule_110(cells[row - 1, col - 1:col + 2])
+            cells[row, col] = rule_54(cells[row - 1, col - 1:col + 2])
 
     plt.title("Cellular Automata - Rule 54")
     plt.imshow(cells[:GRID_SIZE // 2, :], interpolation = "none", cmap = "Blues")
