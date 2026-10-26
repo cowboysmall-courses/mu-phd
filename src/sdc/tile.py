@@ -119,6 +119,10 @@ class Tile:
         return f"{self._l}-{self._m}-{self._r}"
 
 
+    def __hash__(self):
+        return hash(self.strand) + hash(self.layout)
+
+
 
     def __eq__(self, other):
         if isinstance(other, Tile):
