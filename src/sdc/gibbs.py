@@ -258,7 +258,7 @@ def is_wc_pair(seq1: str, seq2: str) -> bool:
     return (seq1, seq2) in WCDB
 
 
-def calculate_wc_pair(seq1: str, seq2: str, T: float):
+def calculate_wc_pair(seq1: str, seq2: str, T: float) -> float:
     """
 
         calculate the Energy of binding the Watson-Crick pair
@@ -274,7 +274,7 @@ def calculate_wc_pair(seq1: str, seq2: str, T: float):
 
         Returns
         -------
-        boolean
+        float
             the Energy of binding the Watson-Crick pair
 
     """
@@ -282,7 +282,7 @@ def calculate_wc_pair(seq1: str, seq2: str, T: float):
     return D_H - ((T * D_S) / 1000)
 
 
-def calculate_mm_pair(seq1: str, seq2: str, T: float):
+def calculate_mm_pair(seq1: str, seq2: str, T: float) -> float:
     """
 
         calculate the Energy of binding the mismatched pair
@@ -298,7 +298,7 @@ def calculate_mm_pair(seq1: str, seq2: str, T: float):
 
         Returns
         -------
-        boolean
+        float
             the Energy of binding the mismatched pair
 
     """

@@ -6,21 +6,62 @@ from typing import Tuple
 
 class Tile:
 
-    def __init__(self, strand: str, layout: Tuple = (12, 24, 12), concentration: int = 100000):
-        self.strand = strand.replace(" ", "")
+    def __init__(self, layer: int, strand: str, layout: Tuple = (12, 24, 12), concentration: int = 100000):
+        self.layer  = layer
+        self.strand = strand
         self.layout = layout
         self.concentration = concentration
 
-        self._l = self.strand[:layout[0]]
+        strand = strand.replace(" ", "")
+
+        self._l = strand[:layout[0]]
+        self._m = strand[layout[0]:layout[0] + layout[1]]
+        self._r = strand[layout[0] + layout[1]:]
+
         self._l_c = complement(self._l)
-
-        self._m = self.strand[layout[0]:layout[0] + layout[1]]
         self._m_c = complement(self._m)
-
-        self._r = self.strand[layout[0] + layout[1]:]
         self._r_c = complement(self._r)
 
 
+
+    def get_layer(self) -> int:
+        """
+
+            get the layer the tile occupies
+
+            Returns
+            -------
+            int
+                the layer the tile occupies
+
+        """
+        return self.layer
+
+    def get_strand(self) -> str:
+        """
+
+            get the underlying strand of the tile
+
+            Returns
+            -------
+            str
+                the underlying strand of the tile
+
+        """
+        return self.strand
+
+    def get_layout(self) -> Tuple:
+        """
+
+            get the tile layout
+
+            Returns
+            -------
+            Tuple
+                the tile layout
+
+        """
+        return self.layout
 
     def get_concentration(self) -> int:
         """
@@ -34,6 +75,7 @@ class Tile:
 
         """
         return self.concentration
+
 
 
     def left(self) -> str:
@@ -115,16 +157,17 @@ class Tile:
         return self._r_c
 
 
+
     def __repr__(self):
         return f"{self._l}-{self._m}-{self._r}"
 
+    def __eq__(self, other):
+        if not isinstance(other, Tile):
+            return NotImplemented
+        return (self.layer, self.strand, self.layout, self.concentration) == (other.layer, other.strand, other.layout, other.concentration)
+        # return self.layer == other.layer and self.strand == other.strand and \
+        #         self.layout == other.layout and self.concentration == other.concentration
 
     def __hash__(self):
-        return hash(self.strand) + hash(self.layout)
-
-
-
-    def __eq__(self, other):
-        if isinstance(other, Tile):
-            return self.strand == other.strand and self.layout == other.layout
-        return NotImplemented
+        # return hash(self.layer) + hash(self.strand) + hash(self.layout) + hash(self.concentration)
+        return hash((self.layer, self.strand, self.layout, self.concentration))

@@ -1,23 +1,103 @@
 
 from sdc.tile import Tile
 
-# from utils.dna import complement
-
 from typing import Dict, List
 
 
 class Scaffold:
 
     def __init__(self, strand: str, position_size: int = 24):
-        self.strand = strand[::-1].replace(" ", "")
+        self.strand = strand
         self.position_size = position_size
 
-        self._positions: List[str] = [self.strand[i:i + position_size] for i in range(0, len(self.strand), position_size)]
+        strand = strand.replace(" ", "")[::-1]
 
+        self._positions: List[str] = [strand[i:i + position_size] for i in range(0, len(strand), position_size)]
         self._position_count: int = len(self._positions)
         self._position_index: Dict[str, int] = {p:i for i, p in enumerate(self._positions)}
-
         self._bindings: Dict[int, Tile | None] = {i:None for i in range(self._position_count)}
+
+
+
+    def get_strand(self) -> str:
+        """
+
+            get the underlying strand of the scaffold
+
+            Returns
+            -------
+            str
+                the underlying strand of the scaffold
+
+        """
+        return self.strand
+
+    def get_position_size(self) -> int:
+        """
+
+            get the position size of the scaffold
+
+            Returns
+            -------
+            int
+                the position size of the scaffold
+
+        """
+        return self.position_size
+
+
+
+    def get_positions(self) -> List[str]:
+        """
+
+            get the positions on the scaffold
+
+            Returns
+            -------
+            List[str]
+                the positions on the scaffold
+
+        """
+        return self._positions
+
+    def get_position_count(self) -> int:
+        """
+
+            get the number of positions on the scaffold
+
+            Returns
+            -------
+            int
+                the number of positions of the scaffold
+
+        """
+        return self._position_count
+
+    def get_position_index(self, position: str) -> int:
+        """
+
+            get the index of the position on the scaffold
+
+            Returns
+            -------
+            int
+                the index of the position on the scaffold
+
+        """
+        return self._position_index[position]
+
+    def get_bound_tiles(self) -> List[Tile | None]:
+        """
+
+            get a list of the bound tiles on the scaffold
+
+            Returns
+            -------
+            List[Tile | None]
+                a list of the bound tiles on the scaffold
+
+        """
+        return [self._bindings[i] for i in range(self._position_count)]
 
 
 
@@ -35,8 +115,6 @@ class Scaffold:
         position = self._position_index[tile.middle_c()]
         self._bindings[position] = tile
 
-
-
     def unbind(self, tile: Tile) -> None:
         """
 
@@ -50,8 +128,6 @@ class Scaffold:
         """
         position = self._position_index[tile.middle_c()]
         self._bindings[position] = None
-
-
 
     def replace(self, tile: Tile) -> Tile | None:
         """
@@ -95,7 +171,6 @@ class Scaffold:
         position = self._position_index[tile.middle_c()]
         return self._bindings[position] is None
 
-
     def is_taken(self, tile: Tile) -> bool:
         """
 
@@ -117,18 +192,7 @@ class Scaffold:
 
 
 
-    def get_positions(self) -> List[str]:
-        return self._positions
 
-    def get_position_count(self) -> int:
-        return self._position_count
-
-    def get_position_index(self, position: str) -> int:
-        return self._position_index[position]
-
-
-    def get_bound_tiles(self) -> List[Tile | None]:
-        return [self._bindings[i] for i in range(self._position_count)]
 
 
 

@@ -64,7 +64,7 @@ def minimum_free_energy_configuration(tiles: Dict[int, List[Tile]], T: float) ->
 
         Returns
         -------
-        float
+        List[Tile]
             the configuration with the Minimum Free Energy of the provided tileset
 
     """
@@ -111,7 +111,7 @@ def minimum_free_energy_path(tiles: Dict[int, List[Tile]], T: float) -> List[Til
 
         Returns
         -------
-        float
+        List[Tile]
             the path of the Minimum Free Energy of the provided tileset
 
     """
