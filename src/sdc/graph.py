@@ -4,7 +4,7 @@ from sdc.tile import Tile
 
 from collections import defaultdict, deque
 
-from typing import Callable, Dict, List
+from typing import Callable, Dict, List, Tuple
 
 import functools
 
@@ -12,9 +12,10 @@ import functools
 class SDCGraph:
 
     def __init__(self, tiles: Dict[int, List[Tile]]):
-        self._tiles = tiles
-        self._nodes = []
-        self._edges = []
+        self._tiles  = tiles
+        self._layers = len(tiles)
+        self._nodes  = []
+        self._edges  = []
 
         self._edge_weights: Dict[Tile, Dict[Tile, Callable]] = defaultdict(dict)
         self._node_weights: Dict[Tile, Callable] = {}
@@ -22,12 +23,12 @@ class SDCGraph:
         for i in range(len(tiles) - 1):
             for u in tiles[i]:
                 self._nodes.append(u)
-                self._node_weights[u] = gibbs_m_c(u)
+                self._node_weights[u] = gibbs_m_pa(u)
                 for v in tiles[i + 1]:
                     self._edges.append((u, v))
-                    self._edge_weights[u][v] = gibbs_rl_c(u, v)
+                    self._edge_weights[u][v] = gibbs_rl_pa(u)(v)
                     self._nodes.append(v)
-                    self._node_weights[v] = gibbs_m_c(v)
+                    self._node_weights[v] = gibbs_m_pa(v)
 
 
 
@@ -42,33 +43,47 @@ class SDCGraph:
 
 
 
-    def shortest_path(self, tile: Tile, T: float) -> Dict[Tile, float]:
-        dist = {n: self._node_weights[n](T) for n in self._nodes}
+    def shortest_path(self, tile: Tile, T: float) -> Tuple[float, List[Tile]]:
+        dist = {n: float('inf') for n in self._nodes}
+        dist[self._tiles[0][0]] = 0
 
-        for u in self._edge_weights:
-            for v in self._edge_weights[u]:
-                uv = self._edge_weights[u][v](T)
-                if dist[u] + uv < dist[v]:
-                    dist[v] = dist[u] + uv
+        pred = {}
+        path = []
 
-        return dist
+        for i in range(self._layers - 1):
+            for u in self._tiles[i]:
+                for v in self._tiles[i + 1]:
+                    uv = self._edge_weights[u][v](T)
+                    if dist[u] + uv < dist[v]:
+                        dist[v] = dist[u] + uv
+                        pred[v] = u
+
+        mfe, node = min([(dist[t], t) for t in self._tiles[self._layers - 1]])
+
+        path.append(node)
+        mfe += self._node_weights[node](T)
+
+        while node in pred:
+            node = pred[node]
+            path.append(node)
+            mfe += self._node_weights[node](T)
+
+        return mfe, path[::-1]
 
 
 
 
-
-
-
-
-def gibbs_m_c(tile:Tile):
+def gibbs_m_pa(tile:Tile):
     @functools.cache
-    def inner(T: float):
+    def gibbs_m_T(T: float):
         return gibbs_m(tile, T)
-    return inner
+    return gibbs_m_T
 
-def gibbs_rl_c(l:Tile, r: Tile):
-    @functools.cache
-    def inner(T: float):
-        return gibbs_rl(l, r, T)
-    return inner
+def gibbs_rl_pa(l:Tile):
+    def gibbs_rl_r(r: Tile):
+        @functools.cache
+        def gibbs_rl_T(T: float):
+            return gibbs_rl(l, r, T)
+        return gibbs_rl_T
+    return gibbs_rl_r
 
