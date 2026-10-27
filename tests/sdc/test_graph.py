@@ -66,13 +66,13 @@ BITCOPY_1_TILES = {
 
 def test_graph__bitcopy_0():
     graph = SDCGraph(BITCOPY_0_TILES)
-    mfe, path = graph.shortest_path(TA0, 273.15 + 37)
+    mfe, path = graph.shortest_path(273.15 + 37)
     assert math.isclose(mfe, -152.454, abs_tol = 0.001)
     assert path == [TA0, TB0, TC0, TDQ]
 
 def test_graph__bitcopy_1():
     graph = SDCGraph(BITCOPY_1_TILES)
-    mfe, path = graph.shortest_path(TA1, 273.15 + 37)
+    mfe, path = graph.shortest_path(273.15 + 37)
     assert math.isclose(mfe, -152.103, abs_tol = 0.001)
     assert path == [TA1, TB1, TC1, TD]
 

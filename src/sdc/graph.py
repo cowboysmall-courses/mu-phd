@@ -2,7 +2,7 @@
 from sdc.gibbs import gibbs_m, gibbs_rl, gibbs_assoc
 from sdc.tile import Tile
 
-from collections import defaultdict, deque
+from collections import defaultdict
 
 from typing import Callable, Dict, List, Tuple
 
@@ -20,7 +20,7 @@ class SDCGraph:
         self._edge_weights: Dict[Tile, Dict[Tile, Callable]] = defaultdict(dict)
         self._node_weights: Dict[Tile, Callable] = {}
 
-        for i in range(len(tiles) - 1):
+        for i in range(self._layers - 1):
             for u in tiles[i]:
                 self._nodes.append(u)
                 self._node_weights[u] = gibbs_m_pa(u)
@@ -43,7 +43,7 @@ class SDCGraph:
 
 
 
-    def shortest_path(self, tile: Tile, T: float) -> Tuple[float, List[Tile]]:
+    def shortest_path(self, T: float) -> Tuple[float, List[Tile]]:
         dist = {n: float('inf') for n in self._nodes}
         dist[self._tiles[0][0]] = 0
 
@@ -66,7 +66,7 @@ class SDCGraph:
         while node in pred:
             node = pred[node]
             path.append(node)
-            mfe += self._node_weights[node](T)
+            mfe += self._node_weights[node](T) + gibbs_assoc(T)
 
         return mfe, path[::-1]
 

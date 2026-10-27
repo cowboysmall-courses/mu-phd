@@ -165,9 +165,6 @@ class Tile:
         if not isinstance(other, Tile):
             return NotImplemented
         return (self.layer, self.strand, self.layout, self.concentration) == (other.layer, other.strand, other.layout, other.concentration)
-        # return self.layer == other.layer and self.strand == other.strand and \
-        #         self.layout == other.layout and self.concentration == other.concentration
 
     def __hash__(self):
-        # return hash(self.layer) + hash(self.strand) + hash(self.layout) + hash(self.concentration)
         return hash((self.layer, self.strand, self.layout, self.concentration))
