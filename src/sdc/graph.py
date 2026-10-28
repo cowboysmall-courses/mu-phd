@@ -12,15 +12,17 @@ import functools
 class SDCGraph:
 
     def __init__(self, tiles: Dict[int, List[Tile]]):
-        self._tiles  = tiles
-        self._layers = len(tiles)
-        self._nodes  = []
-        self._edges  = []
+        self.tiles  = tiles
+        self.layers = len(tiles)
+
+        self._dummy = Tile(self.layers, "", layout = (0, 0, 0)) # dummy / sentinel used in shortest path
+        self._nodes = []
+        self._edges = []
 
         self._edge_weights: Dict[Tile, Dict[Tile, Callable]] = defaultdict(dict)
         self._node_weights: Dict[Tile, Callable] = {}
 
-        for i in range(self._layers - 1):
+        for i in range(self.layers - 1):
             for u in tiles[i]:
                 self._nodes.append(u)
                 self._node_weights[u] = gibbs_m_pa(u)
@@ -29,6 +31,20 @@ class SDCGraph:
                     self._edge_weights[u][v] = gibbs_rl_pa(u)(v)
                     self._nodes.append(v)
                     self._node_weights[v] = gibbs_m_pa(v)
+
+        for u in tiles[self.layers - 1]:
+            self._edges.append((u, self._dummy))
+            self._edge_weights[u][self._dummy] = gibbs_rl_pa(u)(self._dummy)
+            self._nodes.append(self._dummy)
+            self._node_weights[self._dummy] = gibbs_m_pa(self._dummy)
+
+
+
+    def get_tiles(self):
+        return self.tiles
+
+    def get_layers(self):
+        return self.layers
 
 
 
@@ -43,25 +59,32 @@ class SDCGraph:
 
 
 
-    def shortest_path(self, T: float) -> Tuple[float, List[Tile]]:
+    def shortest_path(self, source: Tile, T: float) -> Tuple[float, List[Tile]]:
+        tiles  = dict(self.tiles)
+        layers = self.layers
+
+        tiles[layers] = [self._dummy]
+        layers += 1
+
+        if source.get_layer() != 0 or source not in tiles[0]:
+            raise ValueError("source tile should be from layer 0")
+
         dist = {n: float('inf') for n in self._nodes}
-        dist[self._tiles[0][0]] = 0
+        dist[source] = 0
 
         pred = {}
         path = []
 
-        for i in range(self._layers - 1):
-            for u in self._tiles[i]:
-                for v in self._tiles[i + 1]:
+        for i in range(layers - 1):
+            for u in tiles[i]:
+                for v in tiles[i + 1]:
                     uv = self._edge_weights[u][v](T)
                     if dist[u] + uv < dist[v]:
                         dist[v] = dist[u] + uv
                         pred[v] = u
 
-        mfe, node = min([(dist[t], t) for t in self._tiles[self._layers - 1]])
-
-        path.append(node)
-        mfe += self._node_weights[node](T)
+        node = self._dummy
+        mfe  = dist[self._dummy]
 
         while node in pred:
             node = pred[node]
@@ -69,7 +92,6 @@ class SDCGraph:
             mfe += self._node_weights[node](T) + gibbs_assoc(T)
 
         return mfe, path[::-1]
-
 
 
 

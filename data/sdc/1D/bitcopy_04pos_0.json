@@ -1,0 +1,87 @@
+{
+    "0": [
+        {
+            "layer": 0,
+            "strand": "TCTTTCCAGAGCCTAATTTGCCAG GCTGAGAAGAGG",
+            "layout": [
+                0,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "1": [
+        {
+            "layer": 1,
+            "strand": "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 1,
+            "strand": "TCTTTCCAAGCC AGCGTCCAATACTGCGGAATCGTC AATGGTGGCATT",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "2": [
+        {
+            "layer": 2,
+            "strand": "CTCATCCTGACC ATAAATATTCATTGAATCCCCCTC GCTGAGAAGAGG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 2,
+            "strand": "AATGCCACCATT ATAAATATTCATTGAATCCCCCTC GGCTTGGAAAGA",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "3": [
+        {
+            "layer": 3,
+            "strand": "CCTCTTCTCAGC AAATGCTTTAAACAGTTCAGAAAA GGGTAGTGTGGAGAGGTGGG",
+            "layout": [
+                12,
+                24,
+                20
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 3,
+            "strand": "TCTTTCCAAGCC AAATGCTTTAAACAGTTCAGAAAA",
+            "layout": [
+                12,
+                24,
+                0
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ]
+}

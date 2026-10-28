@@ -37,3 +37,9 @@ def test_right():
     tile = Tile(1, "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG")
     assert tile.right() == "GGTCAGGATGAG"
     assert tile.right_c() == "CCAGTCCTACTC"
+
+def test_sentinel():
+    tile = Tile(1, "", layout = (0, 0, 0), concentration = 0)
+    assert tile.left() == ""
+    assert tile.middle() == ""
+    assert tile.right() == ""

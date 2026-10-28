@@ -1,0 +1,279 @@
+{
+    "0": [
+        {
+            "layer": 0,
+            "strand": "TCTTTCCAGAGCCTAATTTGCCAG GGCTTGGAAAGA",
+            "layout": [
+                0,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "1": [
+        {
+            "layer": 1,
+            "strand": "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 1,
+            "strand": "TCTTTCCAAGCC AGCGTCCAATACTGCGGAATCGTC AATGGTGGCATT",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "2": [
+        {
+            "layer": 2,
+            "strand": "CTCATCCTGACC ATAAATATTCATTGAATCCCCCTC GCTGAGAAGAGG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 2,
+            "strand": "AATGCCACCATT ATAAATATTCATTGAATCCCCCTC GGCTTGGAAAGA",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "3": [
+        {
+            "layer": 3,
+            "strand": "CCTCTTCTCAGC AAATGCTTTAAACAGTTCAGAAAA GGTCAGGATGAG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 3,
+            "strand": "TCTTTCCAAGCC AAATGCTTTAAACAGTTCAGAAAA AATGGTGGCATT",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "4": [
+        {
+            "layer": 4,
+            "strand": "CTCATCCTGACC CGAGAATGACCATAAATCAAAAAT GCTGAGAAGAGG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 4,
+            "strand": "AATGCCACCATT CGAGAATGACCATAAATCAAAAAT GGCTTGGAAAGA",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "5": [
+        {
+            "layer": 5,
+            "strand": "CCTCTTCTCAGC CAGGTCTTTACCCTGACTATTATA GGTCAGGATGAG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 5,
+            "strand": "TCTTTCCAAGCC CAGGTCTTTACCCTGACTATTATA AATGGTGGCATT",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "6": [
+        {
+            "layer": 6,
+            "strand": "CTCATCCTGACC GTCAGAAGCAAAGCGGATTGCATC GCTGAGAAGAGG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 6,
+            "strand": "AATGCCACCATT GTCAGAAGCAAAGCGGATTGCATC GGCTTGGAAAGA",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "7": [
+        {
+            "layer": 7,
+            "strand": "CCTCTTCTCAGC AAAAAGATTAAGAGGAAGCCCGAA GGTCAGGATGAG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 7,
+            "strand": "TCTTTCCAAGCC AAAAAGATTAAGAGGAAGCCCGAA AATGGTGGCATT",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "8": [
+        {
+            "layer": 8,
+            "strand": "CTCATCCTGACC AGACTTCAAATATCGCGTTTTAAT GCTGAGAAGAGG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 8,
+            "strand": "AATGCCACCATT AGACTTCAAATATCGCGTTTTAAT GGCTTGGAAAGA",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "9": [
+        {
+            "layer": 9,
+            "strand": "CCTCTTCTCAGC TCGAGCTTCAAAGCGAACCAGACC GGTCAGGATGAG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 9,
+            "strand": "TCTTTCCAAGCC TCGAGCTTCAAAGCGAACCAGACC AATGGTGGCATT",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "10": [
+        {
+            "layer": 10,
+            "strand": "CTCATCCTGACC GGAAGCAAACTCCAACAGGTCAGG GCTGAGAAGAGG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 10,
+            "strand": "AATGCCACCATT GGAAGCAAACTCCAACAGGTCAGG GGCTTGGAAAGA",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ],
+    "11": [
+        {
+            "layer": 11,
+            "strand": "CCTCTTCTCAGC ATTAGAGAGTACCTTTAATTGCTC GGGTAGTGTGGAGAGGTGGG",
+            "layout": [
+                12,
+                24,
+                20
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        },
+        {
+            "layer": 11,
+            "strand": "TCTTTCCAAGCC ATTAGAGAGTACCTTTAATTGCTC",
+            "layout": [
+                12,
+                24,
+                0
+            ],
+            "concentration": 100000,
+            "__classname__": "Tile"
+        }
+    ]
+}
