@@ -51,7 +51,6 @@ class SDCGraph:
 
 
 
-
     def shortest_path(self, source: Tile, T: float) -> Tuple[float, List[Tile]]:
         if source.get_layer() != 0 or source not in self.tiles[0]:
             raise ValueError("source tile should be from layer 0")
