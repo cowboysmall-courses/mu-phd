@@ -37,23 +37,23 @@ TK  = Tile(11, "TCTTTCCAAGCC ATTAGAGAGTACCTTTAATTGCTC", (12, 24, 0))            
 
 
 def test_graph__bitcopy_4pos_0():
-    mfe, path = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json")).shortest_path(TA0, 273.15 + 37)
+    mfe, path = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos.json")).shortest_path(TA0, 273.15 + 37)
     assert math.isclose(mfe, -152.454, abs_tol = 0.001)
     assert path == [TA0, TB0, TC0, TDQ]
 
 def test_graph__bitcopy_4pos_1():
-    mfe, path = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json")).shortest_path(TA1, 273.15 + 37)
+    mfe, path = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos.json")).shortest_path(TA1, 273.15 + 37)
     assert math.isclose(mfe, -152.103, abs_tol = 0.001)
     assert path == [TA1, TB1, TC1, TD]
 
 
 
 def test_graph__bitcopy_11pos_0():
-    mfe, path = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json")).shortest_path(TA0, 273.15 + 37)
+    mfe, path = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos.json")).shortest_path(TA0, 273.15 + 37)
     assert math.isclose(mfe, -484.441, abs_tol = 0.001)
     assert path == [TA0, TB0, TC0, TD0, TE0, Tf0, TF0, TG0, TH0, TI0, TJ0, TKQ]
 
 def test_graph__bitcopy_11pos_1():
-    mfe, path = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json")).shortest_path(TA1, 273.15 + 37)
+    mfe, path = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos.json")).shortest_path(TA1, 273.15 + 37)
     assert math.isclose(mfe, -483.219, abs_tol = 0.001)
     assert path == [TA1, TB1, TC1, TD1, TE1, Tf1, TF1, TG1, TH1, TI1, TJ1, TK]

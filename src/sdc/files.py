@@ -11,7 +11,6 @@ def write_sdc_tileset(path: str, tileset: dict) -> None:
 def read_sdc_tileset(path: str) -> dict:
     with open(path, "r") as f:
         loaded = json.load(f, object_hook = sdc_decoder)
-
     return {int(key): loaded[key] for key in loaded.keys()}
 
 
