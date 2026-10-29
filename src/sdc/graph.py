@@ -95,8 +95,8 @@ class SDCGraph:
 
         while node in pred:
             node = pred[node]
-            path.append(node)
             mfe += self.get_node_weight(node, T) + gibbs_assoc(T)
+            path.append(node)
 
         return mfe, path[::-1]
 
