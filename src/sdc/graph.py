@@ -36,6 +36,11 @@ class SDCGraph:
     def get_tiles(self) -> List[List[Tile]]:
         return self.tiles[:-1]
 
+    def get_layer(self, layer: int) -> List[Tile]:
+        if layer == len(self.tiles):
+            raise ValueError("outside the range of layers")
+        return self.tiles[layer]
+
 
 
     def get_node_weight(self, tile: Tile, T: float) -> float:
@@ -43,11 +48,6 @@ class SDCGraph:
 
     def get_edge_weight(self, left: Tile, right: Tile, T: float) -> float:
         return self._edge_weights[left][right](T)
-
-    def get_next(self, tile: Tile) -> List[Tile]:
-        if tile.get_layer() == len(self.tiles) - 1:
-            raise ValueError("tile from last layer")
-        return self.tiles[tile.get_layer() + 1]
 
 
 
@@ -64,8 +64,8 @@ class SDCGraph:
         path = []
 
         for l in range(len(self.tiles) - 1):
-            for u in self.tiles[l]:
-                for v in self.tiles[l + 1]:
+            for u in self.get_layer(l):
+                for v in self.get_layer(l + 1):
                     uv = self.get_edge_weight(u, v, T)
                     # relax edge u -> v
                     if dist[v] > dist[u] + uv:
