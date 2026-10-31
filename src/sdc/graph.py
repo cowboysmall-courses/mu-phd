@@ -11,30 +11,30 @@ import functools
 
 class SDCGraph:
 
-    def __init__(self, tiles: Dict[int, List[Tile]]):
-        self.tiles   = tiles
-        self.l_count = len(tiles)
+    def __init__(self, tiles: List[List[Tile]]):
+        self.tiles = tiles
+
+        # add dummy / sentinel - used in shortest path - to tiles
+        self._dummy = Tile(len(tiles), "", layout = (0, 0, 0))
+        tiles.append([self._dummy])
 
         self._edge_weights: Dict[Tile, Dict[Tile, Callable]] = defaultdict(dict)
         self._node_weights: Dict[Tile, Callable] = {}
 
         # preprocess the node / edge weights
-        for u in self.tiles[0]:
+        for u in tiles[0]:
             self._node_weights[u] = gibbs_m_pa(u)
 
-        for i in range(self.l_count - 1):
-            for u in self.tiles[i]:
-                for v in self.tiles[i + 1]:
+        for l in range(len(tiles) - 1):
+            for u in tiles[l]:
+                for v in tiles[l + 1]:
                     self._edge_weights[u][v] = gibbs_rl_pa(u, v)
                     self._node_weights[v]    = gibbs_m_pa(v)
 
 
 
-    def get_tiles(self) -> Dict[int, List[Tile]]:
-        return self.tiles
-
-    def get_layer_count(self) -> int:
-        return self.l_count
+    def get_tiles(self) -> List[List[Tile]]:
+        return self.tiles[:-1]
 
 
 
@@ -55,22 +55,6 @@ class SDCGraph:
         if source.get_layer() != 0 or source not in self.tiles[0]:
             raise ValueError("source tile should be from layer 0")
 
-        # local copy of tiles and layer count
-        tiles   = dict(self.tiles)
-        l_count = self.l_count
-
-        # dummy / sentinel used in shortest path
-        dummy = Tile(l_count, "", layout = (0, 0, 0))
-
-        # add dumy / sentinel to edge and node weights
-        for v in tiles[l_count - 1]:
-            self._edge_weights[v][dummy] = gibbs_rl_pa(v, dummy)
-            self._node_weights[dummy]    = gibbs_m_pa(dummy)
-
-        # add dummy / sentinel to tiles and increment layer count
-        tiles[l_count] = [dummy]
-        l_count += 1
-
         # distance map with
         dist = {n: float('inf') for n in self._node_weights}
         dist[source] = 0
@@ -79,9 +63,9 @@ class SDCGraph:
         pred = {}
         path = []
 
-        for i in range(l_count - 1):
-            for u in tiles[i]:
-                for v in tiles[i + 1]:
+        for l in range(len(self.tiles) - 1):
+            for u in self.tiles[l]:
+                for v in self.tiles[l + 1]:
                     uv = self.get_edge_weight(u, v, T)
                     # relax edge u -> v
                     if dist[v] > dist[u] + uv:
@@ -89,8 +73,8 @@ class SDCGraph:
                         pred[v] = u
 
         # sum free energy + construct favourable path
-        node = dummy
-        mfe  = dist[dummy]
+        node = self._dummy
+        mfe  = dist[self._dummy]
 
         while node in pred:
             node = pred[node]
@@ -105,12 +89,12 @@ class SDCGraph:
 def gibbs_m_pa(tile:Tile):
     @functools.cache
     def gibbs_m_T(T: float):
-        return gibbs_m(tile, T)
+        return 0 if tile.middle() == "" else gibbs_m(tile, T)
     return gibbs_m_T
 
 # gibbs_rl - partial application
 def gibbs_rl_pa(l:Tile, r: Tile):
     @functools.cache
     def gibbs_rl_T(T: float):
-        return gibbs_rl(l, r, T)
+        return 0 if r.left() == "" else gibbs_rl(l, r, T)
     return gibbs_rl_T

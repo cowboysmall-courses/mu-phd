@@ -13,8 +13,8 @@ TDQ = Tile(3, "CCTCTTCTCAGC AAATGCTTTAAACAGTTCAGAAAA GGGTAGTGTGGAGAGGTGGG", (12,
 TD  = Tile(3, "TCTTTCCAAGCC AAATGCTTTAAACAGTTCAGAAAA", (12, 24, 0))                       # 2D
 
 
-BITCOPY_0_TILES = { 0: [ TA0 ], 1: [ TB0, TB1 ], 2: [ TC0, TC1 ], 3: [ TDQ, TD ] }
-BITCOPY_1_TILES = { 0: [ TA1 ], 1: [ TB0, TB1 ], 2: [ TC0, TC1 ], 3: [ TDQ, TD ] }
+BITCOPY_0_TILES = [ [ TA0 ], [ TB0, TB1 ], [ TC0, TC1 ], [ TDQ, TD ] ]
+BITCOPY_1_TILES = [ [ TA1 ], [ TB0, TB1 ], [ TC0, TC1 ], [ TDQ, TD ] ]
 
 
 

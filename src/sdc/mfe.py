@@ -8,14 +8,14 @@ from typing import Dict, List
 import math
 
 
-def minimum_free_energy(tiles: Dict[int, List[Tile]], T: float) -> float:
+def minimum_free_energy(tiles: List[List[Tile]], T: float) -> float:
     """
 
         calculate the Minimum Free Energy of the tileset
 
         Parameters
         ----------
-        tiles: Dict[int, List[Tile]]
+        tiles: List[List[Tile]]
             the tileset of the computation
         T: float
             the temperature in Kelvin
@@ -27,7 +27,7 @@ def minimum_free_energy(tiles: Dict[int, List[Tile]], T: float) -> float:
 
     """
     N = len(tiles)
-    K = max(len(t) for t in tiles.values())
+    K = max(len(t) for t in tiles)
 
     M_curr: List[float] = [0] * K
 
@@ -50,14 +50,14 @@ def minimum_free_energy(tiles: Dict[int, List[Tile]], T: float) -> float:
 
 
 
-def minimum_free_energy_configuration(tiles: Dict[int, List[Tile]], T: float) -> List[Tile]:
+def minimum_free_energy_configuration(tiles: List[List[Tile]], T: float) -> List[Tile]:
     """
 
         finds the configuration with the Minimum Free Energy of the provided tileset
 
         Parameters
         ----------
-        tiles: Dict[int, List[Tile]]
+        tiles: List[List[Tile]]
             the tileset of the computation
         T: float
             the temperature in Kelvin
@@ -69,7 +69,7 @@ def minimum_free_energy_configuration(tiles: Dict[int, List[Tile]], T: float) ->
 
     """
     N = len(tiles)
-    K = max(len(t) for t in tiles.values())
+    K = max(len(t) for t in tiles)
     C = []
 
     M_curr: List[float] = [0] * K
@@ -97,14 +97,14 @@ def minimum_free_energy_configuration(tiles: Dict[int, List[Tile]], T: float) ->
 
 
 
-def minimum_free_energy_path(tiles: Dict[int, List[Tile]], T: float) -> List[Tile]:
+def minimum_free_energy_path(tiles: List[List[Tile]], T: float) -> List[Tile]:
     """
 
         finds the path of the Minimum Free Energy of the provided tileset
 
         Parameters
         ----------
-        tiles: Dict[int, List[Tile]]
+        tiles: List[List[Tile]]
             the tileset of the computation
         T: float
             the temperature in Kelvin
@@ -116,7 +116,7 @@ def minimum_free_energy_path(tiles: Dict[int, List[Tile]], T: float) -> List[Til
 
     """
     N = len(tiles)
-    K = max(len(t) for t in tiles.values())
+    K = max(len(t) for t in tiles)
     P = []
 
     M_curr: List[float] = [0] * K
@@ -146,14 +146,14 @@ def minimum_free_energy_path(tiles: Dict[int, List[Tile]], T: float) -> List[Til
 
 
 
-def partition_function(tiles: Dict[int, List[Tile]], T: float) -> float:
+def partition_function(tiles: List[List[Tile]], T: float) -> float:
     """
 
         calculate the Partition Function of the tileset
 
         Parameters
         ----------
-        tiles: Dict[int, List[Tile]]
+        tiles: List[List[Tile]]
             the tileset of the computation
         T: float
             the temperature in Kelvin
@@ -165,7 +165,7 @@ def partition_function(tiles: Dict[int, List[Tile]], T: float) -> float:
 
     """
     N = len(tiles)
-    K = max(len(t) for t in tiles.values())
+    K = max(len(t) for t in tiles)
     S = 0
     Z = 1
 

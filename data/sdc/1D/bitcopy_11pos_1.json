@@ -1,5 +1,5 @@
-{
-    "0": [
+[
+    [
         {
             "layer": 0,
             "strand": "TCTTTCCAGAGCCTAATTTGCCAG GGCTTGGAAAGA",
@@ -12,7 +12,7 @@
             "__classname__": "Tile"
         }
     ],
-    "1": [
+    [
         {
             "layer": 1,
             "strand": "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG",
@@ -36,7 +36,7 @@
             "__classname__": "Tile"
         }
     ],
-    "2": [
+    [
         {
             "layer": 2,
             "strand": "CTCATCCTGACC ATAAATATTCATTGAATCCCCCTC GCTGAGAAGAGG",
@@ -60,7 +60,7 @@
             "__classname__": "Tile"
         }
     ],
-    "3": [
+    [
         {
             "layer": 3,
             "strand": "CCTCTTCTCAGC AAATGCTTTAAACAGTTCAGAAAA GGTCAGGATGAG",
@@ -84,7 +84,7 @@
             "__classname__": "Tile"
         }
     ],
-    "4": [
+    [
         {
             "layer": 4,
             "strand": "CTCATCCTGACC CGAGAATGACCATAAATCAAAAAT GCTGAGAAGAGG",
@@ -108,7 +108,7 @@
             "__classname__": "Tile"
         }
     ],
-    "5": [
+    [
         {
             "layer": 5,
             "strand": "CCTCTTCTCAGC CAGGTCTTTACCCTGACTATTATA GGTCAGGATGAG",
@@ -132,7 +132,7 @@
             "__classname__": "Tile"
         }
     ],
-    "6": [
+    [
         {
             "layer": 6,
             "strand": "CTCATCCTGACC GTCAGAAGCAAAGCGGATTGCATC GCTGAGAAGAGG",
@@ -156,7 +156,7 @@
             "__classname__": "Tile"
         }
     ],
-    "7": [
+    [
         {
             "layer": 7,
             "strand": "CCTCTTCTCAGC AAAAAGATTAAGAGGAAGCCCGAA GGTCAGGATGAG",
@@ -180,7 +180,7 @@
             "__classname__": "Tile"
         }
     ],
-    "8": [
+    [
         {
             "layer": 8,
             "strand": "CTCATCCTGACC AGACTTCAAATATCGCGTTTTAAT GCTGAGAAGAGG",
@@ -204,7 +204,7 @@
             "__classname__": "Tile"
         }
     ],
-    "9": [
+    [
         {
             "layer": 9,
             "strand": "CCTCTTCTCAGC TCGAGCTTCAAAGCGAACCAGACC GGTCAGGATGAG",
@@ -228,7 +228,7 @@
             "__classname__": "Tile"
         }
     ],
-    "10": [
+    [
         {
             "layer": 10,
             "strand": "CTCATCCTGACC GGAAGCAAACTCCAACAGGTCAGG GCTGAGAAGAGG",
@@ -252,7 +252,7 @@
             "__classname__": "Tile"
         }
     ],
-    "11": [
+    [
         {
             "layer": 11,
             "strand": "CCTCTTCTCAGC ATTAGAGAGTACCTTTAATTGCTC GGGTAGTGTGGAGAGGTGGG",
@@ -276,4 +276,4 @@
             "__classname__": "Tile"
         }
     ]
-}
+]

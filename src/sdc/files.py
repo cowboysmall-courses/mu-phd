@@ -1,17 +1,19 @@
 
 import json
 
+from typing import List
+
 from sdc.tile import Tile
 
 
-def write_sdc_tileset(path: str, tileset: dict) -> None:
+def write_sdc_tileset(path: str, tileset: List) -> None:
     with open(path, "w") as f:
         json.dump(tileset, f, indent = 4, cls = TileEncoder)
 
-def read_sdc_tileset(path: str) -> dict:
+def read_sdc_tileset(path: str) -> List:
     with open(path, "r") as f:
         loaded = json.load(f, object_hook = sdc_decoder)
-    return {int(key): loaded[key] for key in loaded.keys()}
+    return loaded
 
 
 

@@ -1,5 +1,5 @@
-{
-    "0": [
+[
+    [
         {
             "layer": 0,
             "strand": "TCTTTCCAGAGCCTAATTTGCCAG GGCTTGGAAAGA",
@@ -12,7 +12,7 @@
             "__classname__": "Tile"
         }
     ],
-    "1": [
+    [
         {
             "layer": 1,
             "strand": "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG",
@@ -36,7 +36,7 @@
             "__classname__": "Tile"
         }
     ],
-    "2": [
+    [
         {
             "layer": 2,
             "strand": "CTCATCCTGACC ATAAATATTCATTGAATCCCCCTC GCTGAGAAGAGG",
@@ -60,7 +60,7 @@
             "__classname__": "Tile"
         }
     ],
-    "3": [
+    [
         {
             "layer": 3,
             "strand": "CCTCTTCTCAGC AAATGCTTTAAACAGTTCAGAAAA GGGTAGTGTGGAGAGGTGGG",
@@ -84,4 +84,4 @@
             "__classname__": "Tile"
         }
     ]
-}
+]

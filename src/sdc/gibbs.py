@@ -115,7 +115,7 @@ def gibbs_rl(tile_left: Tile, tile_right: Tile, T: float) -> float:
             the Gibbs Free Energy of binding
 
     """
-    return 0 if tile_right.left() == "" else free_energy(tile_left.right(), tile_right.left()[::-1], T)
+    return free_energy(tile_left.right(), tile_right.left()[::-1], T)
 
 
 def gibbs_m(tile: Tile, T: float) -> float:
@@ -137,7 +137,7 @@ def gibbs_m(tile: Tile, T: float) -> float:
             the Gibbs Free Energy of binding
 
     """
-    return 0 if tile.middle() == "" else free_energy(tile.middle(), tile.middle_c(), T)
+    return free_energy(tile.middle(), tile.middle_c(), T)
 
 
 def gibbs_assoc(T:float) -> float:
