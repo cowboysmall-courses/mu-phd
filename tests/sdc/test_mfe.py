@@ -37,55 +37,82 @@ TK  = Tile(11, "TCTTTCCAAGCC ATTAGAGAGTACCTTTAATTGCTC", (12, 24, 0))            
 
 
 def test_partition_function__bitcopy_4pos_0():
-    assert math.isclose(partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37), 53.719, abs_tol = 0.001)
+    pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
+    assert math.isclose(pf, 53.719, abs_tol = 0.001)
 
 def test_partition_function__bitcopy_4pos_1():
-    assert math.isclose(partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37), 53.727, abs_tol = 0.001)
+    pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37)
+    assert math.isclose(pf, 53.727, abs_tol = 0.001)
+
+
 
 def test_partition_function__bitcopy_11pos_0():
-    assert math.isclose(partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json"), 273.15 + 37), 361526.965, abs_tol = 0.001)
+    pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json"), 273.15 + 37)
+    assert math.isclose(pf, 361526.965, abs_tol = 0.001)
 
 def test_partition_function__bitcopy_11pos_1():
-    assert math.isclose(partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37), 361577.024, abs_tol = 0.001)
+    pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37)
+    assert math.isclose(pf, 361577.024, abs_tol = 0.001)
+
 
 
 
 def test_minimum_free_energy__bitcopy_4pos_0():
-    assert math.isclose(minimum_free_energy(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37), -152.454, abs_tol = 0.001)
+    mfe = minimum_free_energy(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
+    assert math.isclose(mfe, -152.454, abs_tol = 0.001)
 
 def test_minimum_free_energy__bitcopy_4pos_1():
-    assert math.isclose(minimum_free_energy(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37), -152.103, abs_tol = 0.001)
+    mfe = minimum_free_energy(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37)
+    assert math.isclose(mfe, -152.103, abs_tol = 0.001)
+
+
 
 def test_minimum_free_energy__bitcopy_11pos_0():
-    assert math.isclose(minimum_free_energy(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json"), 273.15 + 37), -484.441, abs_tol = 0.001)
+    mfe = minimum_free_energy(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json"), 273.15 + 37)
+    assert math.isclose(mfe, -484.441, abs_tol = 0.001)
 
 def test_minimum_free_energy__bitcopy_11pos_1():
-    assert math.isclose(minimum_free_energy(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37), -483.219, abs_tol = 0.001)
+    mfe = minimum_free_energy(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37)
+    assert math.isclose(mfe, -483.219, abs_tol = 0.001)
+
 
 
 
 def test_minimum_free_energy_configuration__bitcopy_4pos_0():
-    assert minimum_free_energy_configuration(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37) == [TA0, TB0, TC0, TDQ]
+    configuration = minimum_free_energy_configuration(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
+    assert configuration == [TA0, TB0, TC0, TDQ]
 
 def test_minimum_free_energy_configuration__bitcopy_4pos_1():
-    assert minimum_free_energy_configuration(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37) == [TA1, TB1, TC1, TD]
+    configuration = minimum_free_energy_configuration(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37)
+    assert configuration == [TA1, TB1, TC1, TD]
+
+
 
 def test_minimum_free_energy_configuration__bitcopy_11pos_0():
-    assert minimum_free_energy_configuration(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json"), 273.15 + 37) == [TA0, TB0, TC0, TD0, TE0, Tf0, TF0, TG0, TH0, TI0, TJ0, TKQ]
+    configuration = minimum_free_energy_configuration(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json"), 273.15 + 37)
+    assert configuration == [TA0, TB0, TC0, TD0, TE0, Tf0, TF0, TG0, TH0, TI0, TJ0, TKQ]
 
 def test_minimum_free_energy_configuration__bitcopy_11pos_1():
-    assert minimum_free_energy_configuration(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37) == [TA1, TB1, TC1, TD1, TE1, Tf1, TF1, TG1, TH1, TI1, TJ1, TK]
+    configuration = minimum_free_energy_configuration(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37)
+    assert configuration == [TA1, TB1, TC1, TD1, TE1, Tf1, TF1, TG1, TH1, TI1, TJ1, TK]
+
 
 
 
 def test_minimum_free_energy_path__bitcopy_4pos_0():
-    assert minimum_free_energy_path(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37) == [((0, 0), (1, 0)), ((1, 0), (2, 0)), ((2, 0), (3, 0))]
+    path = minimum_free_energy_path(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
+    assert path == [((0, 0), (1, 0)), ((1, 0), (2, 0)), ((2, 0), (3, 0))]
 
 def test_minimum_free_energy_path__bitcopy_4pos_1():
-    assert minimum_free_energy_path(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37) == [((0, 0), (1, 1)), ((1, 1), (2, 1)), ((2, 1), (3, 1))]
+    path = minimum_free_energy_path(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37)
+    assert path == [((0, 0), (1, 1)), ((1, 1), (2, 1)), ((2, 1), (3, 1))]
+
+
 
 def test_minimum_free_energy_path__bitcopy_11pos_0():
-    assert minimum_free_energy_path(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json"), 273.15 + 37) == [((0, 0), (1, 0)), ((1, 0), (2, 0)), ((2, 0), (3, 0)), ((3, 0), (4, 0)), ((4, 0), (5, 0)), ((5, 0), (6, 0)), ((6, 0), (7, 0)), ((7, 0), (8, 0)), ((8, 0), (9, 0)), ((9, 0), (10, 0)), ((10, 0), (11, 0))]
+    path = minimum_free_energy_path(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json"), 273.15 + 37)
+    assert path == [((0, 0), (1, 0)), ((1, 0), (2, 0)), ((2, 0), (3, 0)), ((3, 0), (4, 0)), ((4, 0), (5, 0)), ((5, 0), (6, 0)), ((6, 0), (7, 0)), ((7, 0), (8, 0)), ((8, 0), (9, 0)), ((9, 0), (10, 0)), ((10, 0), (11, 0))]
 
 def test_minimum_free_energy_path__bitcopy_11pos_1():
-    assert minimum_free_energy_path(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37) == [((0, 0), (1, 1)), ((1, 1), (2, 1)), ((2, 1), (3, 1)), ((3, 1), (4, 1)), ((4, 1), (5, 1)), ((5, 1), (6, 1)), ((6, 1), (7, 1)), ((7, 1), (8, 1)), ((8, 1), (9, 1)), ((9, 1), (10, 1)), ((10, 1), (11, 1))]
+    path = minimum_free_energy_path(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37)
+    assert path == [((0, 0), (1, 1)), ((1, 1), (2, 1)), ((2, 1), (3, 1)), ((3, 1), (4, 1)), ((4, 1), (5, 1)), ((5, 1), (6, 1)), ((6, 1), (7, 1)), ((7, 1), (8, 1)), ((8, 1), (9, 1)), ((9, 1), (10, 1)), ((10, 1), (11, 1))]

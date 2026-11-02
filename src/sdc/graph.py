@@ -4,7 +4,7 @@ from sdc.tile import Tile
 
 from collections import defaultdict
 
-from typing import Callable, Dict, List, Tuple
+from typing import Callable, Dict, Generator, List, Tuple
 
 import functools
 
@@ -21,20 +21,27 @@ class SDCGraph:
         self._edge_weights: Dict[Tile, Dict[Tile, Callable]] = defaultdict(dict)
         self._node_weights: Dict[Tile, Callable] = {}
 
+        self._nodes: List[Tile] = []
+
         # preprocess the node / edge weights
         for u in tiles[0]:
             self._node_weights[u] = gibbs_m_pa(u)
+            self._nodes.append(u)
 
         for l in range(len(tiles) - 1):
             for u in tiles[l]:
                 for v in tiles[l + 1]:
                     self._edge_weights[u][v] = gibbs_rl_pa(u, v)
                     self._node_weights[v]    = gibbs_m_pa(v)
+                    self._nodes.append(v)
 
 
 
-    def get_tiles(self) -> List[List[Tile]]:
+    def get_tileset(self) -> List[List[Tile]]:
         return self.tiles[:-1]
+
+    def get_nodes(self) -> List[Tile]:
+        return self._nodes
 
     def get_layer(self, layer: int) -> List[Tile]:
         if layer == len(self.tiles):
@@ -50,29 +57,30 @@ class SDCGraph:
         return self._edge_weights[left][right](T)
 
 
+    def get_edges(self, layer: int) -> Generator[Tuple[Tile, Tile]]:
+        for u in self.get_layer(layer):
+            for v in self.get_layer(layer + 1):
+                yield (u, v)
+
+
 
     def shortest_path(self, source: Tile, T: float) -> Tuple[float, List[Tile]]:
         if source.get_layer() != 0 or source not in self.tiles[0]:
             raise ValueError("source tile should be from layer 0")
 
-        # distance map with
-        dist = {n: float('inf') for n in self._node_weights}
-        dist[source] = 0
-
-        # predecessor map and path list
         pred = {}
         path = []
 
-        for l in range(len(self.tiles) - 1):
-            for u in self.get_layer(l):
-                for v in self.get_layer(l + 1):
-                    uv = self.get_edge_weight(u, v, T)
-                    # relax edge u -> v
-                    if dist[v] > dist[u] + uv:
-                        dist[v] = dist[u] + uv
-                        pred[v] = u
+        dist = {n: float('inf') for n in self.get_nodes()}
+        dist[source] = 0
 
-        # sum free energy + construct favourable path
+        for l in range(len(self.tiles) - 1):
+            for u, v in self.get_edges(l):
+                uv = self.get_edge_weight(u, v, T)
+                if dist[v] > dist[u] + uv:
+                    dist[v] = dist[u] + uv
+                    pred[v] = u
+
         node = self._dummy
         mfe  = dist[self._dummy]
 
