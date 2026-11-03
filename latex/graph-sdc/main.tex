@@ -21,7 +21,7 @@
 
 \begin{frame}
 \frametitle{Questions}
-As I was implementing Ahmed's \textit{minimum free energy} algorithm in
+While implementing Ahmed's \textit{minimum free energy} algorithm in
 Python, I started to consider the possibility that the calculated value
 may have come from a configuration different to the
 \textit{target configuration}.
@@ -171,7 +171,7 @@ The Shortest Path through a Layered DAG
 \end{columns}
 \hfill \break
 
-Note: for a Layered DAG, Layers induce a \textit{topological ordering}, so
+Note: for a Layered DAG, the layers induce a \textit{topological ordering}, so
 sorting is unnecessary.
 \end{frame}
 
@@ -215,10 +215,10 @@ There are $k_{i}$ competing tiles in $L_{i}$
 
 \begin{itemize}
     \item $k = \max_{i}(k_{i})$ tiles per position
-    \item $k^2$ possible bindings between tiles in consecutive positions
+    \item $\therefore $ at most $k^2$ possible bindings between tiles in consecutive positions
     \item $N$ positions
     % \item $N - 1$ binding between positions
-    \item $(N - 1)k^2$ possible bindings between tiles in all positions
+    \item $(N - 1)k^2$ possible bindings between tiles across all positions
     \item $\therefore \text{ no more than } (N - 1)k^2$ edges
     \item $\therefore \mathcal{O}(E) = \mathcal{O}(Nk^2)$
 \end{itemize}
