@@ -57,7 +57,7 @@ class SDCGraph:
         return self._edge_weights[left][right](T)
 
 
-    def get_edges(self, layer: int) -> Generator[Tuple[Tile, Tile]]:
+    def get_outgoing_edges(self, layer: int) -> Generator[Tuple[Tile, Tile]]:
         for u in self.get_layer(layer):
             for v in self.get_layer(layer + 1):
                 yield (u, v)
@@ -75,7 +75,7 @@ class SDCGraph:
         dist[source] = 0
 
         for l in range(len(self.tiles) - 1):
-            for u, v in self.get_edges(l):
+            for u, v in self.get_outgoing_edges(l):
                 uv = self.get_edge_weight(u, v, T)
                 if dist[v] > dist[u] + uv:
                     dist[v] = dist[u] + uv
