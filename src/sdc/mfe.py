@@ -8,6 +8,10 @@ from typing import Dict, List
 import math
 
 
+def target_configuration_probability(tiles: List[List[Tile]], T: float) -> float:
+    return math.exp( -(minimum_free_energy(tiles, T)) / (R_j * T) ) / partition_function(tiles, T)
+
+
 def minimum_free_energy(tiles: List[List[Tile]], T: float) -> float:
     """
 

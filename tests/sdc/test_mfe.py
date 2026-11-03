@@ -2,7 +2,7 @@
 import math
 
 from sdc.files import read_sdc_tileset
-from sdc.mfe import minimum_free_energy, minimum_free_energy_configuration, minimum_free_energy_path, partition_function
+from sdc.mfe import minimum_free_energy, minimum_free_energy_configuration, minimum_free_energy_path, partition_function, target_configuration_probability
 from sdc.tile import Tile
 
 
@@ -33,6 +33,12 @@ TJ0 = Tile(10, "CTCATCCTGACC GGAAGCAAACTCCAACAGGTCAGG GCTGAGAAGAGG")            
 TJ1 = Tile(10, "AATGCCACCATT GGAAGCAAACTCCAACAGGTCAGG GGCTTGGAAAGA")                       # 2J2*
 TKQ = Tile(11, "CCTCTTCTCAGC ATTAGAGAGTACCTTTAATTGCTC GGGTAGTGTGGAGAGGTGGG", (12, 24, 20)) # 0KQ*
 TK  = Tile(11, "TCTTTCCAAGCC ATTAGAGAGTACCTTTAATTGCTC", (12, 24, 0))                       # 2K
+
+
+
+def test_target_configuration_probability__bitcopy_4pos_0():
+    probability = target_configuration_probability(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
+    assert math.isclose(probability, 0.0197490687742259, abs_tol = 0.001)
 
 
 
