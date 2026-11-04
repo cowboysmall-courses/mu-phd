@@ -1,19 +1,20 @@
 \documentclass[aspectratio=1610]{beamer}
-\beamertemplatenavigationsymbolsempty
+\beamertemplatenavigationsymbolsempty{}
 \setbeamertemplate{footline}[frame number]
 \graphicspath{ {./images/} }
 \usetheme{Rochester}
 
-\usepackage{graphicx} % Required for inserting images
+\usepackage{graphicx}
+\usepackage{booktabs}
 
-\title{1D SDC - a Layered DAG}
+\title{1D SDC --- a Layered DAG}
 \author{Jerry Kiely}
 \date{October 2026}
 
 \begin{document}
 
 \begin{frame}
-\titlepage
+\titlepage{}
 \end{frame}
 
 
@@ -47,11 +48,11 @@ The \textit{dynamic programming} approach to calculating the
 \newline
 
 \begin{itemize}
-    \item $N$ positions
-    \item $\leq k$ tiles per position
-    \item $\mathcal{O}(Nk^2)$
+    \item \(N\) positions
+    \item \(\leq k\) tiles per position
+    \item \(\mathcal{O}(Nk^2)\)
 \end{itemize}
-\hfill \break
+\hfill \break{}
 
 The algorithm calculates the \textit{minimum free energy}, but does not
 provide the configuration that resulted in the \textit{minimum free energy}.
@@ -120,11 +121,11 @@ Why is a Layered DAG relevant to 1D SDC?
 \begin{columns}
     \column{0.75\textwidth}
         \begin{itemize}
-            \item Competing tiles occupy Layers ($L_i$)
-            \item Layers are ordered ($L_i < L_j$ when $i < j$)
-            \item A tile from $L_i$ binds with a tile from $L_{i + 1}$
-            \item Edges connect tiles from layer $i$ to layer $i + 1$
-            \item Edges connect tiles with weight $\Delta G (T, r^m_i, l^n_{i + 1})$
+            \item Competing tiles occupy Layers (\(L_i\))
+            \item Layers are ordered (\(L_i < L_j\) when \(i < j\))
+            \item A tile from \(L_i\) binds with a tile from \(L_{i + 1}\)
+            \item Edges connect tiles from layer \(i\) to layer \(i + 1\)
+            \item Edges connect tiles with weight \(\Delta G (T, r^m_i, l^n_{i + 1})\)
         \end{itemize}
     \column{0.25\textwidth}
         \begin{figure}
@@ -169,7 +170,7 @@ The Shortest Path through a Layered DAG
             \includegraphics[scale=0.65]{Edge Relaxation}
         \end{figure}
 \end{columns}
-\hfill \break
+\hfill \break{}
 
 Note: for a Layered DAG, the layers induce a \textit{topological ordering}, so
 sorting is unnecessary.
@@ -186,22 +187,22 @@ Comparison of approaches:
 \begin{center}
     \setlength{\tabcolsep}{10pt}
     \renewcommand{\arraystretch}{1.5}
-    \begin{tabular}{ |c|c|c| }
-        \hline
+    \begin{tabular}{ c c c }
+        \toprule
         & Time Complexity & Space Complexity \\
-        \hline
-        DP & $\mathcal{O}(Nk^2)$ & $\mathcal{O}(k)$ \\
-        \hline
-        DAG & $\mathcal{O}(V + E)$ & $\mathcal{O}(V + E)$ \\
-        \hline
-        Layered DAG & $\mathcal{O}(E)$ & $\mathcal{O}(V + E)$ \\
-        \hline
+        \midrule
+        DP & \(\mathcal{O}(Nk^2)\) & \(\mathcal{O}(k)\) \\
+        \midrule
+        DAG & \(\mathcal{O}(V + E)\) & \(\mathcal{O}(V + E)\) \\
+        \midrule
+        Layered DAG & \(\mathcal{O}(E)\) & \(\mathcal{O}(V + E)\) \\
+        \bottomrule
     \end{tabular}
 \end{center}
-\hfill \break
+\hfill \break{}
 
 Note: For the Layered DAG, with respect to space complexity, we need
-$E$ (the number of edges) space to hold the edges, and $V$ (the number
+\(E\) (the number of edges) space to hold the edges, and \(V\) (the number
 of vertices) space to hold the reconstructed path itself.
 \end{frame}
 
@@ -210,17 +211,17 @@ of vertices) space to hold the reconstructed path itself.
 
 \begin{frame}
 \frametitle{A Note on Edges}
-There are $k_{i}$ competing tiles in $L_{i}$
+There are \(k_{i}\) competing tiles in \(L_{i}\)
 \newline
 
 \begin{itemize}
-    \item $k = \max_{i}(k_{i})$ tiles per position
-    \item $\therefore $ at most $k^2$ possible bindings between tiles in consecutive positions
-    \item $N$ positions
+    \item \(k = \max_{i}(k_{i})\) tiles per position
+    \item \(\therefore \) at most \(k^2\) possible bindings between tiles in consecutive positions
+    \item \(N\) positions
     % \item $N - 1$ binding between positions
-    \item $(N - 1)k^2$ possible bindings between tiles across all positions
-    \item $\therefore \text{ no more than } (N - 1)k^2$ edges
-    \item $\therefore \mathcal{O}(E) = \mathcal{O}(Nk^2)$
+    \item \((N - 1)k^2\) possible bindings between tiles across all positions
+    \item \(\therefore \) no more than \((N - 1)k^2\) edges
+    \item \(\therefore \mathcal{O}(E) = \mathcal{O}(Nk^2)\)
 \end{itemize}
 
 \end{frame}
@@ -229,7 +230,7 @@ There are $k_{i}$ competing tiles in $L_{i}$
 
 
 \begin{frame}
-\frametitle{MFE - Code}
+\frametitle{MFE --- Code}
 
 \begin{figure}
     \includegraphics[scale=0.65]{MFE Code}
@@ -241,7 +242,7 @@ There are $k_{i}$ competing tiles in $L_{i}$
 
 
 \begin{frame}
-\frametitle{MFE - Test}
+\frametitle{MFE --- Test}
 
 \begin{figure}
     \includegraphics[scale=0.5]{MFE}
@@ -253,7 +254,7 @@ There are $k_{i}$ competing tiles in $L_{i}$
 
 
 \begin{frame}
-\frametitle{Shortest Path - Code}
+\frametitle{Shortest Path --- Code}
 
 \begin{figure}
     \includegraphics[scale=0.65]{Shortest Path Code}
@@ -265,7 +266,7 @@ There are $k_{i}$ competing tiles in $L_{i}$
 
 
 \begin{frame}
-\frametitle{Shortest Path - Test}
+\frametitle{Shortest Path --- Test}
 
 \begin{figure}
     \includegraphics[scale=0.5]{Shortest Path}
