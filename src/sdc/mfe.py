@@ -36,7 +36,7 @@ def minimum_free_energy(tiles: List[List[Tile]], T: float) -> float:
     M_curr: List[float] = [0] * K
 
     for j in range(len(tiles[0])):
-        M_curr[j] = gibbs_m(tiles[0][j], T)
+        M_curr[j] = gibbs_m(tiles[0][j], T) + gibbs_assoc(T)
 
     for i in range(1, N):
         M_prev = M_curr
@@ -78,14 +78,14 @@ def minimum_free_energy_configuration(tiles: List[List[Tile]], T: float) -> List
     M: List[List[float]] = [[0 for _ in range(K)] for _ in range(N)]
 
     for j in range(len(tiles[0])):
-        M[0][j] = gibbs_m(tiles[0][j], T)
+        M[0][j] = gibbs_m(tiles[0][j], T) + gibbs_assoc(T)
 
     for i in range(1, N):
         for j in range(len(tiles[i])):
             M_temp = []
 
-            for k in range(len(tiles[i - 1])):
-                M_temp.append(M[i - 1][k] + gibbs_rl(tiles[i - 1][k], tiles[i][j], T))
+            for m in range(len(tiles[i - 1])):
+                M_temp.append(M[i - 1][m] + gibbs_rl(tiles[i - 1][m], tiles[i][j], T))
 
             M[i][j] = min(M_temp) + gibbs_m(tiles[i][j], T) + gibbs_assoc(T)
 
