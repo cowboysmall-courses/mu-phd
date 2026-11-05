@@ -9,7 +9,8 @@
                 12
             ],
             "concentration": 100000,
-            "__classname__": "Tile"
+            "__classname__": "Tile",
+            "__modulename__": "sdc.tile"
         },
         {
             "layer": 0,
@@ -20,7 +21,8 @@
                 12
             ],
             "concentration": 100000,
-            "__classname__": "Tile"
+            "__classname__": "Tile",
+            "__modulename__": "sdc.tile"
         }
     ],
     [
@@ -33,7 +35,8 @@
                 12
             ],
             "concentration": 100000,
-            "__classname__": "Tile"
+            "__classname__": "Tile",
+            "__modulename__": "sdc.tile"
         },
         {
             "layer": 1,
@@ -44,7 +47,8 @@
                 12
             ],
             "concentration": 100000,
-            "__classname__": "Tile"
+            "__classname__": "Tile",
+            "__modulename__": "sdc.tile"
         }
     ],
     [
@@ -57,7 +61,8 @@
                 12
             ],
             "concentration": 100000,
-            "__classname__": "Tile"
+            "__classname__": "Tile",
+            "__modulename__": "sdc.tile"
         },
         {
             "layer": 2,
@@ -68,7 +73,8 @@
                 12
             ],
             "concentration": 100000,
-            "__classname__": "Tile"
+            "__classname__": "Tile",
+            "__modulename__": "sdc.tile"
         }
     ],
     [
@@ -81,7 +87,8 @@
                 20
             ],
             "concentration": 100000,
-            "__classname__": "Tile"
+            "__classname__": "Tile",
+            "__modulename__": "sdc.tile"
         },
         {
             "layer": 3,
@@ -92,7 +99,8 @@
                 0
             ],
             "concentration": 100000,
-            "__classname__": "Tile"
+            "__classname__": "Tile",
+            "__modulename__": "sdc.tile"
         }
     ]
 ]

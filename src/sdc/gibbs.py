@@ -1,6 +1,6 @@
 
 from sdc.tile import Tile
-from sdc import k_f, R_j
+from sdc import k_f, R_j, u_0
 
 from utils.dna import is_self_complementary
 
@@ -91,6 +91,30 @@ def rate_detach(left: Tile, tile: Tile, right: Tile, T: float) -> float:
 
     """
     return k_f * math.exp( (gibbs_rl(left, tile, T) + gibbs_m(tile, T) + gibbs_rl(tile, right, T)) / (R_j * T) )
+
+
+
+
+def mu(tile: Tile, T: float) -> float:
+    """
+
+        calculate the Chemical Potential of a tile
+
+        Parameters
+        ----------
+        tile: Tile
+            the provided tile
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        float
+            the Chemical Potential of a tile
+
+    """
+    return R_j * T * math.log(tile.get_concentration() / u_0)
+
 
 
 

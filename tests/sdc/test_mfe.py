@@ -2,7 +2,7 @@
 import math
 
 from sdc.files import read_sdc_tileset
-from sdc.mfe import minimum_free_energy, minimum_free_energy_configuration, minimum_free_energy_path, partition_function, target_configuration_probability
+from sdc.mfe import minimum_free_energy, minimum_free_energy_configuration, partition_function, target_configuration_probability
 from sdc.tile import Tile
 
 
@@ -38,27 +38,27 @@ TK  = Tile(11, "TCTTTCCAAGCC ATTAGAGAGTACCTTTAATTGCTC", (12, 24, 0))            
 
 def test_target_configuration_probability__bitcopy_4pos_0():
     probability = target_configuration_probability(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
-    assert math.isclose(probability, 0.0197490687742259, abs_tol = 0.001)
+    assert math.isclose(probability, 0.019, abs_tol = 0.001)
 
 
 
 def test_partition_function__bitcopy_4pos_0():
     pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
-    assert math.isclose(pf, 53.719, abs_tol = 0.001)
+    assert math.isclose(pf, 54.730, abs_tol = 0.001)
 
 def test_partition_function__bitcopy_4pos_1():
     pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37)
-    assert math.isclose(pf, 53.727, abs_tol = 0.001)
+    assert math.isclose(pf, 54.738, abs_tol = 0.001)
 
 
 
 def test_partition_function__bitcopy_11pos_0():
     pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json"), 273.15 + 37)
-    assert math.isclose(pf, 361526.965, abs_tol = 0.001)
+    assert math.isclose(pf, 361527.976, abs_tol = 0.001)
 
 def test_partition_function__bitcopy_11pos_1():
     pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37)
-    assert math.isclose(pf, 361577.024, abs_tol = 0.001)
+    assert math.isclose(pf, 361578.034, abs_tol = 0.001)
 
 
 
@@ -101,24 +101,3 @@ def test_minimum_free_energy_configuration__bitcopy_11pos_0():
 def test_minimum_free_energy_configuration__bitcopy_11pos_1():
     configuration = minimum_free_energy_configuration(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37)
     assert configuration == [TA1, TB1, TC1, TD1, TE1, Tf1, TF1, TG1, TH1, TI1, TJ1, TK]
-
-
-
-
-def test_minimum_free_energy_path__bitcopy_4pos_0():
-    path = minimum_free_energy_path(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
-    assert path == [((0, 0), (1, 0)), ((1, 0), (2, 0)), ((2, 0), (3, 0))]
-
-def test_minimum_free_energy_path__bitcopy_4pos_1():
-    path = minimum_free_energy_path(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37)
-    assert path == [((0, 0), (1, 1)), ((1, 1), (2, 1)), ((2, 1), (3, 1))]
-
-
-
-def test_minimum_free_energy_path__bitcopy_11pos_0():
-    path = minimum_free_energy_path(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json"), 273.15 + 37)
-    assert path == [((0, 0), (1, 0)), ((1, 0), (2, 0)), ((2, 0), (3, 0)), ((3, 0), (4, 0)), ((4, 0), (5, 0)), ((5, 0), (6, 0)), ((6, 0), (7, 0)), ((7, 0), (8, 0)), ((8, 0), (9, 0)), ((9, 0), (10, 0)), ((10, 0), (11, 0))]
-
-def test_minimum_free_energy_path__bitcopy_11pos_1():
-    path = minimum_free_energy_path(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37)
-    assert path == [((0, 0), (1, 1)), ((1, 1), (2, 1)), ((2, 1), (3, 1)), ((3, 1), (4, 1)), ((4, 1), (5, 1)), ((5, 1), (6, 1)), ((6, 1), (7, 1)), ((7, 1), (8, 1)), ((8, 1), (9, 1)), ((9, 1), (10, 1)), ((10, 1), (11, 1))]

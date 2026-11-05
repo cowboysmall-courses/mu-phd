@@ -1,9 +1,9 @@
 
 from sdc.gibbs import gibbs_m, gibbs_rl, gibbs_assoc
 from sdc.tile import Tile
-from sdc import R_j, u_0
+from sdc import R_j
 
-from typing import Dict, List
+from typing import List
 
 import math
 
@@ -45,8 +45,8 @@ def minimum_free_energy(tiles: List[List[Tile]], T: float) -> float:
         for j in range(len(tiles[i])):
             M_temp = []
 
-            for k in range(len(tiles[i - 1])):
-                M_temp.append(M_prev[k] + gibbs_rl(tiles[i - 1][k], tiles[i][j], T))
+            for m in range(len(tiles[i - 1])):
+                M_temp.append(M_prev[m] + gibbs_rl(tiles[i - 1][m], tiles[i][j], T))
 
             M_curr[j] = min(M_temp) + gibbs_m(tiles[i][j], T) + gibbs_assoc(T)
 
@@ -74,79 +74,23 @@ def minimum_free_energy_configuration(tiles: List[List[Tile]], T: float) -> List
     """
     N = len(tiles)
     K = max(len(t) for t in tiles)
-    C = []
 
-    M_curr: List[float] = [0] * K
+    M: List[List[float]] = [[0 for _ in range(K)] for _ in range(N)]
 
     for j in range(len(tiles[0])):
-        M_curr[j] = gibbs_m(tiles[0][j], T)
-
-    C.append(tiles[0][M_curr.index(min(M_curr))])
+        M[0][j] = gibbs_m(tiles[0][j], T)
 
     for i in range(1, N):
-        M_prev = M_curr
-        M_curr = [0] * K
-
         for j in range(len(tiles[i])):
             M_temp = []
 
             for k in range(len(tiles[i - 1])):
-                M_temp.append(M_prev[k] + gibbs_rl(tiles[i - 1][k], tiles[i][j], T))
+                M_temp.append(M[i - 1][k] + gibbs_rl(tiles[i - 1][k], tiles[i][j], T))
 
-            M_curr[j] = min(M_temp) + gibbs_m(tiles[i][j], T) + gibbs_assoc(T)
+            M[i][j] = min(M_temp) + gibbs_m(tiles[i][j], T) + gibbs_assoc(T)
 
-        C.append(tiles[i][M_curr.index(min(M_curr))])
+    return [tiles[i][M[i].index(min(M[i]))] for i in range(len(M))]
 
-    return C
-
-
-
-def minimum_free_energy_path(tiles: List[List[Tile]], T: float) -> List[Tile]:
-    """
-
-        finds the path of the Minimum Free Energy of the provided tileset
-
-        Parameters
-        ----------
-        tiles: List[List[Tile]]
-            the tileset of the computation
-        T: float
-            the temperature in Kelvin
-
-        Returns
-        -------
-        List[Tile]
-            the path of the Minimum Free Energy of the provided tileset
-
-    """
-    N = len(tiles)
-    K = max(len(t) for t in tiles)
-    P = []
-
-    M_curr: List[float] = [0] * K
-
-    for j in range(len(tiles[0])):
-        M_curr[j] = gibbs_m(tiles[0][j], T)
-
-    for i in range(1, N):
-        M_prev = M_curr
-        M_curr = [0] * K
-        M_path = []
-
-        for j in range(len(tiles[i])):
-            M_temp = []
-            T_path = []
-
-            for k in range(len(tiles[i - 1])):
-                M_temp.append(M_prev[k] + gibbs_rl(tiles[i - 1][k], tiles[i][j], T))
-                T_path.append(((i - 1, k), (i, j)))
-
-            M_curr[j] = min(M_temp) + gibbs_m(tiles[i][j], T) + gibbs_assoc(T)
-            M_path.append(T_path[M_temp.index(min(M_temp))])
-
-        P.append(M_path[M_curr.index(min(M_curr))])
-
-    return P
 
 
 
@@ -178,6 +122,7 @@ def partition_function(tiles: List[List[Tile]], T: float) -> float:
 
     for j in range(len(tiles[0])):
         Z_curr[j] = math.exp( -(gibbs_m(tiles[0][j], T) + gibbs_assoc(T)) / (R_j * T) )
+        Z += Z_curr[j]
 
     for i in range(1, N):
         S += sum(Z_prev)
@@ -186,33 +131,13 @@ def partition_function(tiles: List[List[Tile]], T: float) -> float:
         Z_curr = [0] * K
 
         for j in range(len(tiles[i])):
-            Z_curr[j] = S + math.exp( -(gibbs_m(tiles[i][j], T) + gibbs_assoc(T)) / (R_j * T) )
+            Z_curr[j] = math.exp( -(gibbs_m(tiles[i][j], T) + gibbs_assoc(T)) / (R_j * T) )
 
-            for k in range(len(tiles[i - 1])):
-                Z_curr[j] += math.exp( -gibbs_rl(tiles[i - 1][k], tiles[i][j], T) / (R_j * T) ) * Z_prev[k]
+            for m in range(len(tiles[i - 1])):
+                Z_curr[j] += math.exp( -gibbs_rl(tiles[i - 1][m], tiles[i][j], T) / (R_j * T) ) * Z_prev[m]
+
+            Z_curr[j] += S
 
             Z += Z_curr[j]
 
     return Z
-
-
-
-def mu(tile: Tile, T: float) -> float:
-    """
-
-        calculate the Chemical Potential of a tile
-
-        Parameters
-        ----------
-        tile: Tile
-            the provided tile
-        T: float
-            the temperature in Kelvin
-
-        Returns
-        -------
-        float
-            the Chemical Potential of a tile
-
-    """
-    return R_j * T * math.log(tile.get_concentration() / u_0)
