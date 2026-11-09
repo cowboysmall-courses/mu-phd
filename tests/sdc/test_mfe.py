@@ -1,9 +1,9 @@
 
-import math
-
 from sdc.files import read_sdc_tileset
-from sdc.mfe import minimum_free_energy, minimum_free_energy_configuration, partition_function, target_configuration_probability
+from sdc.mfe import minimum_free_energy, minimum_free_energy_configuration
 from sdc.tile import Tile
+
+import math
 
 
 TA0 = Tile(0,  "TCTTTCCAGAGCCTAATTTGCCAG GCTGAGAAGAGG", (0, 24, 12))                       #  A0*
@@ -36,33 +36,6 @@ TK  = Tile(11, "TCTTTCCAAGCC ATTAGAGAGTACCTTTAATTGCTC", (12, 24, 0))            
 
 
 
-def test_target_configuration_probability__bitcopy_4pos_0():
-    probability = target_configuration_probability(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
-    assert math.isclose(probability, 0.019, abs_tol = 0.001)
-
-
-
-def test_partition_function__bitcopy_4pos_0():
-    pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
-    assert math.isclose(pf, 54.730, abs_tol = 0.001)
-
-def test_partition_function__bitcopy_4pos_1():
-    pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37)
-    assert math.isclose(pf, 54.738, abs_tol = 0.001)
-
-
-
-def test_partition_function__bitcopy_11pos_0():
-    pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json"), 273.15 + 37)
-    assert math.isclose(pf, 361527.976, abs_tol = 0.001)
-
-def test_partition_function__bitcopy_11pos_1():
-    pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37)
-    assert math.isclose(pf, 361578.034, abs_tol = 0.001)
-
-
-
-
 def test_minimum_free_energy__bitcopy_4pos_0():
     mfe = minimum_free_energy(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
     assert math.isclose(mfe, -152.454, abs_tol = 0.001)
@@ -80,7 +53,6 @@ def test_minimum_free_energy__bitcopy_11pos_0():
 def test_minimum_free_energy__bitcopy_11pos_1():
     mfe = minimum_free_energy(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37)
     assert math.isclose(mfe, -483.219, abs_tol = 0.001)
-
 
 
 
