@@ -80,8 +80,8 @@ def partition_function(tiles: List[List[Tile]], T: float) -> float:
 
     Z_curr: List[float] = [0] * K
     Z_prev: List[float] = [0] * K
+    Z_ptmp: float = 0
 
-    P = 0
     Z = 1
 
     for j in range(len(tiles[0])):
@@ -89,16 +89,18 @@ def partition_function(tiles: List[List[Tile]], T: float) -> float:
         Z += Z_curr[j]
 
     for i in range(1, N):
-        P += sum(Z_prev)
+        Z_ptmp += sum(Z_prev)
 
         Z_prev  = Z_curr
         Z_curr  = [0] * K
 
         for j in range(len(tiles[i])):
-            Z_temp = 0
+            Z_ctmp = 0
+
             for m in range(len(tiles[i - 1])):
-                Z_temp += math.exp( -gibbs_rl(tiles[i - 1][m], tiles[i][j], T) / (R_j * T) ) * Z_prev[m]
-            Z_curr[j] = (1 + Z_temp + P) * math.exp( -(gibbs_m(tiles[i][j], T) + gibbs_assoc(T)) / (R_j * T) )
+                Z_ctmp += math.exp( -gibbs_rl(tiles[i - 1][m], tiles[i][j], T) / (R_j * T) ) * Z_prev[m]
+
+            Z_curr[j] = (1 + Z_ctmp + Z_ptmp) * math.exp( -(gibbs_m(tiles[i][j], T) + gibbs_assoc(T)) / (R_j * T) )
 
             Z += Z_curr[j]
 
