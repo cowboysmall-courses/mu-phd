@@ -190,16 +190,3 @@ class Scaffold:
         position = self._position_index[tile.middle_c()]
         return self._bindings[position] is not None
 
-
-
-
-
-
-
-
-    # def mismatches(self, tile: Tile) -> int:
-    #     position = self._position_index[tile.middle_c()]
-    #     mismatches = 0
-    #     # if position > 0 and self._bindings[position - 1]:
-    #     #     mismatches += tile.mismatch_left(self._bindings[position - 1])
-    #     return mismatches

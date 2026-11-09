@@ -168,3 +168,11 @@ class Tile:
 
     def __hash__(self):
         return hash((self.layer, self.strand, self.layout, self.concentration))
+
+
+
+class NullTile(Tile):
+
+    def __init__(self, layer: int):
+        super().__init__(layer, "", layout = (0, 0, 0))
+

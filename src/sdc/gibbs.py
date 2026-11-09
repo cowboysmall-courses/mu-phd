@@ -1,10 +1,13 @@
 
-from sdc.tile import Tile
+from sdc.tile import NullTile, Tile
 from sdc import k_f, R_j, u_0
 
 from utils.dna import is_self_complementary
 
+from typing import Callable
+
 import math
+import functools
 
 
 WCDB = {
@@ -48,6 +51,8 @@ SYMC = (0,   -1.4)
 TATP = (2.2,  6.9)
 
 
+
+
 def rate_attach(tile: Tile) -> float:
     """
 
@@ -65,6 +70,7 @@ def rate_attach(tile: Tile) -> float:
 
     """
     return k_f * tile.get_concentration()
+
 
 
 
@@ -139,7 +145,40 @@ def gibbs_rl(tile_left: Tile, tile_right: Tile, T: float) -> float:
             the Gibbs Free Energy of binding
 
     """
+    if isinstance(tile_left, NullTile) or isinstance(tile_right, NullTile):
+        return 0
     return free_energy(tile_left.right(), tile_right.left()[::-1], T)
+
+
+
+
+def gibbs_rl_pa(l:Tile, r: Tile) -> Callable[[float], float]:
+    """
+
+        returns a function that calculates the Gibbs Free Energy of
+        binding two compute domains of consecutive tiles - partial application
+
+        Parameters
+        ----------
+        tile_left: Tile
+            the first tile
+        tile_right: Tile
+            the second tile
+
+        Returns
+        -------
+        Callable[[float], float]
+            A function that calculates the Gibbs Free Energy of binding
+            for a temperature T
+
+
+    """
+    @functools.cache
+    def gibbs_rl_T(T: float) -> float:
+        return gibbs_rl(l, r, T)
+    return gibbs_rl_T
+
+
 
 
 def gibbs_m(tile: Tile, T: float) -> float:
@@ -161,7 +200,37 @@ def gibbs_m(tile: Tile, T: float) -> float:
             the Gibbs Free Energy of binding
 
     """
+    if isinstance(tile, NullTile):
+        return 0
     return free_energy(tile.middle(), tile.middle_c(), T)
+
+
+
+
+def gibbs_m_pa(tile:Tile) -> Callable[[float], float]:
+    """
+
+        returns a function that calculates the Gibbs Free Energy of
+        binding to a scaffold domains - partial application
+
+        Parameters
+        ----------
+        tile: Tile
+            the tile to bind to the scaffold
+
+        Returns
+        -------
+        Callable[[float], float]
+            A function that calculates the Gibbs Free Energy of binding
+            for a temperature T
+
+    """
+    @functools.cache
+    def gibbs_m_T(T: float) -> float:
+        return gibbs_m(tile, T)
+    return gibbs_m_T
+
+
 
 
 def gibbs_assoc(T:float) -> float:
@@ -181,6 +250,7 @@ def gibbs_assoc(T:float) -> float:
 
     """
     return 0
+
 
 
 
@@ -259,8 +329,6 @@ def free_energy(S1: str, S2: str, T: float) -> float:
 
 
 
-
-
 def is_wc_pair(seq1: str, seq2: str) -> bool:
     """
 
@@ -280,6 +348,8 @@ def is_wc_pair(seq1: str, seq2: str) -> bool:
 
     """
     return (seq1, seq2) in WCDB
+
+
 
 
 def calculate_wc_pair(seq1: str, seq2: str, T: float) -> float:
@@ -304,6 +374,8 @@ def calculate_wc_pair(seq1: str, seq2: str, T: float) -> float:
     """
     D_H, D_S = WCDB[(seq1, seq2)]
     return D_H - ((T * D_S) / 1000)
+
+
 
 
 def calculate_mm_pair(seq1: str, seq2: str, T: float) -> float:
