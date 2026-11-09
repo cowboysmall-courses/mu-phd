@@ -77,26 +77,28 @@ def partition_function(tiles: List[List[Tile]], T: float) -> float:
     """
     N = len(tiles)
     K = max(len(t) for t in tiles)
-    S = 0
-    Z = 1
 
     Z_curr: List[float] = [0] * K
     Z_prev: List[float] = [0] * K
 
-    for i in range(N):
-        S += sum(Z_prev)
+    P = 0
+    Z = 1
 
-        Z_prev = Z_curr
-        Z_curr = [0] * K
+    for j in range(len(tiles[0])):
+        Z_curr[j] = math.exp( -(gibbs_m(tiles[0][j], T) + gibbs_assoc(T)) / (R_j * T) )
+        Z += Z_curr[j]
+
+    for i in range(1, N):
+        P += sum(Z_prev)
+
+        Z_prev  = Z_curr
+        Z_curr  = [0] * K
 
         for j in range(len(tiles[i])):
-            Z_curr[j] = math.exp( -(gibbs_m(tiles[i][j], T) + gibbs_assoc(T)) / (R_j * T) )
-
-            if i > 0:
-                for m in range(len(tiles[i - 1])):
-                    Z_curr[j] += math.exp( -gibbs_rl(tiles[i - 1][m], tiles[i][j], T) / (R_j * T) ) * Z_prev[m]
-
-                Z_curr[j] += S
+            Z_temp = 1 + P
+            for m in range(len(tiles[i - 1])):
+                Z_temp += math.exp( -gibbs_rl(tiles[i - 1][m], tiles[i][j], T) / (R_j * T) ) * Z_prev[m]
+            Z_curr[j] = Z_temp * math.exp( -(gibbs_m(tiles[i][j], T) + gibbs_assoc(T)) / (R_j * T) )
 
             Z += Z_curr[j]
 
