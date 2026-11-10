@@ -1,6 +1,6 @@
 
 from sdc.files import read_sdc_tileset
-from sdc.mfe import minimum_free_energy, minimum_free_energy_configuration
+from sdc.energy import minimum_free_energy, minimum_free_energy_configuration, minimum_free_energy_probability, partition_function, free_energies
 from sdc.tile import Tile
 
 import math
@@ -73,3 +73,42 @@ def test_minimum_free_energy_configuration__bitcopy_11pos_0():
 def test_minimum_free_energy_configuration__bitcopy_11pos_1():
     configuration = minimum_free_energy_configuration(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37)
     assert configuration == [TA1, TB1, TC1, TD1, TE1, Tf1, TF1, TG1, TH1, TI1, TJ1, TK]
+
+
+
+def test_partition_function__bitcopy_4pos_0():
+    Z = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
+    assert math.isclose(Z, 55.604, abs_tol = 0.001)
+
+def test_partition_function__bitcopy_4pos_1():
+    Z = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37)
+    assert math.isclose(Z, 55.612, abs_tol = 0.001)
+
+
+
+def test_partition_function__bitcopy_11pos_0():
+    pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_0.json"), 273.15 + 37)
+    assert math.isclose(pf, 389147.454, abs_tol = 0.001)
+
+def test_partition_function__bitcopy_11pos_1():
+    pf = partition_function(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos_1.json"), 273.15 + 37)
+    assert math.isclose(pf, 389201.872, abs_tol = 0.001)
+
+
+
+def test_free_energy_database__bitcopy_4pos_0():
+    C, Z = free_energies(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
+    assert len(C) == 2 * 3 * 3 * 3
+    assert math.isclose(Z, 55.604, abs_tol = 0.001)
+
+def test_free_energy_database__bitcopy_4pos_1():
+    C, Z = free_energies(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_1.json"), 273.15 + 37)
+    assert len(C) == 2 * 3 * 3 * 3
+    assert math.isclose(Z, 55.612, abs_tol = 0.001)
+
+
+
+def test_target_configuration_probability__bitcopy_4pos_0():
+    probability = minimum_free_energy_probability(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos_0.json"), 273.15 + 37)
+    assert math.isclose(probability, 0.019, abs_tol = 0.001)
+

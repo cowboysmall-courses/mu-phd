@@ -1,9 +1,9 @@
 
-import math
-
 from sdc.files import read_sdc_tileset
 from sdc.graph import SDCGraph
 from sdc.tile import Tile
+
+import math
 
 
 TA0 = Tile(0,  "TCTTTCCAGAGCCTAATTTGCCAG GCTGAGAAGAGG", (0, 24, 12))                       #  A0*

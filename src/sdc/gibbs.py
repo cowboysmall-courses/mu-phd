@@ -1,6 +1,6 @@
 
 from sdc.tile import NullTile, Tile
-from sdc import k_f, R_j, u_0
+from sdc import k_f, R_j, u_0, WCDB, MMDB, ATTA, INIT, SYMC, TATP
 
 from utils.dna import is_self_complementary
 
@@ -8,47 +8,6 @@ from typing import Callable
 
 import math
 import functools
-
-
-WCDB = {
-    ("AA", "TT"):  (-7.6, -21.3), ("TT", "AA"):  (-7.6, -21.3),
-    ("AT", "TA"):  (-7.2, -20.4), ("TA", "AT"):  (-7.2, -21.3),
-    ("CA", "GT"):  (-8.5, -22.7), ("TG", "AC"):  (-8.5, -22.7),
-    ("GT", "CA"):  (-8.4, -22.4), ("AC", "TG"):  (-8.4, -22.4),
-    ("CT", "GA"):  (-7.8, -21.0), ("AG", "TC"):  (-7.8, -21.0),
-    ("GA", "CT"):  (-8.2, -22.2), ("TC", "AG"):  (-8.2, -22.2),
-    ("CG", "GC"): (-10.6, -27.2), ("GC", "CG"):  (-9.8, -24.4),
-    ("GG", "CC"):  (-8.0, -19.9), ("CC", "GG"):  (-8.0, -19.9)
-}
-
-MMDB = {
-
-    ("GA", "CA"):  0.17, ("GA", "CC"):  0.81, ("GA", "CG"): -0.25,
-    ("GC", "CA"):  0.47, ("GC", "CC"):  0.79, ("GC", "CT"):  0.62,
-    ("GG", "CA"): -0.52, ("GG", "CG"): -1.11, ("GG", "CT"):  0.08,
-    ("GT", "CC"):  0.98, ("GT", "CG"): -0.59, ("GT", "CT"):  0.45,
-
-    ("CA", "GA"):  0.43, ("CA", "GC"):  0.75, ("CA", "GG"):  0.03,
-    ("CC", "GA"):  0.79, ("CC", "GC"):  0.70, ("CC", "GT"):  0.62,
-    ("CG", "GA"):  0.11, ("CG", "GG"): -0.11, ("CG", "GT"): -0.47,
-    ("CT", "GC"):  0.40, ("CT", "GG"): -0.32, ("CT", "GT"): -0.12,
-
-    ("AA", "TA"):  0.61, ("AA", "TC"):  0.88, ("AA", "TG"):  0.14,
-    ("AC", "TA"):  0.77, ("AC", "TC"):  1.33, ("AC", "TT"):  0.64,
-    ("AG", "TA"):  0.02, ("AG", "TG"): -0.13, ("AG", "TT"):  0.71,
-    ("AT", "TC"):  0.73, ("AT", "TG"):  0.07, ("AT", "TT"):  0.69,
-
-    ("TA", "AA"):  0.69, ("TA", "AC"):  0.92, ("TA", "AG"):  0.42,
-    ("TC", "AA"):  1.33, ("TC", "AC"):  1.05, ("TC", "AT"):  0.97,
-    ("TG", "AA"):  0.74, ("TG", "AG"):  0.44, ("TG", "AT"):  0.43,
-    ("TT", "AC"):  0.75, ("TT", "AG"):  0.34, ("TT", "AT"):  0.68,
-}
-
-ATTA = {("A", "T"), ("T", "A")}
-
-INIT = (0.2, -5.7)
-SYMC = (0,   -1.4)
-TATP = (2.2,  6.9)
 
 
 
@@ -167,7 +126,7 @@ def gibbs_rl(tile_left: Tile, tile_right: Tile, T: float) -> float:
     """
     if isinstance(tile_left, NullTile) or isinstance(tile_right, NullTile):
         return 0
-    return free_energy(tile_left.right(), tile_right.left()[::-1], T)
+    return gibbs_free_energy(tile_left.right(), tile_right.left()[::-1], T)
 
 
 
@@ -222,7 +181,7 @@ def gibbs_m(tile: Tile, T: float) -> float:
     """
     if isinstance(tile, NullTile):
         return 0
-    return free_energy(tile.middle(), tile.middle_c(), T)
+    return gibbs_free_energy(tile.middle(), tile.middle_c(), T)
 
 
 
@@ -274,7 +233,7 @@ def gibbs_assoc(T:float) -> float:
 
 
 
-def free_energy(S1: str, S2: str, T: float) -> float:
+def gibbs_free_energy(S1: str, S2: str, T: float) -> float:
     """
 
         calculates the Gibbs Free Energy of two strands using
