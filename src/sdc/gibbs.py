@@ -96,7 +96,27 @@ def rate_detach(left: Tile, tile: Tile, right: Tile, T: float) -> float:
             the detachment rate
 
     """
-    return k_f * math.exp( (gibbs_rl(left, tile, T) + gibbs_m(tile, T) + gibbs_rl(tile, right, T)) / (R_j * T) )
+    return k_f * math.exp( beta(T) * (gibbs_rl(left, tile, T) + gibbs_m(tile, T) + gibbs_rl(tile, right, T)) )
+
+
+
+def beta(T: float) -> float:
+    """
+
+        calculate the value of Beta
+
+        Parameters
+        ----------
+        T: float
+            the temperature in Kelvin
+
+        Returns
+        -------
+        float
+            the value of Beta
+
+    """
+    return 1 / (R_j * T)
 
 
 
@@ -119,7 +139,7 @@ def mu(tile: Tile, T: float) -> float:
             the Chemical Potential of a tile
 
     """
-    return R_j * T * math.log(tile.get_concentration() / u_0)
+    return (R_j * T) * math.log(tile.get_concentration() / u_0)
 
 
 
