@@ -36,36 +36,45 @@ TK  = Tile(11, "TCTTTCCAAGCC ATTAGAGAGTACCTTTAATTGCTC", (12, 24, 0))            
 
 
 
-def test_shortest_path__bitcopy_4pos_0():
+def test_minimum_free_energy__bitcopy_4pos_0():
     mfe, path = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos.json")).minimum_free_energy(TA0, 273.15 + 37)
     assert math.isclose(mfe, -152.454, abs_tol = 0.001)
     assert path == [TA0, TB0, TC0, TDQ]
-    # assert path == []
 
-def test_shortest_path__bitcopy_4pos_1():
+def test_minimum_free_energy__bitcopy_4pos_1():
     mfe, path = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos.json")).minimum_free_energy(TA1, 273.15 + 37)
     assert math.isclose(mfe, -152.103, abs_tol = 0.001)
     assert path == [TA1, TB1, TC1, TD]
 
 
 
-def test_shortest_path__bitcopy_11pos_0():
+def test_minimum_free_energy__bitcopy_11pos_0():
     mfe, path = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos.json")).minimum_free_energy(TA0, 273.15 + 37)
     assert math.isclose(mfe, -484.441, abs_tol = 0.001)
     assert path == [TA0, TB0, TC0, TD0, TE0, Tf0, TF0, TG0, TH0, TI0, TJ0, TKQ]
 
-def test_shortest_path__bitcopy_11pos_1():
+def test_minimum_free_energy__bitcopy_11pos_1():
     mfe, path = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_11pos.json")).minimum_free_energy(TA1, 273.15 + 37)
     assert math.isclose(mfe, -483.219, abs_tol = 0.001)
     assert path == [TA1, TB1, TC1, TD1, TE1, Tf1, TF1, TG1, TH1, TI1, TJ1, TK]
 
 
 
-def test_partition_function__bitcopy_4pos_0():
+def test_configuration_free_energy__bitcopy_4pos_0():
     E = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos.json")).configuration_free_energy((1, 1, 1, 1), 273.15 + 37)
     assert math.isclose(E, -152.454, abs_tol = 0.001)
 
-def test_partition_function__bitcopy_4pos_1():
+def test_configuration_free_energy__bitcopy_4pos_1():
     E = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos.json")).configuration_free_energy((2, 2, 2, 2), 273.15 + 37)
+    assert math.isclose(E, -152.103, abs_tol = 0.001)
+
+
+
+def test_tiles_free_energy__bitcopy_4pos_0():
+    E = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos.json")).tiles_free_energy([TA0, TB0, TC0, TDQ], 273.15 + 37)
+    assert math.isclose(E, -152.454, abs_tol = 0.001)
+
+def test_tiles_free_energy__bitcopy_4pos_1():
+    E = SDCGraph(read_sdc_tileset("./data/sdc/1D/bitcopy_04pos.json")).tiles_free_energy([TA1, TB1, TC1, TD], 273.15 + 37)
     assert math.isclose(E, -152.103, abs_tol = 0.001)
 

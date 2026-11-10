@@ -1,7 +1,5 @@
 
-from collections import defaultdict
-
-from sdc.gibbs import gibbs_m, gibbs_rl, gibbs_m_pa, gibbs_rl_pa, gibbs_assoc
+from sdc.gibbs import gibbs_m, gibbs_rl, gibbs_assoc
 from sdc.tile import Tile
 from sdc import R_j
 
