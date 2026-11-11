@@ -2,25 +2,17 @@
     [
         {
             "layer": 0,
-            "strand": "TCTTTCCAGAGCCTAATTTGCCAG GCTGAGAAGAGG",
-            "layout": [
-                0,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "",
+            "middle": "TCTTTCCAGAGCCTAATTTGCCAG",
+            "right": "GCTGAGAAGAGG",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         },
         {
             "layer": 0,
-            "strand": "TCTTTCCAGAGCCTAATTTGCCAG GGCTTGGAAAGA",
-            "layout": [
-                0,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "",
+            "middle": "TCTTTCCAGAGCCTAATTTGCCAG",
+            "right": "GGCTTGGAAAGA",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         }
@@ -28,25 +20,17 @@
     [
         {
             "layer": 1,
-            "strand": "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "CCTCTTCTCAGC",
+            "middle": "AGCGTCCAATACTGCGGAATCGTC",
+            "right": "GGTCAGGATGAG",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         },
         {
             "layer": 1,
-            "strand": "TCTTTCCAAGCC AGCGTCCAATACTGCGGAATCGTC AATGGTGGCATT",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "TCTTTCCAAGCC",
+            "middle": "AGCGTCCAATACTGCGGAATCGTC",
+            "right": "AATGGTGGCATT",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         }
@@ -54,25 +38,17 @@
     [
         {
             "layer": 2,
-            "strand": "CTCATCCTGACC ATAAATATTCATTGAATCCCCCTC GCTGAGAAGAGG",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "CTCATCCTGACC",
+            "middle": "ATAAATATTCATTGAATCCCCCTC",
+            "right": "GCTGAGAAGAGG",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         },
         {
             "layer": 2,
-            "strand": "AATGCCACCATT ATAAATATTCATTGAATCCCCCTC GGCTTGGAAAGA",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "AATGCCACCATT",
+            "middle": "ATAAATATTCATTGAATCCCCCTC",
+            "right": "GGCTTGGAAAGA",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         }
@@ -80,25 +56,17 @@
     [
         {
             "layer": 3,
-            "strand": "CCTCTTCTCAGC AAATGCTTTAAACAGTTCAGAAAA GGTCAGGATGAG",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "CCTCTTCTCAGC",
+            "middle": "AAATGCTTTAAACAGTTCAGAAAA",
+            "right": "GGTCAGGATGAG",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         },
         {
             "layer": 3,
-            "strand": "TCTTTCCAAGCC AAATGCTTTAAACAGTTCAGAAAA AATGGTGGCATT",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "TCTTTCCAAGCC",
+            "middle": "AAATGCTTTAAACAGTTCAGAAAA",
+            "right": "AATGGTGGCATT",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         }
@@ -106,25 +74,17 @@
     [
         {
             "layer": 4,
-            "strand": "CTCATCCTGACC CGAGAATGACCATAAATCAAAAAT GCTGAGAAGAGG",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "CTCATCCTGACC",
+            "middle": "CGAGAATGACCATAAATCAAAAAT",
+            "right": "GCTGAGAAGAGG",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         },
         {
             "layer": 4,
-            "strand": "AATGCCACCATT CGAGAATGACCATAAATCAAAAAT GGCTTGGAAAGA",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "AATGCCACCATT",
+            "middle": "CGAGAATGACCATAAATCAAAAAT",
+            "right": "GGCTTGGAAAGA",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         }
@@ -132,25 +92,17 @@
     [
         {
             "layer": 5,
-            "strand": "CCTCTTCTCAGC CAGGTCTTTACCCTGACTATTATA GGTCAGGATGAG",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "CCTCTTCTCAGC",
+            "middle": "CAGGTCTTTACCCTGACTATTATA",
+            "right": "GGTCAGGATGAG",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         },
         {
             "layer": 5,
-            "strand": "TCTTTCCAAGCC CAGGTCTTTACCCTGACTATTATA AATGGTGGCATT",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "TCTTTCCAAGCC",
+            "middle": "CAGGTCTTTACCCTGACTATTATA",
+            "right": "AATGGTGGCATT",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         }
@@ -158,25 +110,17 @@
     [
         {
             "layer": 6,
-            "strand": "CTCATCCTGACC GTCAGAAGCAAAGCGGATTGCATC GCTGAGAAGAGG",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "CTCATCCTGACC",
+            "middle": "GTCAGAAGCAAAGCGGATTGCATC",
+            "right": "GCTGAGAAGAGG",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         },
         {
             "layer": 6,
-            "strand": "AATGCCACCATT GTCAGAAGCAAAGCGGATTGCATC GGCTTGGAAAGA",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "AATGCCACCATT",
+            "middle": "GTCAGAAGCAAAGCGGATTGCATC",
+            "right": "GGCTTGGAAAGA",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         }
@@ -184,25 +128,17 @@
     [
         {
             "layer": 7,
-            "strand": "CCTCTTCTCAGC AAAAAGATTAAGAGGAAGCCCGAA GGTCAGGATGAG",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "CCTCTTCTCAGC",
+            "middle": "AAAAAGATTAAGAGGAAGCCCGAA",
+            "right": "GGTCAGGATGAG",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         },
         {
             "layer": 7,
-            "strand": "TCTTTCCAAGCC AAAAAGATTAAGAGGAAGCCCGAA AATGGTGGCATT",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "TCTTTCCAAGCC",
+            "middle": "AAAAAGATTAAGAGGAAGCCCGAA",
+            "right": "AATGGTGGCATT",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         }
@@ -210,25 +146,17 @@
     [
         {
             "layer": 8,
-            "strand": "CTCATCCTGACC AGACTTCAAATATCGCGTTTTAAT GCTGAGAAGAGG",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "CTCATCCTGACC",
+            "middle": "AGACTTCAAATATCGCGTTTTAAT",
+            "right": "GCTGAGAAGAGG",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         },
         {
             "layer": 8,
-            "strand": "AATGCCACCATT AGACTTCAAATATCGCGTTTTAAT GGCTTGGAAAGA",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "AATGCCACCATT",
+            "middle": "AGACTTCAAATATCGCGTTTTAAT",
+            "right": "GGCTTGGAAAGA",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         }
@@ -236,25 +164,17 @@
     [
         {
             "layer": 9,
-            "strand": "CCTCTTCTCAGC TCGAGCTTCAAAGCGAACCAGACC GGTCAGGATGAG",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "CCTCTTCTCAGC",
+            "middle": "TCGAGCTTCAAAGCGAACCAGACC",
+            "right": "GGTCAGGATGAG",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         },
         {
             "layer": 9,
-            "strand": "TCTTTCCAAGCC TCGAGCTTCAAAGCGAACCAGACC AATGGTGGCATT",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "TCTTTCCAAGCC",
+            "middle": "TCGAGCTTCAAAGCGAACCAGACC",
+            "right": "AATGGTGGCATT",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         }
@@ -262,25 +182,17 @@
     [
         {
             "layer": 10,
-            "strand": "CTCATCCTGACC GGAAGCAAACTCCAACAGGTCAGG GCTGAGAAGAGG",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "CTCATCCTGACC",
+            "middle": "GGAAGCAAACTCCAACAGGTCAGG",
+            "right": "GCTGAGAAGAGG",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         },
         {
             "layer": 10,
-            "strand": "AATGCCACCATT GGAAGCAAACTCCAACAGGTCAGG GGCTTGGAAAGA",
-            "layout": [
-                12,
-                24,
-                12
-            ],
-            "concentration": 100000,
+            "left": "AATGCCACCATT",
+            "middle": "GGAAGCAAACTCCAACAGGTCAGG",
+            "right": "GGCTTGGAAAGA",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         }
@@ -288,25 +200,17 @@
     [
         {
             "layer": 11,
-            "strand": "CCTCTTCTCAGC ATTAGAGAGTACCTTTAATTGCTC GGGTAGTGTGGAGAGGTGGG",
-            "layout": [
-                12,
-                24,
-                20
-            ],
-            "concentration": 100000,
+            "left": "CCTCTTCTCAGC",
+            "middle": "ATTAGAGAGTACCTTTAATTGCTC",
+            "right": "GGGTAGTGTGGAGAGGTGGG",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         },
         {
             "layer": 11,
-            "strand": "TCTTTCCAAGCC ATTAGAGAGTACCTTTAATTGCTC",
-            "layout": [
-                12,
-                24,
-                0
-            ],
-            "concentration": 100000,
+            "left": "TCTTTCCAAGCC",
+            "middle": "ATTAGAGAGTACCTTTAATTGCTC",
+            "right": "",
             "__classname__": "Tile",
             "__modulename__": "sdc.tile"
         }

@@ -32,6 +32,8 @@ dev = [
 
 
 [project.scripts]
+sdcsim = "sdc.sdcsim:main"
+
 dp-coin-change-01 = "algorithms.dp.dp_coin_change_01:main"
 dp-coin-change-02 = "algorithms.dp.dp_coin_change_02:main"
 dp-knapsack-01 = "algorithms.dp.dp_knapsack_01:main"

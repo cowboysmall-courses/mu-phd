@@ -12,7 +12,7 @@ import functools
 
 
 
-def rate_attach(tile: Tile) -> float:
+def rate_attach(tile: Tile, concentration: int) -> float:
     """
 
         calculate the attachment rate
@@ -28,7 +28,8 @@ def rate_attach(tile: Tile) -> float:
             the attachment rate
 
     """
-    return k_f * tile.get_concentration()
+    # return k_f * tile.get_concentration()
+    return k_f * concentration
 
 
 
@@ -80,7 +81,7 @@ def beta(T: float) -> float:
 
 
 
-def mu(tile: Tile, T: float) -> float:
+def mu(tile: Tile, T: float, concentration: int) -> float:
     """
 
         calculate the Chemical Potential of a tile
@@ -98,7 +99,8 @@ def mu(tile: Tile, T: float) -> float:
             the Chemical Potential of a tile
 
     """
-    return (R_j * T) * math.log(tile.get_concentration() / u_0)
+    # return (R_j * T) * math.log(tile.get_concentration() / u_0)
+    return (R_j * T) * math.log(concentration / u_0)
 
 
 
@@ -126,7 +128,7 @@ def gibbs_rl(tile_left: Tile, tile_right: Tile, T: float) -> float:
     """
     if isinstance(tile_left, NullTile) or isinstance(tile_right, NullTile):
         return 0
-    return gibbs_free_energy(tile_left.right(), tile_right.left()[::-1], T)
+    return gibbs_free_energy(tile_left.get_right(), tile_right.get_left()[::-1], T)
 
 
 
@@ -181,7 +183,7 @@ def gibbs_m(tile: Tile, T: float) -> float:
     """
     if isinstance(tile, NullTile):
         return 0
-    return gibbs_free_energy(tile.middle(), tile.middle_c(), T)
+    return gibbs_free_energy(tile.get_middle(), tile.get_middle_complement(), T)
 
 
 

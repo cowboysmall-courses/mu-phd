@@ -70,7 +70,8 @@ class SDCGraph:
 
 
     def minimum_free_energy(self, source: Tile, T: float) -> Tuple[float, List[Tile]]:
-        if source.get_layer() != 0 or source not in self.tileset[0]:
+        # if source.get_layer() != 0 or source not in self.tileset[0]:
+        if source not in self.tileset[0]:
             raise ValueError("source tile should be from layer 0")
 
         dist = {n: float('inf') for n in self.get_nodes()}

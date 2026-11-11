@@ -1,26 +1,142 @@
 
 from utils.dna import complement
 
-from typing import Tuple
+from typing import Dict, List, Tuple
+
+
 
 
 class Tile:
 
-    def __init__(self, layer: int, strand: str, layout: Tuple = (12, 24, 12), concentration: int = 100000):
+    def __init__(self, layer: int, left: str, middle: str, right: str):
+        self.layer = layer
+        self.left = left
+        self.middle = middle
+        self.right = right
+
+        self._left_c = complement(self.left)
+        self._middle_c = complement(self.middle)
+        self._right_c = complement(self.right)
+
+
+
+    def get_left(self) -> str:
+        """
+
+            get the left compute domain
+
+            Returns
+            -------
+            str
+                the left compute domain
+
+        """
+        return self.left
+
+    def get_left_complement(self) -> str:
+        """
+
+            get the complement of the left compute domain
+
+            Returns
+            -------
+            str
+                the complement of the left compute domain
+
+        """
+        return self._left_c
+
+    def get_middle(self) -> str:
+        """
+
+            get the middle domain
+
+            Returns
+            -------
+            str
+                the middle domain
+
+        """
+        return self.middle
+
+    def get_middle_complement(self) -> str:
+        """
+
+            get the complement of the middle domain
+
+            Returns
+            -------
+            str
+                the complement of the middle domain
+
+        """
+        return self._middle_c
+
+    def get_right(self) -> str:
+        """
+
+            get the right compute domain
+
+            Returns
+            -------
+            str
+                the right compute domain
+
+        """
+        return self.right
+
+    def get_right_complement(self) -> str:
+        """
+
+            get the right compute domain
+
+            Returns
+            -------
+            str
+                the right compute domain
+
+        """
+        return self._right_c
+
+
+
+    def __repr__(self):
+        return f"{self.left}-{self.middle}-{self.right}"
+
+    def __eq__(self, other):
+        if not isinstance(other, Tile):
+            return NotImplemented
+        return (self.layer, self.left, self.middle, self.right) == (other.layer, other.left, other.middle, other.right)
+
+    def __hash__(self):
+        return hash((self.layer, self.left, self.middle, self.right))
+
+
+
+class NullTile(Tile):
+
+    def __init__(self, layer: int):
+        super().__init__(layer, "", "", "")
+
+
+
+
+
+class TileManager:
+
+    def __init__(self, layer: int, strand: str, layout: Tuple = (12, 24, 12), concentration: int = 1):
         self.layer  = layer
         self.strand = strand
         self.layout = layout
         self.concentration = concentration
 
+        self._tiles: List[Tile] = []
+        # self._count: int = 0
+        self._current: int = 0
+
         strand = strand.replace(" ", "")
-
-        self._l = strand[:layout[0]]
-        self._m = strand[layout[0]:layout[0] + layout[1]]
-        self._r = strand[layout[0] + layout[1]:]
-
-        self._l_c = complement(self._l)
-        self._m_c = complement(self._m)
-        self._r_c = complement(self._r)
+        for _ in range(self.concentration):
+            self._tiles.append(Tile(self.layer, strand[:layout[0]], strand[layout[0]:layout[0] + layout[1]], strand[layout[0] + layout[1]:]))
 
 
 
@@ -78,101 +194,31 @@ class Tile:
 
 
 
-    def left(self) -> str:
+    def next(self) -> Tile:
         """
 
-            get the left compute domain
+            retrieves the next scaffold
 
             Returns
             -------
-            str
-                the left compute domain
+            Scaffold
+                the next scaffold
 
         """
-        return self._l
+        self._current += 1
+        self._current %= self.concentration
 
-    def left_c(self) -> str:
-        """
-
-            get the complement of the left compute domain
-
-            Returns
-            -------
-            str
-                the complement of the left compute domain
-
-        """
-        return self._l_c
-
-    def middle(self) -> str:
-        """
-
-            get the middle domain
-
-            Returns
-            -------
-            str
-                the middle domain
-
-        """
-        return self._m
-
-    def middle_c(self) -> str:
-        """
-
-            get the complement of the middle domain
-
-            Returns
-            -------
-            str
-                the complement of the middle domain
-
-        """
-        return self._m_c
-
-    def right(self) -> str:
-        """
-
-            get the right compute domain
-
-            Returns
-            -------
-            str
-                the right compute domain
-
-        """
-        return self._r
-
-    def right_c(self) -> str:
-        """
-
-            get the right compute domain
-
-            Returns
-            -------
-            str
-                the right compute domain
-
-        """
-        return self._r_c
-
+        return self._tiles[self._current]
 
 
     def __repr__(self):
-        return f"{self._l}-{self._m}-{self._r}"
+        return self.strand
 
     def __eq__(self, other):
-        if not isinstance(other, Tile):
+        if not isinstance(other, TileManager):
             return NotImplemented
         return (self.layer, self.strand, self.layout, self.concentration) == (other.layer, other.strand, other.layout, other.concentration)
 
     def __hash__(self):
         return hash((self.layer, self.strand, self.layout, self.concentration))
-
-
-
-class NullTile(Tile):
-
-    def __init__(self, layer: int):
-        super().__init__(layer, "", layout = (0, 0, 0), concentration = 1)
 

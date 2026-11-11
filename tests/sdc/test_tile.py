@@ -1,13 +1,13 @@
 
-from sdc.tile import Tile
+from sdc.tile import TileManager
 
 
 def test_equality():
-    a = Tile(1, "GCTGAGAAGAGG")
-    b = Tile(1, "GCTGAGAAGAGG")
-    c = Tile(1, "GCTGAGAAGAGG", layout = (4, 4, 4))
-    d = Tile(1, "AACAGGGATGTG", layout = (0, 8, 4))
-    e = Tile(1, "AACAGGGATGTG", layout = (4, 8, 0))
+    a = TileManager(1, "GCTGAGAAGAGG").next()
+    b = TileManager(1, "GCTGAGAAGAGG").next()
+    c = TileManager(1, "GCTGAGAAGAGG", layout = (4, 4, 4)).next()
+    d = TileManager(1, "AACAGGGATGTG", layout = (0, 8, 4)).next()
+    e = TileManager(1, "AACAGGGATGTG", layout = (4, 8, 0)).next()
 
     assert a == b
     assert a != c
@@ -16,30 +16,30 @@ def test_equality():
 
 
 def test_anchor():
-    tile = Tile(0, "TCTTTCCAGAGCCTAATTTGCCAG GCTGAGAAGAGG", (0, 24, 12))
-    assert tile.right() == "GCTGAGAAGAGG"
-    assert tile.right_c() == "CGACTCTTCTCC"
+    tile = TileManager(0, "TCTTTCCAGAGCCTAATTTGCCAG GCTGAGAAGAGG", (0, 24, 12)).next()
+    assert tile.get_right() == "GCTGAGAAGAGG"
+    assert tile.get_right_complement() == "CGACTCTTCTCC"
 
 
 def test_left():
-    tile = Tile(1, "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG")
-    assert tile.left() == "CCTCTTCTCAGC"
-    assert tile.left_c() == "GGAGAAGAGTCG"
+    tile = TileManager(1, "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG").next()
+    assert tile.get_left() == "CCTCTTCTCAGC"
+    assert tile.get_left_complement() == "GGAGAAGAGTCG"
 
 
 def test_middle():
-    tile = Tile(1, "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG")
-    assert tile.middle() == "AGCGTCCAATACTGCGGAATCGTC"
-    assert tile.middle_c() == "TCGCAGGTTATGACGCCTTAGCAG"
+    tile = TileManager(1, "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG").next()
+    assert tile.get_middle() == "AGCGTCCAATACTGCGGAATCGTC"
+    assert tile.get_middle_complement() == "TCGCAGGTTATGACGCCTTAGCAG"
 
 
 def test_right():
-    tile = Tile(1, "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG")
-    assert tile.right() == "GGTCAGGATGAG"
-    assert tile.right_c() == "CCAGTCCTACTC"
+    tile = TileManager(1, "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG").next()
+    assert tile.get_right() == "GGTCAGGATGAG"
+    assert tile.get_right_complement() == "CCAGTCCTACTC"
 
 def test_sentinel():
-    tile = Tile(1, "", layout = (0, 0, 0), concentration = 0)
-    assert tile.left() == ""
-    assert tile.middle() == ""
-    assert tile.right() == ""
+    tile = TileManager (1, "", layout = (0, 0, 0), concentration = 1).next()
+    assert tile.get_left() == ""
+    assert tile.get_middle() == ""
+    assert tile.get_right() == ""
