@@ -91,7 +91,7 @@ def complements(strands: List[str]) -> List[str]:
 def is_self_complementary(strand: str) -> bool:
     """
 
-        determines if a strand is self-complementart
+        determines if a strand is self-complementary
 
         Parameters
         ----------
