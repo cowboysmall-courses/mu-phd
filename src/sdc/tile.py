@@ -5,7 +5,6 @@ from typing import Dict, List, Tuple
 
 
 
-
 class Tile:
 
     def __init__(self, layer: int, left: str, middle: str, right: str):
@@ -19,6 +18,19 @@ class Tile:
         self._right_c = complement(self.right)
 
 
+
+    def get_layer(self) -> int:
+        """
+
+            get the layer the tile occupies
+
+            Returns
+            -------
+            int
+                the layer the tile occupies
+
+        """
+        return self.layer
 
     def get_left(self) -> str:
         """
@@ -113,11 +125,11 @@ class Tile:
 
 
 
+
 class NullTile(Tile):
 
     def __init__(self, layer: int):
         super().__init__(layer, "", "", "")
-
 
 
 
@@ -209,6 +221,7 @@ class TileManager:
         self._current %= self.concentration
 
         return self._tiles[self._current]
+
 
 
     def __repr__(self):

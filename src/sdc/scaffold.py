@@ -5,9 +5,6 @@ from typing import Dict, List
 
 
 
-
-
-
 class Scaffold:
 
     def __init__(self, positions: List[str]):
@@ -166,8 +163,6 @@ class Scaffold:
 
 
 
-
-
 class ScaffoldManager:
 
     def __init__(self, strand: str, position_size: int = 24, concentration: int = 1):
@@ -240,7 +235,4 @@ class ScaffoldManager:
         self._current %= self.concentration
 
         return self._scaffolds[self._current]
-
-
-
 
