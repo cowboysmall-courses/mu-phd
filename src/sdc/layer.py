@@ -1,4 +1,7 @@
 
+from sdc.tile import TileManager
+
+
 
 class Layer:
 
@@ -7,7 +10,7 @@ class Layer:
 
 
 
-class LayerManager:
+# class LayerManager:
 
-    def __init__(self):
-        pass
+#     def __init__(self):
+#         pass

@@ -1,5 +1,5 @@
 
-from sdc.scaffold import ScaffoldManager
+from sdc.managers import ScaffoldManager
 from sdc.tile import NullTile, TileManager
 
 
@@ -31,21 +31,20 @@ def test_bind():
     tile3 = TileManager(2, "CTCATCCTGACC ATAAATATTCATTGAATCCCCCTC GCTGAGAAGAGG").next()
     tile4 = TileManager(3, "CCTCTTCTCAGC AAATGCTTTAAACAGTTCAGAAAA GGTCAGGATGAG").next()
 
-
-    assert scaffold.is_free(tile1)
-    assert scaffold.is_free(tile2)
-    assert scaffold.is_free(tile3)
-    assert scaffold.is_free(tile4)
+    assert scaffold.is_position_free(tile1)
+    assert scaffold.is_position_free(tile2)
+    assert scaffold.is_position_free(tile3)
+    assert scaffold.is_position_free(tile4)
 
     scaffold.bind(tile1)
     scaffold.bind(tile2)
     scaffold.bind(tile3)
     scaffold.bind(tile4)
 
-    assert scaffold.is_taken(tile1)
-    assert scaffold.is_taken(tile2)
-    assert scaffold.is_taken(tile3)
-    assert scaffold.is_taken(tile4)
+    assert scaffold.is_position_taken(tile1)
+    assert scaffold.is_position_taken(tile2)
+    assert scaffold.is_position_taken(tile3)
+    assert scaffold.is_position_taken(tile4)
 
 
 def test_get_bound_tiles():

@@ -7,11 +7,13 @@ from typing import Dict, List, Tuple
 
 class Tile:
 
+    # def __init__(self, layer: int, left: str, middle: str, right: str, bound: bool = False):
     def __init__(self, layer: int, left: str, middle: str, right: str):
         self.layer = layer
         self.left = left
         self.middle = middle
         self.right = right
+        # self.bound = bound
 
         self._left_c = complement(self.left)
         self._middle_c = complement(self.middle)
@@ -112,8 +114,39 @@ class Tile:
 
 
 
+    # def bind(self) -> None:
+    #     """
+
+    #         marks this tile as bound
+
+    #     """
+    #     self.bound = True
+
+    # def unbind(self) -> None:
+    #     """
+
+    #         marks this tile as unbound
+
+    #     """
+    #     self.bound = False
+
+    # def is_bound(self) -> bool:
+    #     """
+
+    #         is this tile bound?
+
+    #         Returns
+    #         -------
+    #         bool
+    #             true if the tile is bound, false otherwise
+
+    #     """
+    #     return self.bound
+
+
+
     def __repr__(self):
-        return f"{self.left}-{self.middle}-{self.right}"
+        return f"{self.layer}: {self.left}-{self.middle}-{self.right}"
 
     def __eq__(self, other):
         if not isinstance(other, Tile):
@@ -143,7 +176,7 @@ class TileManager:
         self.concentration = concentration
 
         self._tiles: List[Tile] = []
-        # self._count: int = 0
+        self._count: int = 0
         self._current: int = 0
 
         strand = strand.replace(" ", "")
@@ -209,12 +242,12 @@ class TileManager:
     def next(self) -> Tile:
         """
 
-            retrieves the next scaffold
+            retrieves the next tile
 
             Returns
             -------
             Scaffold
-                the next scaffold
+                the next tile
 
         """
         self._current += 1

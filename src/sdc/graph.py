@@ -19,7 +19,7 @@ class SDCGraph:
         # add NullTile - representing unoccupied position
         for l in range(self.positions):
             self._processed_tileset.append([NullTile(l)] + tileset[l])
-        # add NullTile to layer at end - acting as a sentinel - used in shortest path
+        # add NullTile at end - used in shortest path
         self._processed_tileset.append([NullTile(self.positions)])
 
         self._edge_weights: Dict[Tile, Dict[Tile, Callable]] = defaultdict(dict)

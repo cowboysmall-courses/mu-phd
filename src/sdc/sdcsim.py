@@ -9,12 +9,16 @@ from sdc.tile import Tile
 
 class SDCSimulation(Simulation):
 
-    def __init__(self, scaffold: Scaffold, tileset: List[List[Tile]]):
+    # def __init__(self, scaffold: Scaffold, tileset: List[List[Tile]]):
+    #     super().__init__()
+    #     self._scaffolds = [Scaffold(len(solution)) for _ in range(scaffolds)]
+
+    def __init__(self):
         super().__init__()
-        self._scaffolds = [Scaffold(len(solution)) for _ in range(scaffolds)]
 
 
     def step(self, iteration: int, timestep: int, data: Dict) -> None:
+        pass
 
 
 

@@ -12,14 +12,14 @@ import functools
 
 
 
-def rate_attach(tile: Tile, concentration: int) -> float:
+def rate_attach(C: int) -> float:
     """
 
         calculate the attachment rate
 
         Parameters
         ----------
-        concentration: int
+        C: int
             the tile concentration
 
         Returns
@@ -28,13 +28,12 @@ def rate_attach(tile: Tile, concentration: int) -> float:
             the attachment rate
 
     """
-    # return k_f * tile.get_concentration()
-    return k_f * concentration
+    return k_f * C
 
 
 
 
-def rate_detach(left: Tile, tile: Tile, right: Tile, T: float) -> float:
+def rate_detach(left: Tile, middle: Tile, right: Tile, T: float) -> float:
     """
 
         calculate the detachment rate
@@ -42,11 +41,11 @@ def rate_detach(left: Tile, tile: Tile, right: Tile, T: float) -> float:
         Parameters
         ----------
         left: Tile
-            the tile to the left of the current tile
-        tile: Tile
-            the current tile
+            the tile immediately to the left of the middle tile
+        middle: Tile
+            the middle tile
         right: Tile
-            the tile to the right of the current tile
+            the tile immediately to the right of the middle tile
         T: float
             the temperature in Kelvin
 
@@ -56,7 +55,7 @@ def rate_detach(left: Tile, tile: Tile, right: Tile, T: float) -> float:
             the detachment rate
 
     """
-    return k_f * math.exp( beta(T) * (gibbs_rl(left, tile, T) + gibbs_m(tile, T) + gibbs_rl(tile, right, T)) )
+    return k_f * math.exp( beta(T) * (gibbs_rl(left, middle, T) + gibbs_m(middle, T) + gibbs_rl(middle, right, T)) )
 
 
 
@@ -81,15 +80,15 @@ def beta(T: float) -> float:
 
 
 
-def mu(tile: Tile, T: float, concentration: int) -> float:
+def mu(C: int, T: float) -> float:
     """
 
         calculate the Chemical Potential of a tile
 
         Parameters
         ----------
-        tile: Tile
-            the provided tile
+        C: int
+            the tile concentration
         T: float
             the temperature in Kelvin
 
@@ -99,13 +98,12 @@ def mu(tile: Tile, T: float, concentration: int) -> float:
             the Chemical Potential of a tile
 
     """
-    # return (R_j * T) * math.log(tile.get_concentration() / u_0)
-    return (R_j * T) * math.log(concentration / u_0)
+    return (R_j * T) * math.log(C / u_0)
 
 
 
 
-def gibbs_rl(tile_left: Tile, tile_right: Tile, T: float) -> float:
+def gibbs_rl(left: Tile, right: Tile, T: float) -> float:
     """
 
         calculates the Gibbs Free Energy of binding two compute
@@ -113,9 +111,9 @@ def gibbs_rl(tile_left: Tile, tile_right: Tile, T: float) -> float:
 
         Parameters
         ----------
-        tile_left: Tile
+        left: Tile
             the first tile
-        tile_right: Tile
+        right: Tile
             the second tile
         T: float
             the temperature in Kelvin
@@ -126,14 +124,14 @@ def gibbs_rl(tile_left: Tile, tile_right: Tile, T: float) -> float:
             the Gibbs Free Energy of binding
 
     """
-    if isinstance(tile_left, NullTile) or isinstance(tile_right, NullTile):
+    if isinstance(left, NullTile) or isinstance(right, NullTile):
         return 0
-    return gibbs_free_energy(tile_left.get_right(), tile_right.get_left()[::-1], T)
+    return gibbs_free_energy(left.get_right(), right.get_left()[::-1], T)
 
 
 
 
-def gibbs_rl_pa(l:Tile, r: Tile) -> Callable[[float], float]:
+def gibbs_rl_pa(left: Tile, right: Tile) -> Callable[[float], float]:
     """
 
         returns a function that calculates the Gibbs Free Energy of
@@ -141,28 +139,28 @@ def gibbs_rl_pa(l:Tile, r: Tile) -> Callable[[float], float]:
 
         Parameters
         ----------
-        tile_left: Tile
+        left: Tile
             the first tile
-        tile_right: Tile
+        right: Tile
             the second tile
 
         Returns
         -------
         Callable[[float], float]
-            A function that calculates the Gibbs Free Energy of binding
-            for a temperature T
+            A function or callable that calculates the Gibbs Free Energy
+            of binding for a temperature T
 
 
     """
     @functools.cache
     def gibbs_rl_T(T: float) -> float:
-        return gibbs_rl(l, r, T)
+        return gibbs_rl(left, right, T)
     return gibbs_rl_T
 
 
 
 
-def gibbs_m(tile: Tile, T: float) -> float:
+def gibbs_m(middle: Tile, T: float) -> float:
     """
 
         calculates the Gibbs Free Energy of binding to a
@@ -170,7 +168,7 @@ def gibbs_m(tile: Tile, T: float) -> float:
 
         Parameters
         ----------
-        tile: Tile
+        middle: Tile
             the tile to bind to the scaffold
         T: float
             the temperature in Kelvin
@@ -181,14 +179,14 @@ def gibbs_m(tile: Tile, T: float) -> float:
             the Gibbs Free Energy of binding
 
     """
-    if isinstance(tile, NullTile):
+    if isinstance(middle, NullTile):
         return 0
-    return gibbs_free_energy(tile.get_middle(), tile.get_middle_complement(), T)
+    return gibbs_free_energy(middle.get_middle(), middle.get_middle_complement(), T)
 
 
 
 
-def gibbs_m_pa(tile:Tile) -> Callable[[float], float]:
+def gibbs_m_pa(middle: Tile) -> Callable[[float], float]:
     """
 
         returns a function that calculates the Gibbs Free Energy of
@@ -196,25 +194,25 @@ def gibbs_m_pa(tile:Tile) -> Callable[[float], float]:
 
         Parameters
         ----------
-        tile: Tile
+        middle: Tile
             the tile to bind to the scaffold
 
         Returns
         -------
         Callable[[float], float]
-            A function that calculates the Gibbs Free Energy of binding
-            for a temperature T
+            A function or callable that calculates the Gibbs Free Energy
+            of binding for a temperature T
 
     """
     @functools.cache
     def gibbs_m_T(T: float) -> float:
-        return gibbs_m(tile, T)
+        return gibbs_m(middle, T)
     return gibbs_m_T
 
 
 
 
-def gibbs_assoc(T:float) -> float:
+def gibbs_assoc(T: float) -> float:
     """
 
         calculates the Gibbs Free Energy of association
@@ -235,7 +233,7 @@ def gibbs_assoc(T:float) -> float:
 
 
 
-def gibbs_free_energy(S1: str, S2: str, T: float) -> float:
+def gibbs_free_energy(strand1: str, strand2: str, T: float) -> float:
     """
 
         calculates the Gibbs Free Energy of two strands using
@@ -264,9 +262,9 @@ def gibbs_free_energy(S1: str, S2: str, T: float) -> float:
 
         Parameters
         ----------
-        S1: str
+        strand1: str
             the first strand
-        S2: str
+        strand2: str
             the second strand
         T: float
             the temperature in Kelvin
@@ -284,13 +282,13 @@ def gibbs_free_energy(S1: str, S2: str, T: float) -> float:
     D_G += INIT[0] - ((T * INIT[1]) / 1000)
 
     # G_symmetry
-    if is_self_complementary(S1):
+    if is_self_complementary(strand1):
         D_G += SYMC[0] - ((T * SYMC[1]) / 1000)
 
     # G_stack
-    for i in range(len(S1) - 1):
-        seq1 = S1[i:i + 2]
-        seq2 = S2[i:i + 2]
+    for i in range(len(strand1) - 1):
+        seq1 = strand1[i:i + 2]
+        seq2 = strand2[i:i + 2]
 
         if is_wc_pair(seq1, seq2):
             D_G += calculate_wc_pair(seq1, seq2, T)
@@ -298,11 +296,11 @@ def gibbs_free_energy(S1: str, S2: str, T: float) -> float:
             D_G += calculate_mm_pair(seq1, seq2, T)
 
     # G_AT_terminal - start
-    if (S1[0], S2[0]) in ATTA:
+    if (strand1[0], strand2[0]) in ATTA:
         D_G += TATP[0] - ((T * TATP[1]) / 1000)
 
     # G_AT_terminal - end
-    if (S1[-1], S2[-1]) in ATTA:
+    if (strand1[-1], strand2[-1]) in ATTA:
         D_G += TATP[0] - ((T * TATP[1]) / 1000)
 
     return D_G
