@@ -4,7 +4,8 @@ import importlib
 
 from typing import List
 
-from sdc.tile import Tile
+# from sdc.tile import Tile
+# from sdc.builders import TileSetBuilder
 
 
 C_NAME = "__classname__"

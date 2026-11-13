@@ -1,0 +1,106 @@
+[
+    [
+        {
+            "layer": 0,
+            "strand": "TCTTTCCAGAGCCTAATTTGCCAG GCTGAGAAGAGG",
+            "layout": [
+                0,
+                24,
+                12
+            ],
+            "concentration": 1,
+            "__classname__": "TileBuilder",
+            "__modulename__": "sdc.builders"
+        },
+        {
+            "layer": 0,
+            "strand": "TCTTTCCAGAGCCTAATTTGCCAG GGCTTGGAAAGA",
+            "layout": [
+                0,
+                24,
+                12
+            ],
+            "concentration": 1,
+            "__classname__": "TileBuilder",
+            "__modulename__": "sdc.builders"
+        }
+    ],
+    [
+        {
+            "layer": 1,
+            "strand": "CCTCTTCTCAGC AGCGTCCAATACTGCGGAATCGTC GGTCAGGATGAG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 1,
+            "__classname__": "TileBuilder",
+            "__modulename__": "sdc.builders"
+        },
+        {
+            "layer": 1,
+            "strand": "TCTTTCCAAGCC AGCGTCCAATACTGCGGAATCGTC AATGGTGGCATT",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 1,
+            "__classname__": "TileBuilder",
+            "__modulename__": "sdc.builders"
+        }
+    ],
+    [
+        {
+            "layer": 2,
+            "strand": "CTCATCCTGACC ATAAATATTCATTGAATCCCCCTC GCTGAGAAGAGG",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 1,
+            "__classname__": "TileBuilder",
+            "__modulename__": "sdc.builders"
+        },
+        {
+            "layer": 2,
+            "strand": "AATGCCACCATT ATAAATATTCATTGAATCCCCCTC GGCTTGGAAAGA",
+            "layout": [
+                12,
+                24,
+                12
+            ],
+            "concentration": 1,
+            "__classname__": "TileBuilder",
+            "__modulename__": "sdc.builders"
+        }
+    ],
+    [
+        {
+            "layer": 3,
+            "strand": "CCTCTTCTCAGC AAATGCTTTAAACAGTTCAGAAAA GGGTAGTGTGGAGAGGTGGG",
+            "layout": [
+                12,
+                24,
+                20
+            ],
+            "concentration": 1,
+            "__classname__": "TileBuilder",
+            "__modulename__": "sdc.builders"
+        },
+        {
+            "layer": 3,
+            "strand": "TCTTTCCAAGCC AAATGCTTTAAACAGTTCAGAAAA",
+            "layout": [
+                12,
+                24,
+                0
+            ],
+            "concentration": 1,
+            "__classname__": "TileBuilder",
+            "__modulename__": "sdc.builders"
+        }
+    ]
+]

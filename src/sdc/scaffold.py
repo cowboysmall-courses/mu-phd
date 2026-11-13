@@ -7,9 +7,10 @@ from typing import Dict, List
 
 class Scaffold:
 
-    def __init__(self, positions: List[str]):
+    def __init__(self, positions: List[str], concentration: int = 1):
         self.positions = positions
         self.count = len(positions)
+        self.concentration = concentration
 
         self._index: Dict[str, int] = {p:i for i, p in enumerate(self.positions)}
         self._bindings: Dict[int, Tile] = {i:NullTile(i) for i in range(self.count)}
@@ -41,6 +42,19 @@ class Scaffold:
 
         """
         return self.count
+
+    def get_concentration(self) -> int:
+        """
+
+            get the initial scaffold concentration
+
+            Returns
+            -------
+            int
+                the initial scaffold concentration
+
+        """
+        return self.concentration
 
 
 
@@ -172,10 +186,4 @@ class Scaffold:
 
     def __hash__(self):
         return hash((self.positions, self.count))
-
-
-
-
-
-
 
