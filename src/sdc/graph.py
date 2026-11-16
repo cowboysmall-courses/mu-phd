@@ -71,7 +71,6 @@ class SDCGraph:
 
     def minimum_free_energy(self, source: Tile, T: float) -> Tuple[float, List[Tile]]:
         if source.get_layer() != 0 or source not in self.tileset[0]:
-        # if source not in self.tileset[0]:
             raise ValueError("source tile should be from layer 0")
 
         dist = {n: float('inf') for n in self.get_nodes()}
@@ -102,17 +101,17 @@ class SDCGraph:
 
 
 
-    def configuration_free_energy(self, configuration: Tuple[int, ...], T: float) -> float:
+    def free_energy_of_configuration(self, configuration: Tuple[int, ...], T: float) -> float:
         N = len(configuration)
 
         if N != self.positions:
             raise ValueError(f"configuration should be of length {self.positions}")
 
-        return self.tiles_free_energy([self._processed_tileset[i][configuration[i]] for i in range(N)], T)
+        return self.free_energy_of_tiles([self._processed_tileset[i][configuration[i]] for i in range(N)], T)
 
 
 
-    def tiles_free_energy(self, tiles: List[Tile], T: float) -> float:
+    def free_energy_of_tiles(self, tiles: List[Tile], T: float) -> float:
         N = len(tiles)
 
         if N != self.positions:
