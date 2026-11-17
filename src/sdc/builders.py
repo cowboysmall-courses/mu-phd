@@ -14,6 +14,8 @@ class ScaffoldBuilder:
         self.position_size = position_size
         self.concentration = concentration
 
+        self._count = 0
+
 
 
     def get_strand(self) -> str:
@@ -68,8 +70,11 @@ class ScaffoldBuilder:
                 the next scaffold
 
         """
+        assert self._count < self.concentration
+
         strand = self.strand.replace(" ", "")[::-1]
         positions = [strand[i:i + self.position_size] for i in range(0, len(strand), self.position_size)]
+        self._count += 1
 
         return Scaffold(positions, self.concentration)
 
@@ -95,6 +100,8 @@ class TileBuilder:
         self.strand = strand
         self.layout = layout
         self.concentration = concentration
+
+        self._count = 0
 
 
 
@@ -163,10 +170,13 @@ class TileBuilder:
                 the next tile
 
         """
+        assert self._count < self.concentration
+
         strand = self.strand.replace(" ", "")
         left   = strand[:self.layout[0]]
         middle = strand[self.layout[0]:self.layout[0] + self.layout[1]]
         right  = strand[self.layout[0] + self.layout[1]:]
+        self._count += 1
 
         return Tile(self.layer, left, middle, right, self.concentration)
 
