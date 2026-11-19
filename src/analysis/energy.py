@@ -44,13 +44,11 @@ def main() -> None:
     print(f"       remainder: {slen % size}")
 
 
-    for i in range(0, srem + 1):
+    for i in range(0, size):
         snrg = []
-        for j in range(i, slen, size - (srem - i)):
+        for j in range(i, slen, size):
             base = sdna[j:j + size]
-            comp = complement(base)
-            snrg.append(gibbs_free_energy(base, comp, 273.15 + t_st))
+            if len(base) == size:
+                comp = complement(base)
+                snrg.append(gibbs_free_energy(base, comp, 273.15 + t_st))
         plot_results(snrg, f"m13_7249_{i}_{t_st}")
-
-
-
