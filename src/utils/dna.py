@@ -105,3 +105,30 @@ def is_self_complementary(strand: str) -> bool:
 
     """
     return complement(strand) == strand[::-1]
+
+
+
+def read_dna_from_file(path: str) -> str:
+    """
+
+        reads a dna string from a file
+
+        Parameters
+        ----------
+        path: str
+            the path to the file
+
+        Returns
+        -------
+        str
+            the dna string
+
+    """
+    lines = []
+
+    with open(path, "r") as file:
+        for line in file:
+            lines.append(line.strip())
+
+    return "".join(lines)
+

@@ -12,6 +12,8 @@ dependencies = [
     "matplotlib>=3.10.9",
     "nuad>=0.4.6",
     "nupack",
+    "pandas>=3.0.5",
+    "seaborn>=0.13.2",
 ]
 
 [build-system]
@@ -34,7 +36,8 @@ dev = [
 [project.scripts]
 sdcsim = "sdc.sdcsim:main"
 
-analysis-energy = "analysis.energy:main"
+analysis-energy-raw = "analysis.energy_raw_01:main"
+analysis-energy-ordered = "analysis.energy_ordered_01:main"
 
 dp-coin-change-01 = "algorithms.dp.dp_coin_change_01:main"
 dp-coin-change-02 = "algorithms.dp.dp_coin_change_02:main"
