@@ -1,4 +1,5 @@
-from nupack import *
+
+from nupack import Domain, Model, SetSpec, TargetComplex, TargetStrand, TargetTube, tube_design
 
 
 def main() -> None:
@@ -24,4 +25,4 @@ def main() -> None:
     results = my_des.run(trials = 3)
 
     print(results)
-    print("\n")
+    print()
