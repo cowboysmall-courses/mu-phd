@@ -16,7 +16,8 @@ def main() -> None:
     B  = Strand(T, name = "Strand B")
 
     complex1 = ComplexSet(strands = [A, B], complexes = SetSpec(max_size = 2))
-    model1   = Model(material = "dna04", ensemble = Ensemble.nostacking, celsius = 37)
+    model1   = Model(material = "dna", celsius = 37)
+
     results  = complex_analysis(complexes = complex1, model = model1, compute = ["pfunc", "mfe"])
 
     print(results)

@@ -22,6 +22,7 @@ def main() -> None:
 
     model1  = Model(material = 'rna', celsius = 37)
     my_des  = tube_design(tubes = [tt1], hard_constraints = [], soft_constraints = [], defect_weights = None, options = None, model = model1)
+
     results = my_des.run(trials = 3)
 
     print(results)
