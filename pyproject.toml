@@ -61,6 +61,7 @@ exp-sdc-br-parity = "experiments.sdc.bind_replace.parity.experiment:main"
 exp-sdc-bu-bitcopy = "experiments.sdc.bind_unbind.experiment:main"
 
 
-nupack-tube-design = "research.nupack.tutorial.tube_design:main"
-nupack-tube-analysis = "research.nupack.tutorial.tube_analysis:main"
-nupack-complex-analysis = "research.nupack.tutorial.complex_analysis:main"
+nupack-design-tube-01 = "research.nupack.tutorial.design_tube_01:main"
+nupack-analysis-tube-01 = "research.nupack.tutorial.analysis_tube_01:main"
+nupack-analysis-complex-01 = "research.nupack.tutorial.analysis_complex_01:main"
+nupack-analysis-complex-02 = "research.nupack.tutorial.analysis_complex_02:main"

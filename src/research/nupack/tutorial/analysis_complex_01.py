@@ -1,5 +1,5 @@
 
-from nupack import ComplexSet, Ensemble, Model, SetSpec, Strand, complex_analysis
+from nupack import ComplexSet, Model, SetSpec, Strand, complex_analysis
 
 
 TRANSLATOR = str.maketrans("ATGC", "TACG")
@@ -19,6 +19,10 @@ def main() -> None:
     model1   = Model(material = "dna", celsius = 37)
 
     results  = complex_analysis(complexes = complex1, model = model1, compute = ["pfunc", "mfe"])
+
+    for complex in complex1.complexes:
+        print(f"{complex.name:>20} dG: {results[complex].free_energy:.3f} (kcal/mol)")
+    print()
 
     print(results)
     print()
