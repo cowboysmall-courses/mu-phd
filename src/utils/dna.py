@@ -68,15 +68,35 @@ def complement(strand: str) -> str:
 
 
 
+def reverse_complement(strand: str) -> str:
+    """
+
+        creates the reverse complement of a strand of DNA
+
+        Parameters
+        ----------
+        strand: str
+            the strand to find the reverse complement of
+
+        Returns
+        -------
+        str
+            the reverse complement of the strand
+
+    """
+    return "".join(COMP[N] for N in strand)[::-1]
+
+
+
 def complements(strands: List[str]) -> List[str]:
     """
 
-        creates the complement of a list of strand
+        creates the complements of a list of strands
 
         Parameters
         ----------
         strands: List[str]
-            the list of strands to find the complement of
+            the list of strands to find the complements of
 
         Returns
         -------
@@ -85,6 +105,27 @@ def complements(strands: List[str]) -> List[str]:
 
     """
     return [complement(strand) for strand in strands]
+
+
+
+def reverse_complements(strands: List[str]) -> List[str]:
+    """
+
+        creates the reverse complements of a list of strands
+
+        Parameters
+        ----------
+        strands: List[str]
+            the list of strands to find the reverse complements of
+
+        Returns
+        -------
+        List[str]
+            the list of reverse complements of the list of strands
+
+    """
+    return [reverse_complement(strand) for strand in strands]
+
 
 
 
@@ -104,7 +145,7 @@ def is_self_complementary(strand: str) -> bool:
             true if the strand is self-complementary
 
     """
-    return complement(strand) == strand[::-1]
+    return strand == reverse_complement(strand)
 
 
 

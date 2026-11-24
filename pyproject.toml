@@ -14,6 +14,7 @@ dependencies = [
     "nupack",
     "pandas>=3.0.5",
     "seaborn>=0.13.2",
+    "viennarna>=2.8.0",
 ]
 
 [build-system]
@@ -65,3 +66,8 @@ nupack-design-tube-01 = "research.nupack.tutorial.design_tube_01:main"
 nupack-analysis-tube-01 = "research.nupack.tutorial.analysis_tube_01:main"
 nupack-analysis-complex-01 = "research.nupack.tutorial.analysis_complex_01:main"
 nupack-analysis-complex-02 = "research.nupack.tutorial.analysis_complex_02:main"
+nupack-analysis-complex-03 = "research.nupack.tutorial.analysis_complex_03:main"
+nupack-analysis-complex-04 = "research.nupack.tutorial.analysis_complex_04:main"
+
+vienna-analysis-01 = "research.viennarna.analysis_01:main"
+vienna-analysis-02 = "research.viennarna.analysis_02:main"

@@ -18,7 +18,7 @@ def main() -> None:
     complex1 = ComplexSet(strands = [A, B], complexes = SetSpec(max_size = 2))
     model1   = Model(material = "dna", celsius = 37)
 
-    results  = complex_analysis(complexes = complex1, model = model1, compute = ["pfunc", "mfe"])
+    results  = complex_analysis(complexes = complex1, model = model1, compute = ["pfunc", "mfe", "pairs"])
 
     for complex in complex1.complexes:
         print(f"{complex.name:>20} dG: {results[complex].free_energy:.3f} (kcal/mol)")
