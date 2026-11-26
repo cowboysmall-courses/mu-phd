@@ -13,7 +13,7 @@ def free_energy_of_binding(sequence1: str, sequence2: str, T: float) -> float:
 
     model    = Model(material = "dna", kelvin = T)
 
-    results  = complex_analysis([complex1, complex2, complex3], model = model, compute = ["pfunc", "mfe", "pairs"])
+    results  = complex_analysis([complex1, complex2, complex3], model = model, compute = ["pfunc"])
 
     return results[complex3].free_energy - (results[complex1].free_energy + results[complex2].free_energy)
 
