@@ -10,8 +10,8 @@ def main() -> None:
     print("\n")
 
     S = "GGACTGACG"
-    # T = S.translate(TRANSLATOR)[::-1]
-    T = "CCTGGCTGC"[::-1]
+    T = S.translate(TRANSLATOR)[::-1]
+    # T = "CCTGGCTGC"[::-1]
 
     A  = Strand(S, name = "Strand A")
     B  = Strand(T, name = "Strand B")

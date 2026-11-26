@@ -37,8 +37,10 @@ dev = [
 [project.scripts]
 sdcsim = "sdc.sdcsim:main"
 
+analysis-energy-ensemble = "analysis.energy_aggregate_01:main"
 analysis-energy-raw = "analysis.energy_raw_01:main"
 analysis-energy-ordered = "analysis.energy_ordered_01:main"
+analysis-energy-stability = "analysis.energy_stability_01:main"
 
 dp-coin-change-01 = "algorithms.dp.dp_coin_change_01:main"
 dp-coin-change-02 = "algorithms.dp.dp_coin_change_02:main"
@@ -68,6 +70,7 @@ nupack-analysis-complex-01 = "research.nupack.tutorial.analysis_complex_01:main"
 nupack-analysis-complex-02 = "research.nupack.tutorial.analysis_complex_02:main"
 nupack-analysis-complex-03 = "research.nupack.tutorial.analysis_complex_03:main"
 nupack-analysis-complex-04 = "research.nupack.tutorial.analysis_complex_04:main"
+nupack-analysis-complex-05 = "research.nupack.tutorial.analysis_complex_05:main"
 
 vienna-analysis-01 = "research.viennarna.analysis_01:main"
 vienna-analysis-02 = "research.viennarna.analysis_02:main"

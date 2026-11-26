@@ -1,23 +1,23 @@
 
 
-from nupack import Complex, Model, Strand, complex_analysis
+from nupack import Model, structure_energy, pfunc, mfe
+
+from typing import List, Tuple
 
 
-def free_energy_of_binding(sequence1: str, sequence2: str, T: float) -> float:
-    strand1  = Strand(sequence1, name = "Strand 1")
-    strand2  = Strand(sequence2, name = "Strand 2")
+def free_energy(S1: str, S2: str, T: float) -> float:
+    model = Model(material = "dna", kelvin = T)
+    strct = "+".join(["("*len(S1), ")"*len(S2)])
+    return structure_energy(strands = [S1, S2], structure = strct, model = model)
 
-    complex1 = Complex(strands = [strand1])
-    complex2 = Complex(strands = [strand2])
-    complex3 = Complex(strands = [strand1, strand2])
+def minimum_free_energy(strands: List[str], T: float) -> float:
+    model = Model(material = "dna", kelvin = T)
+    return mfe(strands, model)[0].energy
 
-    model    = Model(material = "dna", kelvin = T)
+def partition_function(strands: List[str], T: float) -> float:
+    model = Model(material = "dna", kelvin = T)
+    return pfunc(strands = strands, model = model)[0]
 
-    results  = complex_analysis([complex1, complex2, complex3], model = model, compute = ["pfunc"])
-
-    return results[complex3].free_energy - (results[complex1].free_energy + results[complex2].free_energy)
-
-
-def partition_function(sequence: str, T: float) -> float:
-    return 0
-
+def ensemble_free_energy(strands: List[str], T: float) -> float:
+    model = Model(material = "dna", kelvin = T)
+    return pfunc(strands = strands, model = model)[1]
