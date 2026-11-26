@@ -12,9 +12,13 @@ def main() -> None:
 
     t_st = 58
 
+    print("\n")
+    print("\tAnalysis - Free Energy - Ordered")
+    print("\n")
+
     print()
-    print(f"nucleotide count: {slen}")
-    print(f"   position size: {size}")
+    print(f"\tNucleotide Count: {slen}")
+    print(f"\t   Position Size: {size}")
     print()
 
     snrg = []
@@ -44,4 +48,3 @@ def main() -> None:
     plot_results(data, "ordered/total", f"m13_7249_{t_st}", f"Free Energy - Plot")
     hist_results(data, "ordered/total", f"m13_7249_{t_st}", f"Free Energy - Hist")
     dist_results(data, "ordered/total", f"m13_7249_{t_st}", f"Free Energy - Dist")
-

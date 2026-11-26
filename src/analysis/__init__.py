@@ -1,5 +1,5 @@
 
-from typing import List, Dict
+from typing import List
 
 from pathlib import Path
 
@@ -21,8 +21,8 @@ def plot_results(energy: List[float], path:str, name: str, title: str = "Title")
     plt.title(title)
     plt.grid(True)
     plt.xlabel("Position")
-    plt.ylabel("Gibbs Free Energy")
-    plt.plot(energy, label = "Energy Landscape")
+    plt.ylabel("Free Energy")
+    plt.plot(energy, label = "Energy")
     plt.legend()
 
     plt.savefig(f"./output/analysis/dna/{path}/{name}_plot.png")
@@ -37,10 +37,9 @@ def hist_results(energy: List[float], path:str, name: str, title: str = "Title")
 
     plt.title(title)
     plt.grid(True)
-    # plt.xlabel("Position")
-    plt.ylabel("Gibbs Free Energy")
+    plt.ylabel("Free Energy")
 
-    plt.hist(energy, bins = 5, label = "Energy Landscape Distribution", density = True)
+    plt.hist(energy, bins = 5, label = "Energy Distribution", density = True)
 
     plt.savefig(f"./output/analysis/dna/{path}/{name}_hist.png")
     plt.close()
@@ -56,13 +55,11 @@ def dist_results(energy: List[float], path:str, name: str, title: str = "Title")
 
     plt.title(title)
     plt.grid(True)
-    # plt.xlabel("Position")
-    plt.ylabel("Gibbs Free Energy")
+    plt.ylabel("Free Energy")
 
     # nrg = np.array(energy, dtype = np.float32)
-    nrg = pd.DataFrame(energy, columns = ["Energy Landscape"])
-    sns.displot(nrg, x = "Energy Landscape", kind = "kde")
-    # plt.legend()
+    nrg = pd.DataFrame(energy, columns = ["Energy"])
+    sns.displot(nrg, x = "Energy", kind = "kde")
 
     plt.savefig(f"./output/analysis/dna/{path}/{name}_dist.png")
     plt.close()

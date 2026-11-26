@@ -12,51 +12,24 @@ def main() -> None:
 
     t_st = 65
 
+    print("\n")
+    print("\tAnalysis - Ensemble Free Energy")
+    print("\n")
+
     print()
-    print(f"nucleotide count: {slen}")
-    print(f"   position size: {size}")
+    print(f"\tNucleotide Count: {slen}")
+    print(f"\t   Position Size: {size}")
     print()
 
     snrg = []
 
-    for i in range(1000):
+    for i in range(slen - size):
         base = sdna[i:i + size]
         snrg.append(ensemble_free_energy([base], 273.15 + t_st))
-
-    print("1000 Positions...")
-
-    for i in range(1000, 2000):
-        base = sdna[i:i + size]
-        snrg.append(ensemble_free_energy([base], 273.15 + t_st))
-
-    print("2000 Positions...")
-
-    for i in range(2000, 3000):
-        base = sdna[i:i + size]
-        snrg.append(ensemble_free_energy([base], 273.15 + t_st))
-
-    print("3000 Positions...")
-
-    for i in range(3000, 4000):
-        base = sdna[i:i + size]
-        snrg.append(ensemble_free_energy([base], 273.15 + t_st))
-
-    print("4000 Positions...")
-
-    for i in range(4000, 5000):
-        base = sdna[i:i + size]
-        snrg.append(ensemble_free_energy([base], 273.15 + t_st))
-
-    print("5000 Positions...")
-
-    for i in range(5000, 6000):
-        base = sdna[i:i + size]
-        snrg.append(ensemble_free_energy([base], 273.15 + t_st))
-
-    print("6000 Positions...")
-
-    for i in range(6000, slen - size):
-        base = sdna[i:i + size]
-        snrg.append(ensemble_free_energy([base], 273.15 + t_st))
+        if (i + 1) % 100 == 0:
+            print(f"\t\t{i + 1:>5} positions calculated ...", end = "\r")
 
     plot_results(snrg, "ensemble", f"m13_7249_{t_st}")
+
+    print("\t\t  all positions calculated.  ")
+    print("\n")

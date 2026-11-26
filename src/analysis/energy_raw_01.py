@@ -10,11 +10,15 @@ def main() -> None:
     sdna = read_dna_from_file("./data/dna/m13_7249.txt")
     slen = len(sdna)
 
-    t_st = 58
+    t_st = 65
+
+    print("\n")
+    print("\tAnalysis - Free Energy - Raw")
+    print("\n")
 
     print()
-    print(f"nucleotide count: {slen}")
-    print(f"   position size: {size}")
+    print(f"\tNucleotide Count: {slen}")
+    print(f"\t   Position Size: {size}")
     print()
 
     for i in range(0, size):
@@ -24,4 +28,10 @@ def main() -> None:
             if len(base) == size:
                 comp = reverse_complement(base)
                 snrg.append(free_energy(base, comp, 273.15 + t_st))
+
+        print(f"\t\tposition {i:>2} completed...", end = "\r")
+
         plot_results(snrg, "raw", f"m13_7249_{i:02d}_{t_st}")
+
+    print("\t\t  all positions completed.  ")
+    print("\n")
