@@ -17,9 +17,11 @@ def main() -> None:
     print("\n")
 
     print()
-    print(f"\tNucleotide Count: {slen}")
-    print(f"\t   Position Size: {size}")
-    print()
+    print(f"\t\tNucleotide Count: {slen}")
+    print(f"\t\t   Position Size: {size}")
+    print("\n")
+
+    sdna += sdna[:size]
 
     for i in range(0, size):
         snrg = []
@@ -29,9 +31,9 @@ def main() -> None:
                 comp = reverse_complement(base)
                 snrg.append(free_energy(base, comp, 273.15 + t_st))
 
-        print(f"\t\tposition {i:>2} completed...", end = "\r")
+        print(f"\tposition {i:>2} completed...", end = "\r")
 
-        plot_results(snrg, "raw", f"m13_7249_{i:02d}_{t_st}")
+        plot_results(snrg, "raw", f"m13_7249_{i:02d}_{t_st}", title = "Free Energy - Raw")
 
-    print("\t\t  all positions completed.  ")
+    print("\t  all positions completed.   ")
     print("\n")

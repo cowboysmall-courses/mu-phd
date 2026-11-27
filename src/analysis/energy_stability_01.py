@@ -7,7 +7,7 @@ from analysis import plot_results
 
 def main() -> None:
     size = 624
-    sdna = read_dna_from_file("./data/dna/m13_7249.txt")
+    sdna = read_dna_from_file("./data/dna/m13_7249.txt")[::-1]
     slen = len(sdna)
 
     t_st = 65
@@ -17,21 +17,22 @@ def main() -> None:
     print("\n")
 
     print()
-    print(f"\tNucleotide Count: {slen}")
-    print(f"\t   Position Size: {size}")
-    print()
+    print(f"\t\tNucleotide Count: {slen}")
+    print(f"\t\t   Position Size: {size}")
+    print("\n")
+
+    sdna += sdna[:size]
 
     snrg = []
-
-    for i in range(slen - size):
+    for i in range(slen):
         base = sdna[i:i + size]
         G_MFE = minimum_free_energy([base], 273.15 + t_st)
         G_EFE = ensemble_free_energy([base], 273.15 + t_st)
-        snrg.append(G_MFE - G_EFE)
-        if (i + 1) % 100 == 0:
-            print(f"\t\t{i + 1:>5} positions calculated ...", end = "\r")
+        snrg.append(G_EFE - G_MFE)
+        if (i + 1) % 10 == 0:
+            print(f"\t{i + 1:>5} positions calculated...", end = "\r")
 
-    plot_results(snrg, "stability", f"m13_7249_{t_st}")
+    plot_results(snrg, "stability", f"m13_7249_{t_st}", title = "Free Energy - Stability")
 
-    print("\t\t  all positions calculated.  ")
+    print("\t  all positions calculated.   ")
     print("\n")

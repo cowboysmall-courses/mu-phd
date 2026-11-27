@@ -12,7 +12,7 @@ import seaborn as sns
 import pandas as pd
 
 
-def plot_results(energy: List[float], path:str, name: str, title: str = "Title") -> None:
+def plot_result(energy: List[float], path:str, name: str, title: str = "Title") -> None:
     Path(f"./output/analysis/dna/{path}").mkdir(parents = True, exist_ok = True)
 
     plt.style.use("ggplot")
@@ -29,7 +29,50 @@ def plot_results(energy: List[float], path:str, name: str, title: str = "Title")
     plt.close()
 
 
-def hist_results(energy: List[float], path:str, name: str, title: str = "Title") -> None:
+def plot_results(results1: List[float], results2: List[float], label1: str, label2:str, path:str, name: str, title: str = "Title") -> None:
+    Path(f"./output/analysis/dna/{path}").mkdir(parents = True, exist_ok = True)
+
+    plt.style.use("ggplot")
+    plt.subplots(figsize = (12, 5))
+
+    plt.title(title)
+    plt.grid(True)
+    plt.xlabel("Position")
+    plt.ylabel("Free Energy")
+    plt.plot(results1, color = "red",  label = label1)
+    plt.plot(results2, color = "blue", label = label2)
+    plt.legend()
+
+    plt.savefig(f"./output/analysis/dna/{path}/{name}_plot.png")
+    plt.close()
+
+
+def plot_results_separately(results1: List[float], results2: List[float], label1: str, label2:str, path:str, name: str, title: str = "Title") -> None:
+    Path(f"./output/analysis/dna/{path}").mkdir(parents = True, exist_ok = True)
+
+    plt.style.use("ggplot")
+    fig, (ax1, ax2) = plt.subplots(2, figsize = (12, 5))
+
+    fig.suptitle(title)
+
+    ax1.grid(True)
+    # ax1.xlabel("Position")
+    # ax1.ylabel("Free Energy")
+    ax1.plot(results1, label = label1)
+    ax1.legend()
+
+    ax2.grid(True)
+    # ax2.xlabel("Position")
+    # ax2.ylabel("Free Energy")
+    ax2.plot(results2, label = label2)
+    ax2.legend()
+
+    plt.savefig(f"./output/analysis/dna/{path}/{name}_plot.png")
+    plt.close()
+
+
+
+def hist_result(energy: List[float], path:str, name: str, title: str = "Title") -> None:
     Path(f"./output/analysis/dna/{path}").mkdir(parents = True, exist_ok = True)
 
     plt.style.use("ggplot")
@@ -46,7 +89,7 @@ def hist_results(energy: List[float], path:str, name: str, title: str = "Title")
 
 
 
-def dist_results(energy: List[float], path:str, name: str, title: str = "Title") -> None:
+def dist_result(energy: List[float], path:str, name: str, title: str = "Title") -> None:
     Path(f"./output/analysis/dna/{path}").mkdir(parents = True, exist_ok = True)
 
     plt.style.use("ggplot")

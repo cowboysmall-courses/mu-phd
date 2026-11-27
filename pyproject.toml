@@ -37,10 +37,18 @@ dev = [
 [project.scripts]
 sdcsim = "sdc.sdcsim:main"
 
-analysis-energy-ensemble = "analysis.energy_ensemble_01:main"
+analysis-energy-ensemble-53 = "analysis.energy_ensemble_01:main"
+analysis-energy-ensemble-35 = "analysis.energy_ensemble_02:main"
+analysis-energy-ensemble-53-separate = "analysis.energy_ensemble_03:main"
+analysis-energy-ensemble-35-separate = "analysis.energy_ensemble_04:main"
+
+analysis-energy-stability = "analysis.energy_stability_01:main"
+analysis-energy-stability-rc = "analysis.energy_stability_02:main"
+
 analysis-energy-ordered = "analysis.energy_ordered_01:main"
 analysis-energy-raw = "analysis.energy_raw_01:main"
-analysis-energy-stability = "analysis.energy_stability_01:main"
+
+
 
 dp-coin-change-01 = "algorithms.dp.dp_coin_change_01:main"
 dp-coin-change-02 = "algorithms.dp.dp_coin_change_02:main"
